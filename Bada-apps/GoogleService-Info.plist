@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>732817916644-22i527a0jg1t57fmmj99oe9rm8tliaos.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.732817916644-22i527a0jg1t57fmmj99oe9rm8tliaos</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDJBfca3TcovNgb9fp0-ok6K0S7mYNbuSs</string>
+	<key>GCM_SENDER_ID</key>
+	<string>732817916644</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>Bada.Bada-Apps</string>
+	<key>PROJECT_ID</key>
+	<string>bada-51073</string>
+	<key>STORAGE_BUCKET</key>
+	<string>bada-51073.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:732817916644:ios:34b466420082a3ff</string>
+	<key>DATABASE_URL</key>
+	<string>https://bada-51073.firebaseio.com</string>
+</dict>
+</plist>
