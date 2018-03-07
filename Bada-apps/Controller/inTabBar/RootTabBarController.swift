@@ -11,8 +11,11 @@ import UIKit
 
 class RootTabBarController: UITabBarController, UITabBarControllerDelegate {
     
+    var loadingIndicator: LoadingIndicator?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadingIndicator = LoadingIndicator(view: self.view)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -24,7 +27,7 @@ class RootTabBarController: UITabBarController, UITabBarControllerDelegate {
         
         self.tabBar.items?[0].image = #imageLiteral(resourceName: "attendanceTabBarItem")
         self.tabBar.items?[1].image = #imageLiteral(resourceName: "historyTabBarItem")
-        self.tabBar.items?[2].image = #imageLiteral(resourceName: "newsTabBarItem")
+//        self.tabBar.items?[2].image = #imageLiteral(resourceName: "newsTabBarItem")
         
         self.tabBar.tintColor = UIColor(rgb: Color.attendanceImageColor)
         
@@ -41,6 +44,14 @@ class RootTabBarController: UITabBarController, UITabBarControllerDelegate {
         default:
             self.tabBar.tintColor = UIColor.brown
         }
+    }
+    
+    func startLoading() {
+        loadingIndicator?.startLoading()
+    }
+    
+    func stopLoading() {
+        loadingIndicator?.startLoading()
     }
     
     

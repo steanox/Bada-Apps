@@ -11,6 +11,7 @@ import UIKit
 struct Color {
     
     public static let backgroundColor = 0xf7f7f7
+    public static let dateClockInOut = 0x707070
     public static let beaconTextColor = 0x95989A
     public static let attendanceImageColor = 0x07926d
     public static let historyImageColor = 0x02ce88

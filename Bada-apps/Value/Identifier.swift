@@ -14,6 +14,7 @@ struct Identifier {
     public static let beacon = "myBeacon"
     
     public static let coverageArea = "CoverageAreaView"
+    public static let clockInOut = "ClockInOutView"
 }
 
 

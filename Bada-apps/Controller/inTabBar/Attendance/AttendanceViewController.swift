@@ -11,11 +11,13 @@ import UIKit
 class AttendanceViewController: BaseController {
     
     @IBOutlet weak var coverageAreaView: CoverageAreaView!
+    @IBOutlet weak var clockInOutView: ClockInOutView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         print("\(coverageAreaView.beacon.inCoverageArea)")
+        
         
     }
     
@@ -28,7 +30,8 @@ class AttendanceViewController: BaseController {
     override func styleUI() {
         super.styleUI()
         
-        coverageAreaView.applyShadow()
+        coverageAreaView.applyShadow(0.0)
+        clockInOutView.applyShadow(15.0)
         
     }
     
