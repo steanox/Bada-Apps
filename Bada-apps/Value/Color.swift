@@ -13,5 +13,7 @@ struct Color {
     public static let backgroundColor = 0xf7f7f7
     public static let beaconTextColor = 0x95989A
     
+    public static let formColor = 0xA1A8AD
+    
     
 }

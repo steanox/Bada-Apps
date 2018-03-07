@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		014350C9204FF6BC00512602 /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 014350C8204FF6BC00512602 /* Authentication.storyboard */; };
 		016A5D87204F90A200F99270 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016A5D86204F90A200F99270 /* AppDelegate.swift */; };
 		016A5D89204F90A200F99270 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016A5D88204F90A200F99270 /* ViewController.swift */; };
 		016A5D8E204F90A200F99270 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 016A5D8D204F90A200F99270 /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		014350C8204FF6BC00512602 /* Authentication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authentication.storyboard; sourceTree = "<group>"; };
 		016A5D83204F90A200F99270 /* Bada-apps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bada-apps.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		016A5D86204F90A200F99270 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		016A5D88204F90A200F99270 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				5509CB0D204FCE0A00A87E88 /* History */,
 				5509CB07204FCE0A00A87E88 /* LaunchScreen.storyboard */,
 				5509CB09204FCE0A00A87E88 /* Main.storyboard */,
+				014350C8204FF6BC00512602 /* Authentication.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				014350C9204FF6BC00512602 /* Authentication.storyboard in Resources */,
 				01E8C03F204F915E003BF95C /* Model in Resources */,
 				5509CB11204FCE0A00A87E88 /* LaunchScreen.storyboard in Resources */,
 				01E8C03D204F9154003BF95C /* .gitignore in Resources */,
@@ -547,7 +551,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C89FEC543S;
+				DEVELOPMENT_TEAM = ZK45DE64XX;
 				INFOPLIST_FILE = "Bada-apps/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Bada.Bada-apps";
@@ -563,7 +567,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C89FEC543S;
+				DEVELOPMENT_TEAM = ZK45DE64XX;
 				INFOPLIST_FILE = "Bada-apps/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Bada.Bada-apps";
