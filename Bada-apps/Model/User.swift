@@ -10,8 +10,6 @@ import Foundation
 import FirebaseAuth
 import FirebaseDatabase
 
-
-
 class User{
     
     typealias errorHandler = (_ error: Error) -> Void
@@ -19,7 +17,7 @@ class User{
     typealias loginSuccessHandler = (_ user: Any)->Void
     
     
-    static func register(email: String,password: String,userData:[String:String],onSuccess: @escaping registerSuccessHandler ,onError:@escaping errorHandler){
+    static func register(email: String, password: String, userData:[String:Any],onSuccess: @escaping registerSuccessHandler ,onError:@escaping errorHandler){
 
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             if error != nil{
