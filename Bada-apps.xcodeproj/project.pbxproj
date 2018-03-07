@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		014350C9204FF6BC00512602 /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 014350C8204FF6BC00512602 /* Authentication.storyboard */; };
+		014350D720503DD600512602 /* Attendance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014350D520503DD600512602 /* Attendance.swift */; };
+		014350D820503DD600512602 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014350D620503DD600512602 /* User.swift */; };
+		014350DB20503FA500512602 /* Notification.xib in Resources */ = {isa = PBXBuildFile; fileRef = 014350DA20503FA500512602 /* Notification.xib */; };
+		014350DD2050420300512602 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014350DC2050420300512602 /* NotificationView.swift */; };
 		016A5D87204F90A200F99270 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016A5D86204F90A200F99270 /* AppDelegate.swift */; };
 		016A5D89204F90A200F99270 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016A5D88204F90A200F99270 /* ViewController.swift */; };
 		016A5D8E204F90A200F99270 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 016A5D8D204F90A200F99270 /* Assets.xcassets */; };
+		01A409EB20505D0E00812123 /* CustomUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A409EA20505D0E00812123 /* CustomUITextField.swift */; };
 		01E8C03B204F914B003BF95C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 01E8C03A204F914B003BF95C /* README.md */; };
 		01E8C03D204F9154003BF95C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 01E8C03C204F9153003BF95C /* .gitignore */; };
-		01E8C03F204F915E003BF95C /* Model in Resources */ = {isa = PBXBuildFile; fileRef = 01E8C03E204F915E003BF95C /* Model */; };
 		01E8C041204F9168003BF95C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01E8C040204F9168003BF95C /* GoogleService-Info.plist */; };
 		5509CB0F204FCE0A00A87E88 /* CoverageAreaView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5509CB05204FCE0A00A87E88 /* CoverageAreaView.xib */; };
 		5509CB10204FCE0A00A87E88 /* Attendance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5509CB06204FCE0A00A87E88 /* Attendance.storyboard */; };
@@ -43,14 +47,18 @@
 
 /* Begin PBXFileReference section */
 		014350C8204FF6BC00512602 /* Authentication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authentication.storyboard; sourceTree = "<group>"; };
+		014350D520503DD600512602 /* Attendance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attendance.swift; sourceTree = "<group>"; };
+		014350D620503DD600512602 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		014350DA20503FA500512602 /* Notification.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Notification.xib; sourceTree = "<group>"; };
+		014350DC2050420300512602 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		016A5D83204F90A200F99270 /* Bada-apps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bada-apps.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		016A5D86204F90A200F99270 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		016A5D88204F90A200F99270 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		016A5D8D204F90A200F99270 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		016A5D92204F90A200F99270 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01A409EA20505D0E00812123 /* CustomUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUITextField.swift; sourceTree = "<group>"; };
 		01E8C03A204F914B003BF95C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		01E8C03C204F9153003BF95C /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		01E8C03E204F915E003BF95C /* Model */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Model; sourceTree = "<group>"; };
 		01E8C040204F9168003BF95C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5509CB05204FCE0A00A87E88 /* CoverageAreaView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoverageAreaView.xib; sourceTree = "<group>"; };
 		5509CB06204FCE0A00A87E88 /* Attendance.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Attendance.storyboard; sourceTree = "<group>"; };
@@ -92,6 +100,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		014350D920503DDC00512602 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				014350D520503DD600512602 /* Attendance.swift */,
+				014350D620503DD600512602 /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		016A5D7A204F90A200F99270 = {
 			isa = PBXGroup;
 			children = (
@@ -117,7 +134,7 @@
 			children = (
 				016A5D86204F90A200F99270 /* AppDelegate.swift */,
 				016A5D88204F90A200F99270 /* ViewController.swift */,
-				01E8C03E204F915E003BF95C /* Model */,
+				014350D920503DDC00512602 /* Model */,
 				5509CB35204FCF1800A87E88 /* Beacon.swift */,
 				5509CB03204FCE0A00A87E88 /* View */,
 				5509CB15204FCE4F00A87E88 /* Controller */,
@@ -250,6 +267,7 @@
 				5509CB2F204FCE6600A87E88 /* Color+Hex.swift */,
 				5509CB30204FCE6600A87E88 /* UINib+Loader.swift */,
 				5509CB31204FCE6600A87E88 /* View+Shadow.swift */,
+				01A409EA20505D0E00812123 /* CustomUITextField.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -258,6 +276,8 @@
 			isa = PBXGroup;
 			children = (
 				5509CB3A20500E2800A87E88 /* LoadingIndicator.swift */,
+				014350DA20503FA500512602 /* Notification.xib */,
+				014350DC2050420300512602 /* NotificationView.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -332,8 +352,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				014350DB20503FA500512602 /* Notification.xib in Resources */,
 				014350C9204FF6BC00512602 /* Authentication.storyboard in Resources */,
-				01E8C03F204F915E003BF95C /* Model in Resources */,
 				5509CB11204FCE0A00A87E88 /* LaunchScreen.storyboard in Resources */,
 				01E8C03D204F9154003BF95C /* .gitignore in Resources */,
 				5509CB14204FCE0A00A87E88 /* History.storyboard in Resources */,
@@ -415,13 +435,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				014350D720503DD600512602 /* Attendance.swift in Sources */,
 				5509CB28204FCE4F00A87E88 /* LoginViewController.swift in Sources */,
+				014350DD2050420300512602 /* NotificationView.swift in Sources */,
 				016A5D89204F90A200F99270 /* ViewController.swift in Sources */,
 				5509CB36204FCF1800A87E88 /* Beacon.swift in Sources */,
 				5509CB3F2050158300A87E88 /* ClockInOutView.swift in Sources */,
 				5509CB25204FCE4F00A87E88 /* RootTabBarController.swift in Sources */,
 				5509CB33204FCE6600A87E88 /* UINib+Loader.swift in Sources */,
+				01A409EB20505D0E00812123 /* CustomUITextField.swift in Sources */,
 				5509CB3B20500E2800A87E88 /* LoadingIndicator.swift in Sources */,
+				014350D820503DD600512602 /* User.swift in Sources */,
 				5509CB2C204FCE5E00A87E88 /* Color.swift in Sources */,
 				5509CB2D204FCE5E00A87E88 /* Identifier.swift in Sources */,
 				5509CB32204FCE6600A87E88 /* Color+Hex.swift in Sources */,
@@ -571,7 +595,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C89FEC543S;
+				DEVELOPMENT_TEAM = ZK45DE64XX;
 				INFOPLIST_FILE = "Bada-apps/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Bada.Bada-apps";
@@ -587,7 +611,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C89FEC543S;
+				DEVELOPMENT_TEAM = ZK45DE64XX;
 				INFOPLIST_FILE = "Bada-apps/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Bada.Bada-apps";

@@ -13,8 +13,8 @@ extension UIView {
     func applyShadow(_ offset: CGFloat) {
         self.layer.masksToBounds = false
         self.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-        self.layer.shadowRadius = 1.0
-        self.layer.shadowOpacity = 1
+        self.layer.shadowRadius = 2.0
+        self.layer.shadowOpacity = 0.7
         
         let path = UIBezierPath()
         
@@ -38,6 +38,15 @@ extension UIView {
         path.close()
         
         self.layer.shadowPath = path.cgPath
+    }
+    
+    func showNotification(title: String, description: String, buttonText: String){
+        let notif = NotificationView(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height), title: title, description: description, buttonText: buttonText)
+        
+        UIView.transition(with: self, duration: 0.2, options: [.curveEaseInOut,.transitionCrossDissolve], animations: {
+            
+            self.addSubview(notif)
+        }, completion: nil)
     }
     
     
