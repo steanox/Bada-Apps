@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		010BA03220512896001F8D44 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010BA03120512896001F8D44 /* RegistrationViewController.swift */; };
+		010BA034205128B7001F8D44 /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010BA033205128B7001F8D44 /* Toolbar.swift */; };
 		014350C9204FF6BC00512602 /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 014350C8204FF6BC00512602 /* Authentication.storyboard */; };
 		014350D720503DD600512602 /* Attendance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014350D520503DD600512602 /* Attendance.swift */; };
 		014350D820503DD600512602 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014350D620503DD600512602 /* User.swift */; };
@@ -53,6 +55,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		010BA03120512896001F8D44 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		010BA033205128B7001F8D44 /* Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbar.swift; sourceTree = "<group>"; };
 		014350C8204FF6BC00512602 /* Authentication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authentication.storyboard; sourceTree = "<group>"; };
 		014350D520503DD600512602 /* Attendance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attendance.swift; sourceTree = "<group>"; };
 		014350D620503DD600512602 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -263,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				5509CB21204FCE4F00A87E88 /* LoginViewController.swift */,
+				010BA03120512896001F8D44 /* RegistrationViewController.swift */,
 			);
 			path = Authetication;
 			sourceTree = "<group>";
@@ -287,6 +292,7 @@
 				5509CB31204FCE6600A87E88 /* View+Shadow.swift */,
 				01A409EA20505D0E00812123 /* CustomUITextField.swift */,
 				55A589972051159500266380 /* Date+Format.swift */,
+				010BA033205128B7001F8D44 /* Toolbar.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -494,6 +500,7 @@
 				014350D720503DD600512602 /* Attendance.swift in Sources */,
 				5509CB28204FCE4F00A87E88 /* LoginViewController.swift in Sources */,
 				014350DD2050420300512602 /* NotificationView.swift in Sources */,
+				010BA034205128B7001F8D44 /* Toolbar.swift in Sources */,
 				016A5D89204F90A200F99270 /* ViewController.swift in Sources */,
 				5509CB36204FCF1800A87E88 /* Beacon.swift in Sources */,
 				5509CB3F2050158300A87E88 /* ClockInOutView.swift in Sources */,
@@ -507,6 +514,7 @@
 				5509CB32204FCE6600A87E88 /* Color+Hex.swift in Sources */,
 				5509CB24204FCE4F00A87E88 /* AttendanceViewController.swift in Sources */,
 				5509CB34204FCE6600A87E88 /* View+Shadow.swift in Sources */,
+				010BA03220512896001F8D44 /* RegistrationViewController.swift in Sources */,
 				5509CB23204FCE4F00A87E88 /* CoverageAreaView.swift in Sources */,
 				5509CB26204FCE4F00A87E88 /* NewsViewController.swift in Sources */,
 				55A589922050F1FB00266380 /* NSData+String.swift in Sources */,
@@ -654,7 +662,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C89FEC543S;
+				DEVELOPMENT_TEAM = ZK45DE64XX;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -674,7 +682,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C89FEC543S;
+				DEVELOPMENT_TEAM = ZK45DE64XX;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
