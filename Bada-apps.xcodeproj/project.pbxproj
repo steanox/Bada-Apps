@@ -104,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				014350D520503DD600512602 /* Attendance.swift */,
+				5509CB35204FCF1800A87E88 /* Beacon.swift */,
 				014350D620503DD600512602 /* User.swift */,
 			);
 			path = Model;
@@ -135,7 +136,6 @@
 				016A5D86204F90A200F99270 /* AppDelegate.swift */,
 				016A5D88204F90A200F99270 /* ViewController.swift */,
 				014350D920503DDC00512602 /* Model */,
-				5509CB35204FCF1800A87E88 /* Beacon.swift */,
 				5509CB03204FCE0A00A87E88 /* View */,
 				5509CB15204FCE4F00A87E88 /* Controller */,
 				5509CB29204FCE5E00A87E88 /* Value */,
@@ -201,7 +201,7 @@
 			children = (
 				5509CB16204FCE4F00A87E88 /* BaseController.swift */,
 				5509CB17204FCE4F00A87E88 /* inTabBar */,
-				5509CB20204FCE4F00A87E88 /* Login */,
+				5509CB20204FCE4F00A87E88 /* Authetication */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -243,12 +243,12 @@
 			path = History;
 			sourceTree = "<group>";
 		};
-		5509CB20204FCE4F00A87E88 /* Login */ = {
+		5509CB20204FCE4F00A87E88 /* Authetication */ = {
 			isa = PBXGroup;
 			children = (
 				5509CB21204FCE4F00A87E88 /* LoginViewController.swift */,
 			);
-			path = Login;
+			path = Authetication;
 			sourceTree = "<group>";
 		};
 		5509CB29204FCE5E00A87E88 /* Value */ = {
