@@ -54,7 +54,6 @@ class NotificationView: UIView{
         self.container.applyShadow(1)
         
         
-        
     }
     
     @IBAction func close(){

@@ -48,17 +48,23 @@ extension UIView {
         }, completion: nil)
     }
     
-    func showNote(title: String){
-//        let notif = NotificationView(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height), title: title, description: description, buttonText: buttonText)
+    func showNote(title: String) {
         let rect = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
         let notes = NotesView(frame: rect, title: title)
+        self.addSubview(notes)
         
-        UIView.transition(with: self, duration: 0.2, options: [.curveEaseInOut,.transitionCrossDissolve], animations: {
-            
-            self.addSubview(notes)
-        }, completion: nil)
+        notes.alpha = 0.0
+        
+        UIView.animate(withDuration: 0.2) {
+            notes.alpha = 1.0
+        }
+    
     }
     
+    var parentViewController: UIViewController? {
+        let parentResponder: UIResponder? = self
+        return parentResponder?.viewController
+    }
     
 }
 

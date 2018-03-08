@@ -95,7 +95,7 @@ extension LoginViewController:UITextFieldDelegate{
     
     
     
-    @objc func keyboardWillShow(notification: NSNotification) {
+//    @objc func keyboardWillShow(notification: NSNotification) {
         //        print(self.view.frame.origin.y)
         //
         //        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
@@ -122,7 +122,7 @@ extension LoginViewController:UITextFieldDelegate{
         //            }
         //        }
         
-    }
+//    }
     
     
     
