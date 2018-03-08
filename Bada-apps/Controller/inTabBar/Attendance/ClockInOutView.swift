@@ -23,6 +23,8 @@ class ClockInOutView: UIView {
     
     var clock = Clock._out
     
+    typealias onResponse = (()->())
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
@@ -32,28 +34,37 @@ class ClockInOutView: UIView {
         
         dateLabel.textColor = UIColor(rgb: Color.dateClockInOut)
         
-        updateUI(clock: ._out)
-        talk()
+//        updateUI(clock: ._in)
     }
     
     @IBAction func clockInOutDidTap(_ sender: UIButton) {
-        updateUI(clock: clock)
+        tryingIdentifying()
     }
     
     func updateUI (clock: Clock) {
         switch clock {
         case ._in:
-            clockInOutButton.imageView?.image = #imageLiteral(resourceName: "clockOutButton")
+            clockInOutButton.setImage(#imageLiteral(resourceName: "clockOutButton"), for: UIControlState.normal)
             self.clock = ._out
         case ._out:
-            print("a")
-            clockInOutButton.imageView?.image = #imageLiteral(resourceName: "clockInButton")
+            clockInOutButton.setImage(#imageLiteral(resourceName: "clockInButton"), for: UIControlState.normal)
             self.clock = ._in
         }
     }
     
-    func talk() {
-        print("masuk")
+    func tryingIdentifying() {
+        let faceId = FaceID()
+        faceId.identifiyingFaceID { (response) in
+            switch response {
+            case .isSuccess:
+                self.updateUI(clock: self.clock)
+                break
+            case .notSupported:
+                break
+            case .unknownError:
+                break
+            }
+        }
     }
     
 }

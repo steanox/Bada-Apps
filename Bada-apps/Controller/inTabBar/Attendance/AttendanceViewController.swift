@@ -10,8 +10,11 @@ import UIKit
 
 class AttendanceViewController: BaseController {
     
+    
+    @IBOutlet weak var currentDateLabel: UILabel!
     @IBOutlet weak var coverageAreaView: CoverageAreaView!
     @IBOutlet weak var clockInOutView: ClockInOutView!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +32,9 @@ class AttendanceViewController: BaseController {
     
     override func styleUI() {
         super.styleUI()
+        
+    
+        currentDateLabel.text = Date().current()
         
         coverageAreaView.applyShadow(0.0)
         clockInOutView.applyShadow(15.0)

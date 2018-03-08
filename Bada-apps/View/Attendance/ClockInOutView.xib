@@ -45,7 +45,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="200" id="A3j-jw-zjX"/>
                     </constraints>
-                    <state key="normal" image="Beacon-Finding"/>
+                    <state key="normal" image="clockInButton"/>
                     <connections>
                         <action selector="clockInOutDidTap:" destination="-1" eventType="touchUpInside" id="TjB-iK-jy2"/>
                     </connections>
@@ -69,6 +69,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Beacon-Finding" width="27" height="27"/>
+        <image name="clockInButton" width="218" height="218"/>
     </resources>
 </document>

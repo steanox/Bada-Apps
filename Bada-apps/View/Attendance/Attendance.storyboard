@@ -21,7 +21,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="soQ-Yg-lgQ">
                                 <rect key="frame" x="27" y="275" width="320" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -58,6 +58,7 @@
                     <connections>
                         <outlet property="clockInOutView" destination="eF6-l9-Wuz" id="7w5-mo-91p"/>
                         <outlet property="coverageAreaView" destination="dhG-eI-IzE" id="u22-Ky-kwz"/>
+                        <outlet property="currentDateLabel" destination="wGj-kx-4lT" id="r61-Aa-Wat"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rgc-bQ-M8m" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -27,7 +27,7 @@ class RootTabBarController: UITabBarController, UITabBarControllerDelegate {
         
         self.tabBar.items?[0].image = #imageLiteral(resourceName: "attendanceTabBarItem")
         self.tabBar.items?[1].image = #imageLiteral(resourceName: "historyTabBarItem")
-//        self.tabBar.items?[2].image = #imageLiteral(resourceName: "newsTabBarItem")
+        self.tabBar.items?[2].image = #imageLiteral(resourceName: "newsTabBarItem")
         
         self.tabBar.tintColor = UIColor(rgb: Color.attendanceImageColor)
         

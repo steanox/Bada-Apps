@@ -38,10 +38,10 @@ class BaseController: UIViewController {
     
     func stopActivityIndicator() {
         guard let rootTabBarController = self.tabBarController as? RootTabBarController else {
-            loadingIndicator?.startLoading()
+            loadingIndicator?.stopLoading()
             return
         }
-        rootTabBarController.startLoading()
+        rootTabBarController.stopLoading()
     }
     
 }
