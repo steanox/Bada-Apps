@@ -10,6 +10,12 @@ import Foundation
 import FirebaseAuth
 import FirebaseDatabase
 
+enum UserCheck:Error{
+    case userNotExists
+    case wrongDateOfBirth
+    case somethingWentWrong
+}
+
 class User{
     
     typealias errorHandler = (_ error: Error) -> Void
@@ -17,34 +23,80 @@ class User{
     typealias loginSuccessHandler = (_ user: Any)->Void
     
     
-    static func register(email: String, password: String, userData:[String:Any],onSuccess: @escaping registerSuccessHandler ,onError:@escaping errorHandler){
-
-        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
-            if error != nil{
-                onError(error!)
-                return
-            }
+    static func register(appleID: String,fullName: String, dateOfBirth: String, userData:[String:Any] = [:],onSuccess: @escaping registerSuccessHandler ,onError:@escaping errorHandler)  {
+        
+        do{
+            let tripleDesEnc = TripleDesEncryptor()
+            let mailData = try tripleDesEnc.encrypt(data: appleID.toData()!) as! NSData
             
-            guard let uid = user?.uid else{
-                onError(error!)
-                return
-            }
-            
-            var values = userData
-            values["email"] = email
-            
-            Database.database().reference(withPath: "users").child(uid).updateChildValues(values, withCompletionBlock: { (error, currentRef) in
+            Database.database().reference().child("checkUser").observeSingleEvent(of: .value) { (snapshot) in
                 
-                if error != nil{
-                    onError(error!)
+                //check if the inputted appleID is exists on the checkUser node
+                if snapshot.hasChild(mailData.toHexString!){
+                    snapshot.ref.child(mailData.toHexString!).observeSingleEvent(of: .value, with: { (userSnapshot) in
+                        
+                        let data = userSnapshot.value as! [String:String]
+                        let dateData = data["dateOfBirth"]
+                        
+                        if dateOfBirth == dateData{
+                            
+                            let generatedPassword = "asdasd"
+                            
+                            Auth.auth().createUser(withEmail: appleID, password: generatedPassword) { (user, error) in
+                                if error != nil{
+                                    onError(error!)
+                                    return
+                                }
+                                
+                                guard let uid = user?.uid else{
+                                    
+                                    onError(UserCheck.somethingWentWrong)
+                                    return
+                                }
+                                
+                                user?.sendEmailVerification(completion: { (error) in
+                                    if error != nil{
+                                        onError(error!)
+                                        return
+                                    }
+                                    var values = userData
+                                    values["email"] = appleID
+                                    
+                                    Database.database().reference(withPath: "users").child(uid).updateChildValues(values, withCompletionBlock: { (error, currentRef) in
+                                        if error != nil{
+                                            onError(error!)
+                                            return
+                                        }
+                                        onSuccess()
+                                    })
+                                })
+                                
+                                
+                            }
+                            
+                        }else{
+                            
+                            onError(UserCheck.wrongDateOfBirth)
+                            return
+                        }
+                    })
+                }else{
+                    onError(UserCheck.userNotExists)
                     return
                 }
-                
-                onSuccess()
-                
-            })
+            }
+            
+        }catch{
+            onError(UserCheck.somethingWentWrong)
+            return
         }
     }
+    
+    private func sendVerificationEmail(){
+        
+    }
+    
+    
     
     static func login(email: String, password: String, onSuccess: @escaping loginSuccessHandler,onError: @escaping errorHandler){
         
@@ -59,4 +111,7 @@ class User{
         
     }
     
+    
+    
 }
+

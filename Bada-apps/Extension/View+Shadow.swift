@@ -40,11 +40,10 @@ extension UIView {
         self.layer.shadowPath = path.cgPath
     }
     
-    func showNotification(title: String, description: String, buttonText: String){
-        let notif = NotificationView(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height), title: title, description: description, buttonText: buttonText)
+    func showNotification(title: String, description: String, buttonText: String,onSuccess: @escaping ()->Void ){
+        let notif = NotificationView(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height), title: title, description: description, buttonText: buttonText,onSuccess: onSuccess)
         
         UIView.transition(with: self, duration: 0.2, options: [.curveEaseInOut,.transitionCrossDissolve], animations: {
-            
             self.addSubview(notif)
         }, completion: nil)
     }
