@@ -14,19 +14,23 @@ class CustomUITextField: UITextField {
         
         self.layer.borderColor = UIColor(rgb: Color.formColor).cgColor
         self.layer.borderWidth = 1
-        self.leftViewMode = .always
+        
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: frame.height))
+        leftView = paddingView
+        leftViewMode = UITextFieldViewMode.always
+        leftViewMode = .always
     }
     
-    override func textRect(forBounds bounds: CGRect) -> CGRect {
-        return UIEdgeInsetsInsetRect(bounds,
-                                     UIEdgeInsetsMake(0, 10, 0, 15))
-    }
-    override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
-        
-        
-        return UIEdgeInsetsInsetRect(bounds,
-                                     UIEdgeInsetsMake(0, 10, 0, 10))
-    }
+//    override func textRect(forBounds bounds: CGRect) -> CGRect {
+//        return UIEdgeInsetsInsetRect(bounds,
+//                                     UIEdgeInsetsMake(0, 10, 0, 15))
+//    }
+//    override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+//
+//
+//        return UIEdgeInsetsInsetRect(bounds,
+//                                     UIEdgeInsetsMake(0, 10, 0, 10))
+//    }
     
 
     

@@ -89,6 +89,10 @@ class Attendance{
         
     }
     
+    static func getAllAttendances(uid: String,offset: Int){
+        
+    }
+    
     private func performCheckOut(){
         if let _ = dateID,let _ = time{
             var data: [String:Any] = ["status":"2","checkInTime":self.time as Any]
@@ -116,6 +120,9 @@ class Attendance{
         }
         
     }
+    
+    
+    
     
     
     

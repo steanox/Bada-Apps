@@ -64,6 +64,7 @@ class User{
                                 }
                                 var values = userData
                                 values["email"] = appleID
+                                values["status"] = 0
                                 
                                 
                                 
@@ -72,6 +73,8 @@ class User{
                                         onError(error!)
                                         return
                                     }
+                                    
+                                    
                                     onSuccess()
                                 })
                             }
@@ -102,12 +105,19 @@ class User{
     
     static func login(email: String, password: String, onSuccess: @escaping loginSuccessHandler,onError: @escaping errorHandler){
         
+        
+        
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-            
             if error != nil{
                 onError(error!)
                 return
             }
+            //TODO:- Make sure how the user for login
+//            Database.database().reference(withPath: "users").child((user?.uid)!).observeSingleEvent(of: .value, with: { (snapshot) in
+//
+//            })
+            
+            
             onSuccess(user as Any)
         }
         
