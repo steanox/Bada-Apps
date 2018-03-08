@@ -12,7 +12,7 @@ class NotesView: UIView {
     
     @IBOutlet weak var container: UIView!
     @IBOutlet weak var noteLabel: UILabel!
-    @IBOutlet weak var notesTextView: CustomTextView!
+    @IBOutlet weak var notesTextView: NoteTextView!
     
     fileprivate weak var notesNibView: UIView!
 
@@ -33,6 +33,9 @@ class NotesView: UIView {
         let notesView = UINib.loadView(with: Identifier.notes, self)
         addSubview(notesView)
         self.notesNibView = notesView
+        
+        notesTextView.layer.borderColor = UIColor(rgb: Color.formColor).cgColor
+        notesTextView.layer.borderWidth = 1.0
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardNotification(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
         
@@ -68,7 +71,7 @@ class NotesView: UIView {
     }
     
     @IBAction func tapToBlockDismiss() {
-        notesTextView.resignFirstResponder()
+        notesTextView.noteTextField.resignFirstResponder()
     }
     
     @objc func dismiss() {
