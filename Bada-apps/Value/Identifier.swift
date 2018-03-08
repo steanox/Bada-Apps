@@ -17,6 +17,8 @@ struct Identifier {
     public static let clockInOut = "ClockInOutView"
     
     public static let notification = "Notification"
+    public static let notes = "NotesView"
+    public static let noteTextView = "NoteTextView"
     
     public static let formatDay = "EEEE,"
     public static let formatMonthYear = "MMMM yyyy"

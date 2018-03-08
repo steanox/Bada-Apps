@@ -48,6 +48,23 @@ extension UIView {
         }, completion: nil)
     }
     
+    func showNote(title: String) {
+        let rect = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
+        let notes = NotesView(frame: rect, title: title)
+        self.addSubview(notes)
+        
+        notes.alpha = 0.0
+        
+        UIView.animate(withDuration: 0.2) {
+            notes.alpha = 1.0
+        }
+    
+    }
+    
+    var parentViewController: UIViewController? {
+        let parentResponder: UIResponder? = self
+        return parentResponder?.viewController
+    }
     
 }
 

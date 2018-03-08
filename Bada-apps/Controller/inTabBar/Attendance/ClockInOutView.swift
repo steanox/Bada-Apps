@@ -38,7 +38,11 @@ class ClockInOutView: UIView {
     }
     
     @IBAction func clockInOutDidTap(_ sender: UIButton) {
-        tryingIdentifying()
+        
+        let grandViewController = self.parentViewController?.tabBarController as? RootTabBarController
+        grandViewController?.view.showNote(title: "test")
+
+//        tryingIdentifying()
     }
     
     func updateUI (clock: Clock) {
@@ -57,7 +61,9 @@ class ClockInOutView: UIView {
         faceId.identifiyingFaceID { (response) in
             switch response {
             case .isSuccess:
-                self.updateUI(clock: self.clock)
+                DispatchQueue.main.async {
+                    self.updateUI(clock: self.clock)
+                }
                 break
             case .notSupported:
                 break
