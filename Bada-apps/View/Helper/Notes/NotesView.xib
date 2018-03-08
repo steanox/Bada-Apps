@@ -35,12 +35,27 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fp-wL-VlA">
+                    <rect key="frame" x="20" y="166" width="335" height="40"/>
+                    <color key="backgroundColor" red="0.14901960784313725" green="0.48627450980392156" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="2Iv-ce-0Zs"/>
+                        <constraint firstAttribute="width" constant="335" id="P6q-ev-uKX"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="SUBMIT">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="8h9-mh-hkq" firstAttribute="top" secondItem="ujV-Wj-ocy" secondAttribute="bottom" constant="32" id="9w9-wq-hNC"/>
                 <constraint firstItem="ujV-Wj-ocy" firstAttribute="top" secondItem="CYO-08-Aan" secondAttribute="top" constant="28" id="Pr8-O5-0AP"/>
+                <constraint firstItem="CYO-08-Aan" firstAttribute="trailing" secondItem="5fp-wL-VlA" secondAttribute="trailing" constant="20" id="Qb8-HI-33V"/>
                 <constraint firstItem="8h9-mh-hkq" firstAttribute="leading" secondItem="CYO-08-Aan" secondAttribute="leading" constant="20" id="TrR-zB-P0S"/>
+                <constraint firstItem="5fp-wL-VlA" firstAttribute="leading" secondItem="CYO-08-Aan" secondAttribute="leading" constant="20" id="Ynh-VZ-946"/>
+                <constraint firstItem="CYO-08-Aan" firstAttribute="bottom" secondItem="5fp-wL-VlA" secondAttribute="bottom" constant="30" id="fM9-5l-Oik"/>
                 <constraint firstItem="ujV-Wj-ocy" firstAttribute="leading" secondItem="CYO-08-Aan" secondAttribute="leading" constant="20" id="fk0-dU-MVE"/>
                 <constraint firstItem="CYO-08-Aan" firstAttribute="trailing" secondItem="8h9-mh-hkq" secondAttribute="trailing" constant="20" id="l4A-Km-lB0"/>
             </constraints>

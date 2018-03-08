@@ -49,6 +49,7 @@
 		55A5899620510B2700266380 /* FaceID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A5899520510B2700266380 /* FaceID.swift */; };
 		55A589982051159500266380 /* Date+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A589972051159500266380 /* Date+Format.swift */; };
 		55A5899B20511EE500266380 /* NotesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55A5899A20511EE500266380 /* NotesView.xib */; };
+		55A5899D2051240300266380 /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A5899C2051240300266380 /* NotesView.swift */; };
 		CB425E7B4D3ED9A3D74BB1B4 /* Pods_Bada_apps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB4F00DB43031080465883FF /* Pods_Bada_apps.framework */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +98,7 @@
 		55A5899520510B2700266380 /* FaceID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceID.swift; sourceTree = "<group>"; };
 		55A589972051159500266380 /* Date+Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Format.swift"; sourceTree = "<group>"; };
 		55A5899A20511EE500266380 /* NotesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotesView.xib; sourceTree = "<group>"; };
+		55A5899C2051240300266380 /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
 		6A9B1A48B702F6F6A79A6D61 /* Pods-Bada-apps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bada-apps.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bada-apps/Pods-Bada-apps.debug.xcconfig"; sourceTree = "<group>"; };
 		BB4F00DB43031080465883FF /* Pods_Bada_apps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bada_apps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F90989D1879C53958F9B2920 /* Pods-Bada-apps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bada-apps.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bada-apps/Pods-Bada-apps.release.xcconfig"; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 			isa = PBXGroup;
 			children = (
 				55A5899A20511EE500266380 /* NotesView.xib */,
+				55A5899C2051240300266380 /* NotesView.swift */,
 			);
 			path = Notes;
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 				5509CB3B20500E2800A87E88 /* LoadingIndicator.swift in Sources */,
 				014350D820503DD600512602 /* User.swift in Sources */,
 				5509CB2C204FCE5E00A87E88 /* Color.swift in Sources */,
+				55A5899D2051240300266380 /* NotesView.swift in Sources */,
 				5509CB2D204FCE5E00A87E88 /* Identifier.swift in Sources */,
 				5509CB32204FCE6600A87E88 /* Color+Hex.swift in Sources */,
 				5509CB24204FCE4F00A87E88 /* AttendanceViewController.swift in Sources */,

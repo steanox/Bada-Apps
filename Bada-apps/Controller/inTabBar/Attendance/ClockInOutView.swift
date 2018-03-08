@@ -60,6 +60,7 @@ class ClockInOutView: UIView {
                 self.updateUI(clock: self.clock)
                 break
             case .notSupported:
+                
                 break
             case .unknownError:
                 break
