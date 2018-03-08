@@ -20,6 +20,8 @@ struct Identifier {
     
     public static let formatDay = "EEEE,"
     public static let formatMonthYear = "MMMM yyyy"
+    
+    public static let firebaseURL = "https://us-central1-bada-51073.cloudfunctions.net/helper/"
 }
 
 

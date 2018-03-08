@@ -61,14 +61,14 @@ class LoginViewController: BaseController {
             let sb = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! RootTabBarController
             self?.stopActivityIndicator()
             self?.present(sb, animated: true) {
-                
+
             }
         }) { [weak self] (error) in
             self?.stopActivityIndicator()
             self?.errorText.text = "Invalid apple ID or password"
         }
-        
-    }
+
+   }
     
 }
 

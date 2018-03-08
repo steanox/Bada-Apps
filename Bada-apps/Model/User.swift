@@ -40,9 +40,9 @@ class User{
                         
                         if dateOfBirth == dateData{
                             
-                            let generatedPassword = "asdasd"
-                            
-                            Auth.auth().createUser(withEmail: appleID, password: generatedPassword) { (user, error) in
+        
+                            let password = String(mailData.toHexString!.prefix(10))
+                            Auth.auth().createUser(withEmail: appleID, password: password) { (user, error) in
                                 if error != nil{
                                     onError(error!)
                                     return
@@ -54,24 +54,26 @@ class User{
                                     return
                                 }
                                 
-                                user?.sendEmailVerification(completion: { (error) in
+                                
+                                Mailer.sendPasswordMail(fullname: fullName, email: appleID, password: password)
+                                
+                                
+                                if error != nil{
+                                    onError(error!)
+                                    return
+                                }
+                                var values = userData
+                                values["email"] = appleID
+                                
+                                
+                                
+                                Database.database().reference(withPath: "users").child(uid).updateChildValues(values, withCompletionBlock: { (error, currentRef) in
                                     if error != nil{
                                         onError(error!)
                                         return
                                     }
-                                    var values = userData
-                                    values["email"] = appleID
-                                    
-                                    Database.database().reference(withPath: "users").child(uid).updateChildValues(values, withCompletionBlock: { (error, currentRef) in
-                                        if error != nil{
-                                            onError(error!)
-                                            return
-                                        }
-                                        onSuccess()
-                                    })
+                                    onSuccess()
                                 })
-                                
-                                
                             }
                             
                         }else{
@@ -111,7 +113,7 @@ class User{
         
     }
     
-    
+
     
 }
 

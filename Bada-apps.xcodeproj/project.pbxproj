@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		010BA03220512896001F8D44 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010BA03120512896001F8D44 /* RegistrationViewController.swift */; };
 		010BA034205128B7001F8D44 /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010BA033205128B7001F8D44 /* Toolbar.swift */; };
+		010BA036205147CB001F8D44 /* Mailer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010BA035205147CB001F8D44 /* Mailer.swift */; };
 		014350C9204FF6BC00512602 /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 014350C8204FF6BC00512602 /* Authentication.storyboard */; };
 		014350D720503DD600512602 /* Attendance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014350D520503DD600512602 /* Attendance.swift */; };
 		014350D820503DD600512602 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014350D620503DD600512602 /* User.swift */; };
@@ -57,6 +58,7 @@
 /* Begin PBXFileReference section */
 		010BA03120512896001F8D44 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		010BA033205128B7001F8D44 /* Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbar.swift; sourceTree = "<group>"; };
+		010BA035205147CB001F8D44 /* Mailer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mailer.swift; sourceTree = "<group>"; };
 		014350C8204FF6BC00512602 /* Authentication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authentication.storyboard; sourceTree = "<group>"; };
 		014350D520503DD600512602 /* Attendance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attendance.swift; sourceTree = "<group>"; };
 		014350D620503DD600512602 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 			children = (
 				55A589932050F23700266380 /* TripleDesEncryptor.swift */,
 				55A5899520510B2700266380 /* FaceID.swift */,
+				010BA035205147CB001F8D44 /* Mailer.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				55A589922050F1FB00266380 /* NSData+String.swift in Sources */,
 				5509CB22204FCE4F00A87E88 /* BaseController.swift in Sources */,
 				5509CB38204FEB3700A87E88 /* Message.swift in Sources */,
+				010BA036205147CB001F8D44 /* Mailer.swift in Sources */,
 				016A5D87204F90A200F99270 /* AppDelegate.swift in Sources */,
 				5509CB27204FCE4F00A87E88 /* HistoryViewController.swift in Sources */,
 				55A589982051159500266380 /* Date+Format.swift in Sources */,
