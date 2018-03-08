@@ -42,6 +42,10 @@
 		5509CB3B20500E2800A87E88 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5509CB3A20500E2800A87E88 /* LoadingIndicator.swift */; };
 		5509CB3D20500ECE00A87E88 /* ClockInOutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5509CB3C20500ECE00A87E88 /* ClockInOutView.xib */; };
 		5509CB3F2050158300A87E88 /* ClockInOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5509CB3E2050158300A87E88 /* ClockInOutView.swift */; };
+		55A5898C2050EE2100266380 /* CommonCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55A5898B2050EE2100266380 /* CommonCrypto.framework */; };
+		55A589902050F1D600266380 /* Encryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A5898F2050F1D600266380 /* Encryption.swift */; };
+		55A589922050F1FB00266380 /* NSData+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A589912050F1FB00266380 /* NSData+String.swift */; };
+		55A589942050F23700266380 /* TripleDesEncryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A589932050F23700266380 /* TripleDesEncryptor.swift */; };
 		CB425E7B4D3ED9A3D74BB1B4 /* Pods_Bada_apps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB4F00DB43031080465883FF /* Pods_Bada_apps.framework */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +87,10 @@
 		5509CB3A20500E2800A87E88 /* LoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 		5509CB3C20500ECE00A87E88 /* ClockInOutView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClockInOutView.xib; sourceTree = "<group>"; };
 		5509CB3E2050158300A87E88 /* ClockInOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockInOutView.swift; sourceTree = "<group>"; };
+		55A5898B2050EE2100266380 /* CommonCrypto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CommonCrypto.framework; path = Carthage/Build/iOS/CommonCrypto.framework; sourceTree = "<group>"; };
+		55A5898F2050F1D600266380 /* Encryption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encryption.swift; sourceTree = "<group>"; };
+		55A589912050F1FB00266380 /* NSData+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSData+String.swift"; sourceTree = "<group>"; };
+		55A589932050F23700266380 /* TripleDesEncryptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripleDesEncryptor.swift; sourceTree = "<group>"; };
 		6A9B1A48B702F6F6A79A6D61 /* Pods-Bada-apps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bada-apps.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bada-apps/Pods-Bada-apps.debug.xcconfig"; sourceTree = "<group>"; };
 		BB4F00DB43031080465883FF /* Pods_Bada_apps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bada_apps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F90989D1879C53958F9B2920 /* Pods-Bada-apps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bada-apps.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bada-apps/Pods-Bada-apps.release.xcconfig"; sourceTree = "<group>"; };
@@ -94,6 +102,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB425E7B4D3ED9A3D74BB1B4 /* Pods_Bada_apps.framework in Frameworks */,
+				55A5898C2050EE2100266380 /* CommonCrypto.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +147,7 @@
 				014350D920503DDC00512602 /* Model */,
 				5509CB03204FCE0A00A87E88 /* View */,
 				5509CB15204FCE4F00A87E88 /* Controller */,
+				55A5898E2050F18E00266380 /* Utils */,
 				5509CB29204FCE5E00A87E88 /* Value */,
 				5509CB2E204FCE6600A87E88 /* Extension */,
 				016A5D8D204F90A200F99270 /* Assets.xcassets */,
@@ -257,6 +267,7 @@
 				5509CB2A204FCE5E00A87E88 /* Color.swift */,
 				5509CB2B204FCE5E00A87E88 /* Identifier.swift */,
 				5509CB37204FEB3700A87E88 /* Message.swift */,
+				55A5898F2050F1D600266380 /* Encryption.swift */,
 			);
 			path = Value;
 			sourceTree = "<group>";
@@ -264,6 +275,7 @@
 		5509CB2E204FCE6600A87E88 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				55A589912050F1FB00266380 /* NSData+String.swift */,
 				5509CB2F204FCE6600A87E88 /* Color+Hex.swift */,
 				5509CB30204FCE6600A87E88 /* UINib+Loader.swift */,
 				5509CB31204FCE6600A87E88 /* View+Shadow.swift */,
@@ -282,9 +294,18 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		55A5898E2050F18E00266380 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				55A589932050F23700266380 /* TripleDesEncryptor.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		FAECD7D7CFBA22B8D7A3AE0E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				55A5898B2050EE2100266380 /* CommonCrypto.framework */,
 				BB4F00DB43031080465883FF /* Pods_Bada_apps.framework */,
 			);
 			name = Frameworks;
@@ -303,6 +324,7 @@
 				016A5D81204F90A200F99270 /* Resources */,
 				6625BC4A1C62453F3DDBBA69 /* [CP] Embed Pods Frameworks */,
 				C07868E8DC51C7C76E3611DC /* [CP] Copy Pods Resources */,
+				55A5898D2050EE4900266380 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -389,6 +411,20 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		55A5898D2050EE4900266380 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/CommonCrypto.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
 		6625BC4A1C62453F3DDBBA69 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -435,6 +471,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55A589942050F23700266380 /* TripleDesEncryptor.swift in Sources */,
+				55A589902050F1D600266380 /* Encryption.swift in Sources */,
 				014350D720503DD600512602 /* Attendance.swift in Sources */,
 				5509CB28204FCE4F00A87E88 /* LoginViewController.swift in Sources */,
 				014350DD2050420300512602 /* NotificationView.swift in Sources */,
@@ -453,6 +491,7 @@
 				5509CB34204FCE6600A87E88 /* View+Shadow.swift in Sources */,
 				5509CB23204FCE4F00A87E88 /* CoverageAreaView.swift in Sources */,
 				5509CB26204FCE4F00A87E88 /* NewsViewController.swift in Sources */,
+				55A589922050F1FB00266380 /* NSData+String.swift in Sources */,
 				5509CB22204FCE4F00A87E88 /* BaseController.swift in Sources */,
 				5509CB38204FEB3700A87E88 /* Message.swift in Sources */,
 				016A5D87204F90A200F99270 /* AppDelegate.swift in Sources */,
@@ -595,7 +634,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZK45DE64XX;
+				DEVELOPMENT_TEAM = C89FEC543S;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Bada-apps/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Bada.Bada-apps";
@@ -611,7 +654,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZK45DE64XX;
+				DEVELOPMENT_TEAM = C89FEC543S;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Bada-apps/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Bada.Bada-apps";
