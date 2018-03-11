@@ -8,15 +8,23 @@
 
 import UIKit
 
-class NotesView: UIView {
+class NotesView: UIView, UITextViewDelegate {
     
     @IBOutlet weak var container: UIView!
     @IBOutlet weak var noteLabel: UILabel!
-    @IBOutlet weak var notesTextView: NoteTextView!
+    @IBOutlet weak var notesTextContainer: UIView!
+    @IBOutlet weak var notesTextView: UITextView!
     
     fileprivate weak var notesNibView: UIView!
-
+    
     @IBOutlet var keyboardHeightLayoutConstraint: NSLayoutConstraint?
+    
+    
+    @IBOutlet var containerHeightConstraint: NSLayoutConstraint?
+    @IBOutlet var notesTextContainerHeightConstraint: NSLayoutConstraint?
+    @IBOutlet var notesTextViewHeightConstraint: NSLayoutConstraint?
+    
+    var previousRect = CGRect.zero
     
     init(frame: CGRect, title: String) {
         super.init(frame: frame)
@@ -34,14 +42,14 @@ class NotesView: UIView {
         addSubview(notesView)
         self.notesNibView = notesView
         
-        notesTextView.layer.borderColor = UIColor(rgb: Color.formColor).cgColor
-        notesTextView.layer.borderWidth = 1.0
+        notesTextContainer.layer.borderColor = UIColor(rgb: Color.formColor).cgColor
+        notesTextContainer.layer.borderWidth = 1.0
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardNotification(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
         
         let blurEffect = UIBlurEffect(style: .light)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
-
+        
         blurEffectView.frame =  self.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         insertSubview(blurEffectView, at: 0)
@@ -54,8 +62,50 @@ class NotesView: UIView {
             self.layoutIfNeeded()
         }
         
+        notesTextView.delegate = self
+        
         self.noteLabel.text = title
         self.applyShadow(0)
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        let pos = textView.endOfDocument
+        let currentRect = textView.caretRect(for: pos)
+        if previousRect != CGRect.zero {
+            if currentRect.origin.y > previousRect.origin.y {
+                animateHeight(become: .bigger)
+            }else if currentRect.origin.y < previousRect.origin.y {
+                animateHeight(become: .smaller)
+            }
+        }
+        previousRect = currentRect
+    }
+    
+    func animateHeight(become: Become) {
+        guard
+            let currentContainerHeightConstraint = self.containerHeightConstraint?.constant,
+            let currentNotesTextContainerHeightConstraint = self.notesTextContainerHeightConstraint?.constant else {return}
+        
+        switch become {
+        case .bigger:
+            if currentContainerHeightConstraint < 370 {
+                self.containerHeightConstraint?.constant = currentContainerHeightConstraint + 14
+                self.notesTextContainerHeightConstraint?.constant = currentNotesTextContainerHeightConstraint + 14
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.layoutIfNeeded()
+                })
+            }
+        case .smaller:
+            if currentContainerHeightConstraint > 315 {
+                self.containerHeightConstraint?.constant = currentContainerHeightConstraint - 14
+                self.notesTextContainerHeightConstraint?.constant = currentNotesTextContainerHeightConstraint - 14
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.layoutIfNeeded()
+                })
+            }
+            
+        }
+        
     }
     
     deinit {
@@ -71,7 +121,7 @@ class NotesView: UIView {
     }
     
     @IBAction func tapToBlockDismiss() {
-        notesTextView.noteTextField.resignFirstResponder()
+        notesTextView.resignFirstResponder()
     }
     
     @objc func dismiss() {
@@ -108,4 +158,9 @@ class NotesView: UIView {
     }
     
     
+}
+
+enum Become {
+    case smaller
+    case bigger
 }
