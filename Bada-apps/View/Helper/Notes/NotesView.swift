@@ -19,12 +19,15 @@ class NotesView: UIView, UITextViewDelegate {
     
     @IBOutlet var keyboardHeightLayoutConstraint: NSLayoutConstraint?
     
-    
     @IBOutlet var containerHeightConstraint: NSLayoutConstraint?
     @IBOutlet var notesTextContainerHeightConstraint: NSLayoutConstraint?
     @IBOutlet var notesTextViewHeightConstraint: NSLayoutConstraint?
     
+    
     var previousRect = CGRect.zero
+    
+    var differenceTextFieldToCaretHeight: CGFloat?
+    var diffecenceViewToTextFieldHeight: CGFloat?
     
     init(frame: CGRect, title: String) {
         super.init(frame: frame)
@@ -44,6 +47,9 @@ class NotesView: UIView, UITextViewDelegate {
         
         notesTextContainer.layer.borderColor = UIColor(rgb: Color.formColor).cgColor
         notesTextContainer.layer.borderWidth = 1.0
+        
+//        notesTextView.layer.borderColor = UIColor(rgb: Color.formColor).cgColor
+//        notesTextView.layer.borderWidth = 1.0
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardNotification(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
         
@@ -71,40 +77,34 @@ class NotesView: UIView, UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         let pos = textView.endOfDocument
         let currentRect = textView.caretRect(for: pos)
+        let numLines = Int(textView.contentSize.height / (textView.font?.lineHeight)!)
+        
         if previousRect != CGRect.zero {
-            if currentRect.origin.y > previousRect.origin.y {
-                animateHeight(become: .bigger)
-            }else if currentRect.origin.y < previousRect.origin.y {
-                animateHeight(become: .smaller)
+            if currentRect.origin.y != previousRect.origin.y {
+                if numLines <= 4 {
+                    let height = notesTextContainer.frame.height - textView.frame.height
+                    let textViewHeight = textView.contentSize.height + height
+                    animateHeight(new: textViewHeight)
+                }
             }
         }
         previousRect = currentRect
+    
     }
     
-    func animateHeight(become: Become) {
+    func animateHeight(new height: CGFloat) {
         guard
             let currentContainerHeightConstraint = self.containerHeightConstraint?.constant,
             let currentNotesTextContainerHeightConstraint = self.notesTextContainerHeightConstraint?.constant else {return}
         
-        switch become {
-        case .bigger:
-            if currentContainerHeightConstraint < 370 {
-                self.containerHeightConstraint?.constant = currentContainerHeightConstraint + 14
-                self.notesTextContainerHeightConstraint?.constant = currentNotesTextContainerHeightConstraint + 14
-                UIView.animate(withDuration: 0.2, animations: {
-                    self.layoutIfNeeded()
-                })
-            }
-        case .smaller:
-            if currentContainerHeightConstraint > 315 {
-                self.containerHeightConstraint?.constant = currentContainerHeightConstraint - 14
-                self.notesTextContainerHeightConstraint?.constant = currentNotesTextContainerHeightConstraint - 14
-                UIView.animate(withDuration: 0.2, animations: {
-                    self.layoutIfNeeded()
-                })
-            }
-            
-        }
+        let baseContainerHeightConstraint = currentContainerHeightConstraint - currentNotesTextContainerHeightConstraint
+        
+        self.containerHeightConstraint?.constant = baseContainerHeightConstraint + height
+        self.notesTextContainerHeightConstraint?.constant = height
+        
+        UIView.animate(withDuration: 0.2, animations: {
+            self.layoutIfNeeded()
+        })
         
     }
     
@@ -160,7 +160,3 @@ class NotesView: UIView, UITextViewDelegate {
     
 }
 
-enum Become {
-    case smaller
-    case bigger
-}
