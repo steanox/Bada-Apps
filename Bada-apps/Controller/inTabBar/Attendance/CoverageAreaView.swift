@@ -68,10 +68,6 @@ class CoverageAreaView: UIView, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
         
-//        let accuracyNow = String(format: "%.2f", beacons[0].accuracy)
-        
-//        distance.text = "Approx \(accuracyNow) m "
-        
         if beacons.count > 0 {
             updateDistance(beacons[0].proximity)
         } else {
@@ -93,11 +89,11 @@ class CoverageAreaView: UIView, CLLocationManagerDelegate {
                 self.beaconImageView.image = #imageLiteral(resourceName: "Beacon-Finding")
                 self.beaconLabel.text = Message.finding
             case .immediate:
-                self.beacon.beaconNotDetected()
-                self.beaconImageView.image = #imageLiteral(resourceName: "Beacon-Finding")
-                self.beaconLabel.text = Message.finding
+                self.beacon.beaconDetected()
+                self.beaconImageView.image = #imageLiteral(resourceName: "Beacon-Detected")
+                self.beaconLabel.text = Message.inArea
             case .near:
-                self.beacon.beaconNotDetected()
+                self.beacon.beaconDetected()
                 self.beaconImageView.image = #imageLiteral(resourceName: "Beacon-Detected")
                 self.beaconLabel.text = Message.inArea
             }
