@@ -54,8 +54,6 @@
 		55A5899B20511EE500266380 /* NotesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55A5899A20511EE500266380 /* NotesView.xib */; };
 		55A5899D2051240300266380 /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A5899C2051240300266380 /* NotesView.swift */; };
 		55A589A1205135AE00266380 /* Responder+byPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A589A0205135AE00266380 /* Responder+byPass.swift */; };
-		55AA788F20516A2200FE07F0 /* NoteTextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55AA788E20516A2200FE07F0 /* NoteTextView.xib */; };
-		55AA789120516C1900FE07F0 /* NoteTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AA789020516C1900FE07F0 /* NoteTextView.swift */; };
 		CB425E7B4D3ED9A3D74BB1B4 /* Pods_Bada_apps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB4F00DB43031080465883FF /* Pods_Bada_apps.framework */; };
 /* End PBXBuildFile section */
 
@@ -109,8 +107,6 @@
 		55A5899A20511EE500266380 /* NotesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotesView.xib; sourceTree = "<group>"; };
 		55A5899C2051240300266380 /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
 		55A589A0205135AE00266380 /* Responder+byPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Responder+byPass.swift"; sourceTree = "<group>"; };
-		55AA788E20516A2200FE07F0 /* NoteTextView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteTextView.xib; sourceTree = "<group>"; };
-		55AA789020516C1900FE07F0 /* NoteTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTextView.swift; sourceTree = "<group>"; };
 		6A9B1A48B702F6F6A79A6D61 /* Pods-Bada-apps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bada-apps.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bada-apps/Pods-Bada-apps.debug.xcconfig"; sourceTree = "<group>"; };
 		BB4F00DB43031080465883FF /* Pods_Bada_apps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bada_apps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F90989D1879C53958F9B2920 /* Pods-Bada-apps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bada-apps.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bada-apps/Pods-Bada-apps.release.xcconfig"; sourceTree = "<group>"; };
@@ -332,20 +328,10 @@
 		55A5899920511E9E00266380 /* Notes */ = {
 			isa = PBXGroup;
 			children = (
-				55AA788D2051693900FE07F0 /* TextField */,
 				55A5899A20511EE500266380 /* NotesView.xib */,
 				55A5899C2051240300266380 /* NotesView.swift */,
 			);
 			path = Notes;
-			sourceTree = "<group>";
-		};
-		55AA788D2051693900FE07F0 /* TextField */ = {
-			isa = PBXGroup;
-			children = (
-				55AA788E20516A2200FE07F0 /* NoteTextView.xib */,
-				55AA789020516C1900FE07F0 /* NoteTextView.swift */,
-			);
-			path = TextField;
 			sourceTree = "<group>";
 		};
 		FAECD7D7CFBA22B8D7A3AE0E /* Frameworks */ = {
@@ -420,7 +406,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55AA788F20516A2200FE07F0 /* NoteTextView.xib in Resources */,
 				014350DB20503FA500512602 /* Notification.xib in Resources */,
 				014350C9204FF6BC00512602 /* Authentication.storyboard in Resources */,
 				5509CB11204FCE0A00A87E88 /* LaunchScreen.storyboard in Resources */,
@@ -534,7 +519,6 @@
 				01A409EB20505D0E00812123 /* CustomUITextField.swift in Sources */,
 				5509CB3B20500E2800A87E88 /* LoadingIndicator.swift in Sources */,
 				014350D820503DD600512602 /* User.swift in Sources */,
-				55AA789120516C1900FE07F0 /* NoteTextView.swift in Sources */,
 				5509CB2C204FCE5E00A87E88 /* Color.swift in Sources */,
 				55A5899D2051240300266380 /* NotesView.swift in Sources */,
 				5509CB2D204FCE5E00A87E88 /* Identifier.swift in Sources */,

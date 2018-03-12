@@ -27,7 +27,7 @@ class User{
         
         do{
             let tripleDesEnc = TripleDesEncryptor()
-            let mailData = try tripleDesEnc.encrypt(data: appleID.toData()!) as! NSData
+            let mailData = try tripleDesEnc.encrypt(data: appleID.toData()!) as NSData
             
             Database.database().reference().child("checkUser").observeSingleEvent(of: .value) { (snapshot) in
                 
