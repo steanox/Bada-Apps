@@ -22,6 +22,30 @@ class User{
     typealias registerSuccessHandler = () -> Void
     typealias loginSuccessHandler = (_ user: Any)->Void
     
+    var email: String?
+    var name: String?
+    
+    static var email: String {
+        get{
+            if let user = Auth.auth().currentUser{
+                return user.value(forKeyPath: "email") as! String
+            }
+            
+            return ""
+        }
+    }
+
+    
+    static func getUser()->User{
+        let currentUser = Auth.auth().currentUser
+        
+        let user = User()
+        user.email = currentUser?.value(forKeyPath: "email") as? String
+        user.name = currentUser?.value(forKeyPath: "name") as? String
+        
+        return user
+        
+    }
     
     static func register(appleID: String,fullName: String, dateOfBirth: String, userData:[String:Any] = [:],onSuccess: @escaping registerSuccessHandler ,onError:@escaping errorHandler)  {
         

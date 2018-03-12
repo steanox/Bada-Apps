@@ -13,17 +13,25 @@ enum Clock {
     case _out
 }
 
+
+
 class ClockInOutView: UIView {
 
     @IBOutlet weak var clockInOutButton: UIButton!
     @IBOutlet weak var clockInOutTitleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
+
+    
     fileprivate weak var clockInOutArea: UIView!
     
     var clock = Clock._out
     
     typealias onResponse = (()->())
+    
+    var onTap: onResponse?
+    
+    
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -38,11 +46,20 @@ class ClockInOutView: UIView {
     }
     
     @IBAction func clockInOutDidTap(_ sender: UIButton) {
+        let attendance = Attendance(for: User.getUser(), notes: "")
+        attendance.delegate = RootTabBarController.self as? AttendanceDelegate
+        switch Attendance.checkStatus() {
+        case .late,.earlyLeave:
+            let grandViewController = self.parentViewController?.tabBarController as? RootTabBarController
+            grandViewController?.view.showNote(title: "test")
+        case .normal:
+            
+            attendance.attend()
+        }
         
-        let grandViewController = self.parentViewController?.tabBarController as? RootTabBarController
-        grandViewController?.view.showNote(title: "test")
+        
 
-//        tryingIdentifying()
+        tryingIdentifying()
     }
     
     func updateUI (clock: Clock) {

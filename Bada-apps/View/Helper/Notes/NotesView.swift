@@ -7,13 +7,15 @@
 //
 
 import UIKit
+import FirebaseAuth
 
-class NotesView: UIView, UITextViewDelegate {
+class NotesView: UIView, UITextViewDelegate{
     
     @IBOutlet weak var container: UIView!
     @IBOutlet weak var noteLabel: UILabel!
     @IBOutlet weak var notesTextContainer: UIView!
     @IBOutlet weak var notesTextView: UITextView!
+    
     
     fileprivate weak var notesNibView: UIView!
     
@@ -29,8 +31,10 @@ class NotesView: UIView, UITextViewDelegate {
     var differenceTextFieldToCaretHeight: CGFloat?
     var diffecenceViewToTextFieldHeight: CGFloat?
     
+       
     init(frame: CGRect, title: String) {
         super.init(frame: frame)
+        
         
         setup(title)
     }
@@ -136,6 +140,13 @@ class NotesView: UIView, UITextViewDelegate {
         
     }
     
+    @IBAction func tapSubmit(){
+        let notes = notesTextView.text
+        let attendance = Attendance(for: User.getUser(), notes: notes)
+        //attendance.delegate = self
+        attendance.attend()
+    }
+    
     @objc func keyboardNotification(notification: NSNotification) {
         if let userInfo = notification.userInfo {
             let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
@@ -156,7 +167,23 @@ class NotesView: UIView, UITextViewDelegate {
                            completion: nil)
         }
     }
-    
-    
 }
+
+
+// MARK: - Delegate For attendance
+
+//extension NotesView: AttendanceDelegate{
+//    func attendanceSuccess() {
+//        <#code#>
+//    }
+//    func attendanceFailed() {
+//        <#code#>
+//    }
+//    func attendanceOnProgress() {
+//
+//    }
+//    func attendanceRemoveProgress() {
+//        <#code#>
+//    }
+//}
 

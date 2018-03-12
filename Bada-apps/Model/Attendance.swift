@@ -15,6 +15,12 @@ enum Status{
     case checkOut
 }
 
+enum AttendanceType{
+    case late
+    case earlyLeave
+    case normal
+}
+
 protocol AttendanceDelegate {
     func attendanceSuccess()
     func attendanceOnProgress()
@@ -33,28 +39,37 @@ class Attendance{
     var ref: DatabaseReference = Database.database().reference()
     
     
-    init(_ status: Status,for user: User, notes:String?) {
+    init(for user: User, notes:String?) {
         delegate?.attendanceOnProgress()
         
         //check if user is logged in or not
-        guard (Auth.auth().currentUser?.isAnonymous) != nil else { return }
+        guard (Auth.auth().currentUser) != nil else { return }
         
         let dateComponent = Calendar.current.dateComponents(in: TimeZone.current, from: Date())
         self.dateID = "\(dateComponent.year!)-\(dateComponent.month!)-\(dateComponent.day!)"
-        self.status = status
         self.notes = notes
         self.time = "\(dateComponent.hour!):\(dateComponent.minute!):\(dateComponent.second!)"
         
-        switch self.status! {
-        case .checkIn:
-            performCheckIn()
-        case .checkOut:
-            performCheckOut()
-        }
+//        switch self.status! {
+//        case .checkIn:
+//            performCheckIn()
+//        case .checkOut:
+//            performCheckOut()
+//        }
     
     }
     
-    private func performCheckIn(){
+    func attend(){
+        ref.child("attendances/\(dateID!)/\(userID!)").observeSingleEvent(of: .value) { [weak self](snapshot) in
+            if !snapshot.hasChild("checkIn"){
+                self?.performCheckIn()
+            }else{
+                self?.performCheckOut()
+            }
+        }
+    }
+    
+    func performCheckIn(){
         
         if let _ = dateID,let _ = time{
          
@@ -87,7 +102,25 @@ class Attendance{
         
     }
     
-    private func performCheckOut(){
+    static func checkStatus()-> AttendanceType{
+        let dateComponent = Calendar.current.dateComponents(in: TimeZone.current, from: Date())
+        
+        let currentTime = (Int("\(dateComponent.hour)\(dateComponent.minute)"))!
+        
+        if currentTime > Identifier.checkInTime{
+            return .late
+        }else
+        if currentTime < Identifier.checkOutTime{
+            return .earlyLeave
+        }else{
+            return .normal
+        }
+        
+        
+        
+    }
+    
+    func performCheckOut(){
         if let _ = dateID,let _ = time{
             var data: [String:Any] = ["status":"2","checkInTime":self.time as Any]
             

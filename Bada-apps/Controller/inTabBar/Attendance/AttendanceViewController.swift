@@ -20,9 +20,6 @@ class AttendanceViewController: BaseController {
         super.viewDidLoad()
         
         print("\(coverageAreaView.beacon.inCoverageArea)")
-        
-        
-        
     }
     
     
@@ -39,7 +36,6 @@ class AttendanceViewController: BaseController {
         
     
         currentDateLabel.text = Date().current()
-        
         coverageAreaView.applyShadow(0.0)
         clockInOutView.applyShadow(15.0)
         

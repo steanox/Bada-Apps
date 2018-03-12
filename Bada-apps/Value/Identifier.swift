@@ -24,6 +24,10 @@ struct Identifier {
     public static let formatMonthYear = "MMMM yyyy"
     
     public static let firebaseURL = "https://us-central1-bada-51073.cloudfunctions.net/helper/"
+    
+    public static let checkInTime = 900
+    public static let checkOutTime = 1800
+    
 }
 
 
