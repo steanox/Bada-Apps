@@ -22,11 +22,9 @@ protocol AttendanceDelegate {
     func attendanceRemoveProgress()
 }
 
-
-
 class Attendance{
     
-    var dateID:String?
+    var dateID: String?
     var status: Status?
     var userID = Auth.auth().currentUser?.uid
     var notes: String?
