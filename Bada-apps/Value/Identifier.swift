@@ -6,7 +6,7 @@
 //  Copyright © 2018 Bada. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct Identifier {
     
@@ -24,6 +24,7 @@ struct Identifier {
     public static let formatMonthYear = "MMMM yyyy"
     
     public static let firebaseURL = "https://us-central1-bada-51073.cloudfunctions.net/helper/"
+    public static let timeUrl = "https://bada.apps.binus.ac.id/t/time"
     
     public static let checkInStartTime = 600
     public static let checkInLimitTime = 900
@@ -31,6 +32,8 @@ struct Identifier {
     public static let maximumLate = 1300
     
     public static let checkOutTime = 1800
+    
+    public static let differenceViewOfKeyboard: CGFloat = 100.0
     
 }
 

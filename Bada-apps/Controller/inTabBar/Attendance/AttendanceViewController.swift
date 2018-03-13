@@ -11,7 +11,7 @@ import CoreLocation
 
 class AttendanceViewController: BaseController {
     
-    
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var currentDateLabel: UILabel!
     @IBOutlet weak var coverageAreaView: CoverageAreaView!
     @IBOutlet weak var clockInOutView: ClockInOutView!
@@ -48,8 +48,16 @@ class AttendanceViewController: BaseController {
     override func styleUI() {
         super.styleUI()
         
-    
+        nameLabel.text = User.name
+        
         currentDateLabel.text = Date().current()
+        bdDate?.getCurrent({ (data) in
+            DispatchQueue.main.async {
+                print(data)
+                self.currentDateLabel.text = data.getDate()
+            }
+            
+        })
         coverageAreaView.applyShadow(0.0)
         clockInOutView.applyShadow(15.0)
         
@@ -70,25 +78,35 @@ class AttendanceViewController: BaseController {
                 case .checkOut:
                     attendance?.performCheckOut()
                 case .late:
-                    let grandViewController = self.tabBarController as? RootTabBarController
-                    grandViewController?.view.showNote(title: "Late Notes",source: self)
+                    getTabBarController()?.view.showNote(title: "Late Notes",source: self)
                 case .earlyLeave:
-                    let grandViewController = self.tabBarController as? RootTabBarController
-                    grandViewController?.view.showNote(title: "Early Leave Notes",source: self)
+                    getTabBarController()?.view.showNote(title: "Early Leave Notes",source: self)
                 case .notEligibleTime:
-                    view.showNotification(title: "Failed", description: "You only can attend at 6.00 AM", buttonText: "close", onSuccess: nil)
+                    view.showNotification(title: "Failed", description: "You only can attend at 6.00 AM", buttonText: "close", onSuccess: {
+                        self.tabBarController?.tabBar.isHidden = false
+                    })
                 case .error:
-                    view.showNotification(title: "Failed", description: "Something went wrong", buttonText: "close", onSuccess: nil)
+                    view.showNotification(title: "Failed", description: "Something went wrong", buttonText: "close", onSuccess: {
+                        self.tabBarController?.tabBar.isHidden = false
+                    })
                 }
 
             case .far:
-                 view.showNotification(title: "Failed", description: "Please move a little closer", buttonText: "close", onSuccess: nil)
+                view.showNotification(title: "Failed", description: "Please move a little closer", buttonText: "close", onSuccess: {
+                    self.tabBarController?.tabBar.isHidden = false
+                })
             case .unknown:
-                view.showNotification(title: "Failed", description: "You cannot attend here", buttonText: "close", onSuccess: nil)
+                view.showNotification(title: "Failed", description: "You cannot attend here", buttonText: "close", onSuccess: {
+                    self.tabBarController?.tabBar.isHidden = false
+                })
             }
         }
         
     }
+    
+    
+    
+    
     
 //    override func keyboard(will status: StatusKeyboard, with notification: NSNotification) {
 //
@@ -127,19 +145,23 @@ class AttendanceViewController: BaseController {
 
 extension AttendanceViewController: AttendanceDelegate{
     func attendanceOnProgress() {
-        loadingIndicator?.startLoading()
+        startActivityIndicator()
     }
     
     func attendanceSuccess() {
-        self.view.showNotification(title: "Success", description: "Thank you have a nice day", buttonText: "Close", onSuccess: nil)
+        view.showNotification(title: "Success", description: "Thank you have a nice day", buttonText: "Close", onSuccess: {
+            self.tabBarController?.tabBar.isHidden = false
+        })
     }
     
     func attendanceFailed(error: String) {
-        self.view.showNotification(title: "Failed", description: error, buttonText: "Close", onSuccess: nil)
+        view.showNotification(title: "Failed", description: error, buttonText: "Close", onSuccess: {
+            self.tabBarController?.tabBar.isHidden = false
+        })
     }
     
     func attendanceRemoveProgress() {
-        loadingIndicator?.stopLoading()
+        stopActivityIndicator()
     }
     
 }

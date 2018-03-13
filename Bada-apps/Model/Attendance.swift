@@ -86,6 +86,7 @@ class Attendance{
             if let notes = notes{
                 data["checkInNotes"] = notes
             }
+            
             ref.onDisconnectRemoveValue()
             self.ref.child("attendance/\(self.dateID!)/\(self.userID!)").observeSingleEvent(of: .value) { (snapshot) in
                 

@@ -25,6 +25,15 @@ class User{
     var email: String?
     var name: String?
     
+    static var name: String {
+        get{
+            if let user = Auth.auth().currentUser{
+                return user.value(forKeyPath: "email") as! String
+            }
+            return ""
+        }
+    }
+    
     static var email: String {
         get{
             if let user = Auth.auth().currentUser{
@@ -41,13 +50,13 @@ class User{
         
         let user = User()
         user.email = currentUser?.value(forKeyPath: "email") as? String
-        //user.name = currentUser?.value(forKeyPath: "name") as? String
+//        user.name = currentUser?.value(forKeyPath: "name") as? String
         
         return user
         
     }
     
-    static func register(appleID: String,fullName: String, dateOfBirth: String, userData:[String:Any] = [:],onSuccess: @escaping registerSuccessHandler ,onError:@escaping errorHandler)  {
+    static func register(appleID: String, fullName: String, dateOfBirth: String, userData:[String:Any] = [:],onSuccess: @escaping registerSuccessHandler ,onError:@escaping errorHandler)  {
         
         do{
             let tripleDesEnc = TripleDesEncryptor()
@@ -89,6 +98,7 @@ class User{
                                 var values = userData
                                 values["email"] = appleID
                                 values["status"] = 0
+                                values["name"] = fullName
                                 
                                 
                                 
