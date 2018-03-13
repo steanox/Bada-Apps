@@ -57,21 +57,4 @@ class RootTabBarController: UITabBarController, UITabBarControllerDelegate {
     
 }
 
-extension RootTabBarController: AttendanceDelegate{
-    func attendanceOnProgress() {
-        loadingIndicator?.startLoading()
-    }
-    
-    func attendanceSuccess() {
-        self.view.showNotification(title: "Success", description: "Thank you have a nice day", buttonText: "Close", onSuccess: nil)
-    }
-    
-    func attendanceFailed() {
-        self.view.showNotification(title: "Failed", description: "Something wrong happen ! Please try again later", buttonText: "Close", onSuccess: nil)
-    }
-    
-    func attendanceRemoveProgress() {
-        loadingIndicator?.stopLoading()
-    }
-    
-}
+

@@ -17,7 +17,7 @@ class CoverageAreaView: UIView, CLLocationManagerDelegate {
     fileprivate weak var coverageAreaNibView: UIView!
     
     var locationManager: CLLocationManager = CLLocationManager()
-    
+    var distanceToBeacon: CLProximity?
     var beacon: Beacon = Beacon()
     
     required init?(coder aDecoder: NSCoder) {
@@ -76,10 +76,9 @@ class CoverageAreaView: UIView, CLLocationManagerDelegate {
     }
     
     func updateDistance(_ distance: CLProximity){
+        distanceToBeacon = distance
         UIView.animate(withDuration: 0.5) {
-            
             switch distance {
-                
             case .unknown:
                 self.beacon.beaconNotDetected()
                 self.beaconImageView.image = #imageLiteral(resourceName: "Beacon-NotDetected")
@@ -88,11 +87,7 @@ class CoverageAreaView: UIView, CLLocationManagerDelegate {
                 self.beacon.beaconNotDetected()
                 self.beaconImageView.image = #imageLiteral(resourceName: "Beacon-Finding")
                 self.beaconLabel.text = Message.finding
-            case .immediate:
-                self.beacon.beaconDetected()
-                self.beaconImageView.image = #imageLiteral(resourceName: "Beacon-Detected")
-                self.beaconLabel.text = Message.inArea
-            case .near:
+            case .near , .immediate:
                 self.beacon.beaconDetected()
                 self.beaconImageView.image = #imageLiteral(resourceName: "Beacon-Detected")
                 self.beaconLabel.text = Message.inArea

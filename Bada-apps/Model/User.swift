@@ -41,7 +41,7 @@ class User{
         
         let user = User()
         user.email = currentUser?.value(forKeyPath: "email") as? String
-        user.name = currentUser?.value(forKeyPath: "name") as? String
+        //user.name = currentUser?.value(forKeyPath: "name") as? String
         
         return user
         

@@ -48,9 +48,10 @@ extension UIView {
         }, completion: nil)
     }
     
-    func showNote(title: String) {
+    func showNote(title: String, source: AttendanceViewController) {
         let rect = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
         let notes = NotesView(frame: rect, title: title)
+        notes.sources = source
         self.addSubview(notes)
         
         notes.alpha = 0.0

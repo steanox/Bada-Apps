@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class AttendanceViewController: BaseController {
     
@@ -14,12 +15,12 @@ class AttendanceViewController: BaseController {
     @IBOutlet weak var currentDateLabel: UILabel!
     @IBOutlet weak var coverageAreaView: CoverageAreaView!
     @IBOutlet weak var clockInOutView: ClockInOutView!
+    
+    var attendance: Attendance?
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("\(coverageAreaView.beacon.inCoverageArea)")
     }
     
     
@@ -38,6 +39,41 @@ class AttendanceViewController: BaseController {
         currentDateLabel.text = Date().current()
         coverageAreaView.applyShadow(0.0)
         clockInOutView.applyShadow(15.0)
+        
+    }
+    
+    func handleAttendance(with notes: String = ""){
+        attendance = Attendance(for: User.getUser(), notes: notes)
+        attendance?.delegate = self
+        
+   
+        if let distance = coverageAreaView.distanceToBeacon, let status = attendance?.status{
+            switch distance {
+            case .near , .immediate:
+                
+                switch status {
+                case .checkIn:
+                    attendance?.performCheckIn()
+                case .checkOut:
+                    attendance?.performCheckOut()
+                case .late:
+                    let grandViewController = self.tabBarController as? RootTabBarController
+                    grandViewController?.view.showNote(title: "Late Notes",source: self)
+                case .earlyLeave:
+                    let grandViewController = self.tabBarController as? RootTabBarController
+                    grandViewController?.view.showNote(title: "Early Leave Notes",source: self)
+                case .notEligibleTime:
+                    view.showNotification(title: "Failed", description: "You only can attend at 6.00 AM", buttonText: "close", onSuccess: nil)
+                case .error:
+                    view.showNotification(title: "Failed", description: "Something went wrong", buttonText: "close", onSuccess: nil)
+                }
+
+            case .far:
+                 view.showNotification(title: "Failed", description: "Please move a little closer", buttonText: "close", onSuccess: nil)
+            case .unknown:
+                view.showNotification(title: "Failed", description: "You cannot attend here", buttonText: "close", onSuccess: nil)
+            }
+        }
         
     }
     
@@ -73,6 +109,25 @@ class AttendanceViewController: BaseController {
 //    }
     
     
+    
+}
+
+extension AttendanceViewController: AttendanceDelegate{
+    func attendanceOnProgress() {
+        loadingIndicator?.startLoading()
+    }
+    
+    func attendanceSuccess() {
+        self.view.showNotification(title: "Success", description: "Thank you have a nice day", buttonText: "Close", onSuccess: nil)
+    }
+    
+    func attendanceFailed(error: String) {
+        self.view.showNotification(title: "Failed", description: error, buttonText: "Close", onSuccess: nil)
+    }
+    
+    func attendanceRemoveProgress() {
+        loadingIndicator?.stopLoading()
+    }
     
 }
 

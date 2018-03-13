@@ -173,6 +173,33 @@
 			path = "Bada-apps";
 			sourceTree = "<group>";
 		};
+		01DFF8882056E467001CB88D /* Coverage area */ = {
+			isa = PBXGroup;
+			children = (
+				5509CB19204FCE4F00A87E88 /* CoverageAreaView.swift */,
+				5509CB05204FCE0A00A87E88 /* CoverageAreaView.xib */,
+			);
+			path = "Coverage area";
+			sourceTree = "<group>";
+		};
+		01DFF8892056E470001CB88D /* Clock in & out */ = {
+			isa = PBXGroup;
+			children = (
+				5509CB3C20500ECE00A87E88 /* ClockInOutView.xib */,
+				5509CB3E2050158300A87E88 /* ClockInOutView.swift */,
+			);
+			path = "Clock in & out";
+			sourceTree = "<group>";
+		};
+		01DFF88A2056E95C001CB88D /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				014350DA20503FA500512602 /* Notification.xib */,
+				014350DC2050420300512602 /* NotificationView.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
 		30470825FED39B457A3AE20D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,8 +226,8 @@
 		5509CB04204FCE0A00A87E88 /* Attendance */ = {
 			isa = PBXGroup;
 			children = (
-				5509CB3C20500ECE00A87E88 /* ClockInOutView.xib */,
-				5509CB05204FCE0A00A87E88 /* CoverageAreaView.xib */,
+				01DFF8892056E470001CB88D /* Clock in & out */,
+				01DFF8882056E467001CB88D /* Coverage area */,
 				5509CB06204FCE0A00A87E88 /* Attendance.storyboard */,
 			);
 			path = Attendance;
@@ -246,8 +273,6 @@
 		5509CB18204FCE4F00A87E88 /* Attendance */ = {
 			isa = PBXGroup;
 			children = (
-				5509CB19204FCE4F00A87E88 /* CoverageAreaView.swift */,
-				5509CB3E2050158300A87E88 /* ClockInOutView.swift */,
 				5509CB1A204FCE4F00A87E88 /* AttendanceViewController.swift */,
 			);
 			path = Attendance;
@@ -309,8 +334,7 @@
 			children = (
 				55A5899920511E9E00266380 /* Notes */,
 				5509CB3A20500E2800A87E88 /* LoadingIndicator.swift */,
-				014350DA20503FA500512602 /* Notification.xib */,
-				014350DC2050420300512602 /* NotificationView.swift */,
+				01DFF88A2056E95C001CB88D /* Notification */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -680,6 +704,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "Bada-apps/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Bada.Bada-apps";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -700,6 +725,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "Bada-apps/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Bada.Bada-apps";
 				PRODUCT_NAME = "$(TARGET_NAME)";

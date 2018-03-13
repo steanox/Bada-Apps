@@ -19,6 +19,8 @@ class NotesView: UIView, UITextViewDelegate{
     
     fileprivate weak var notesNibView: UIView!
     
+    var sources: AttendanceViewController?
+    
     @IBOutlet var keyboardHeightLayoutConstraint: NSLayoutConstraint?
     
     @IBOutlet var containerHeightConstraint: NSLayoutConstraint?
@@ -141,10 +143,9 @@ class NotesView: UIView, UITextViewDelegate{
     }
     
     @IBAction func tapSubmit(){
-        let notes = notesTextView.text
-        let attendance = Attendance(for: User.getUser(), notes: notes)
-        //attendance.delegate = self
-        attendance.attend()
+        self.dismiss()
+        sources?.attendance?.notes = notesTextView.text
+        sources?.attendance?.performWithNotes()
     }
     
     @objc func keyboardNotification(notification: NSNotification) {
@@ -170,20 +171,4 @@ class NotesView: UIView, UITextViewDelegate{
 }
 
 
-// MARK: - Delegate For attendance
-
-//extension NotesView: AttendanceDelegate{
-//    func attendanceSuccess() {
-//        <#code#>
-//    }
-//    func attendanceFailed() {
-//        <#code#>
-//    }
-//    func attendanceOnProgress() {
-//
-//    }
-//    func attendanceRemoveProgress() {
-//        <#code#>
-//    }
-//}
 

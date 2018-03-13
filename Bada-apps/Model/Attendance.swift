@@ -16,61 +16,67 @@ enum Status{
 }
 
 enum AttendanceType{
+    case notEligibleTime
     case late
     case earlyLeave
-    case normal
+    case checkIn
+    case checkOut
+    case error
 }
 
 protocol AttendanceDelegate {
     func attendanceSuccess()
     func attendanceOnProgress()
-    func attendanceFailed()
+    func attendanceFailed(error: String)
     func attendanceRemoveProgress()
 }
 
 class Attendance{
     
     var dateID: String?
-    var status: Status?
+    var status: AttendanceType {
+        get{
+            return checkStatus()
+        }
+    }
     var userID = Auth.auth().currentUser?.uid
     var notes: String?
     var time: String?
     var delegate: AttendanceDelegate?
     var ref: DatabaseReference = Database.database().reference()
     
+    var dateComponent: DateComponents!{
+        didSet{
+            self.time = "\(dateComponent.hour!):\(dateComponent.minute!):\(dateComponent.second!)"
+            self.dateID = "\(dateComponent.year!)\(dateComponent.month!)\(dateComponent.day!)"
+        }
+    }
+    
     
     init(for user: User, notes:String?) {
-        delegate?.attendanceOnProgress()
         
         //check if user is logged in or not
         guard (Auth.auth().currentUser) != nil else { return }
         
-        let dateComponent = Calendar.current.dateComponents(in: TimeZone.current, from: Date())
-        self.dateID = "\(dateComponent.year!)-\(dateComponent.month!)-\(dateComponent.day!)"
         self.notes = notes
-        self.time = "\(dateComponent.hour!):\(dateComponent.minute!):\(dateComponent.second!)"
+        self.updateTime()
+       
         
-//        switch self.status! {
-//        case .checkIn:
-//            performCheckIn()
-//        case .checkOut:
-//            performCheckOut()
-//        }
-    
     }
     
-    func attend(){
-        ref.child("attendances/\(dateID!)/\(userID!)").observeSingleEvent(of: .value) { [weak self](snapshot) in
-            if !snapshot.hasChild("checkIn"){
-                self?.performCheckIn()
-            }else{
-                self?.performCheckOut()
-            }
+    func performWithNotes(){
+        switch status {
+        case .late:
+            performCheckIn()
+        case .earlyLeave:
+            performCheckOut()
+        default:
+            self.delegate?.attendanceFailed(error: "You cannot perform")
         }
     }
     
     func performCheckIn(){
-        
+        delegate?.attendanceOnProgress()
         if let _ = dateID,let _ = time{
          
             var data: [String:Any] = ["status":"1","checkInTime":self.time as Any]
@@ -89,12 +95,16 @@ class Attendance{
                         self?.delegate?.attendanceRemoveProgress()
                         if error != nil {
                             currentRef.cancelDisconnectOperations()
-                            self?.delegate?.attendanceFailed()
+                            guard let error = error?.localizedDescription else {return}
+                            self?.delegate?.attendanceFailed(error: error )
                             return
                         }
                         self?.delegate?.attendanceSuccess()
                         
                     })
+                }else{
+                    self.delegate?.attendanceRemoveProgress()
+                    self.delegate?.attendanceFailed(error: "You cannot attend again for today")
                 }
                 
             }
@@ -102,25 +112,32 @@ class Attendance{
         
     }
     
-    static func checkStatus()-> AttendanceType{
+     func checkStatus()-> AttendanceType{
         let dateComponent = Calendar.current.dateComponents(in: TimeZone.current, from: Date())
         
-        let currentTime = (Int("\(dateComponent.hour)\(dateComponent.minute)"))!
-        
-        if currentTime > Identifier.checkInTime{
+       guard let currentTime = Int("\(dateComponent.hour!)\(dateComponent.minute!)") else {return AttendanceType.error}
+       print(currentTime)
+       
+        if currentTime < Identifier.checkInStartTime{
+            return .notEligibleTime
+        }else
+        if currentTime > Identifier.checkInStartTime && currentTime < Identifier.checkInLimitTime{
+            return .checkIn
+        }else
+        if currentTime > Identifier.checkInLimitTime && currentTime < Identifier.maximumLate{
             return .late
         }else
-        if currentTime < Identifier.checkOutTime{
+        if currentTime > Identifier.maximumLate && currentTime < Identifier.checkOutTime{
             return .earlyLeave
         }else{
-            return .normal
+            return .checkOut
         }
-        
         
         
     }
     
     func performCheckOut(){
+        delegate?.attendanceOnProgress()
         if let _ = dateID,let _ = time{
             var data: [String:Any] = ["status":"2","checkInTime":self.time as Any]
             
@@ -136,7 +153,8 @@ class Attendance{
                         self?.delegate?.attendanceRemoveProgress()
                         if error != nil{
                             currentRef.cancelDisconnectOperations()
-                            self?.delegate?.attendanceFailed()
+                            guard let error = error?.localizedDescription else {return}
+                            self?.delegate?.attendanceFailed(error: error)
                             return
                         }
                         self?.delegate?.attendanceSuccess()
@@ -146,6 +164,28 @@ class Attendance{
             }
         }
         
+    }
+    
+    static func checkAttendanceForToday(){
+        let userID = Auth.auth().currentUser?.uid
+        let dateComponent = Calendar.current.dateComponents(in: TimeZone.current, from: Date())
+        let dateID = "\(dateComponent.year!)\(dateComponent.month!)\(dateComponent.day!)"
+        
+        Database.database().reference().child("attendances/\(dateID)/\(userID)").observe(.value) { (snapshot) in
+            
+            if snapshot.hasChild("checkInTime"){
+                
+            }else{
+                
+            }
+        }
+        
+        
+        
+    }
+    
+    private func updateTime(){
+        dateComponent = Calendar.current.dateComponents(in: TimeZone.current, from: Date())
     }
     
     

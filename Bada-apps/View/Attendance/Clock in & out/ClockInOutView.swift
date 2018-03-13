@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 enum Clock {
     case _in
     case _out
@@ -25,7 +26,12 @@ class ClockInOutView: UIView {
     
     fileprivate weak var clockInOutArea: UIView!
     
-    var clock = Clock._out
+    var clock:Clock! {
+        didSet{
+            self.updateUI(clock: clock)
+        }
+        
+    }
     
     typealias onResponse = (()->())
     
@@ -37,29 +43,19 @@ class ClockInOutView: UIView {
         super.init(coder: aDecoder)
         
         let clockInOut: UIView = UINib.loadView(with: Identifier.clockInOut, self)
+        
         self.addSubview(clockInOut)
         self.clockInOutArea = clockInOut
         
         dateLabel.textColor = UIColor(rgb: Color.dateClockInOut)
+        clock = Clock._out
         
 //        updateUI(clock: ._in)
     }
     
     @IBAction func clockInOutDidTap(_ sender: UIButton) {
-        let attendance = Attendance(for: User.getUser(), notes: "")
-        attendance.delegate = RootTabBarController.self as? AttendanceDelegate
-        switch Attendance.checkStatus() {
-        case .late,.earlyLeave:
-            let grandViewController = self.parentViewController?.tabBarController as? RootTabBarController
-            grandViewController?.view.showNote(title: "test")
-        case .normal:
-            
-            attendance.attend()
-        }
-        
-        
-
-        tryingIdentifying()
+        let vc = parentViewController as! AttendanceViewController
+        vc.handleAttendance()
     }
     
     func updateUI (clock: Clock) {
