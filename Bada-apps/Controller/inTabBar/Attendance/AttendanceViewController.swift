@@ -21,6 +21,19 @@ class AttendanceViewController: BaseController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Attendance.observeForStatus { (status) in
+            switch status {
+            case ._in:
+                 self.clockInOutView.clockStatus = status
+                self.clockInOutView.clockInOutButton.setImage(#imageLiteral(resourceName: "clockOutButton"), for: UIControlState.normal)
+            case ._out:
+                self.clockInOutView.clockStatus = status
+                self.clockInOutView.clockInOutButton.setImage(#imageLiteral(resourceName: "clockInButton"), for: UIControlState.normal)
+            case ._done:
+                print("done")
+            }
+        }
     }
     
     

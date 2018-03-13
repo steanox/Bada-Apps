@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import FirebaseAuth
 
 
-enum Clock {
+enum ClockStatus {
     case _in
     case _out
+    case _done
 }
 
 
@@ -26,13 +29,7 @@ class ClockInOutView: UIView {
     
     fileprivate weak var clockInOutArea: UIView!
     
-    var clock:Clock! {
-        didSet{
-            self.updateUI(clock: clock)
-        }
-        
-    }
-    
+    var clockStatus: ClockStatus?
     typealias onResponse = (()->())
     
     var onTap: onResponse?
@@ -48,9 +45,9 @@ class ClockInOutView: UIView {
         self.clockInOutArea = clockInOut
         
         dateLabel.textColor = UIColor(rgb: Color.dateClockInOut)
-        clock = Clock._out
+
         
-//        updateUI(clock: ._in)
+        
     }
     
     @IBAction func clockInOutDidTap(_ sender: UIButton) {
@@ -58,16 +55,7 @@ class ClockInOutView: UIView {
         vc.handleAttendance()
     }
     
-    func updateUI (clock: Clock) {
-        switch clock {
-        case ._in:
-            clockInOutButton.setImage(#imageLiteral(resourceName: "clockOutButton"), for: UIControlState.normal)
-            self.clock = ._out
-        case ._out:
-            clockInOutButton.setImage(#imageLiteral(resourceName: "clockInButton"), for: UIControlState.normal)
-            self.clock = ._in
-        }
-    }
+
     
     func tryingIdentifying() {
         let faceId = FaceID()
@@ -75,7 +63,7 @@ class ClockInOutView: UIView {
             switch response {
             case .isSuccess:
                 DispatchQueue.main.async {
-                    self.updateUI(clock: self.clock)
+               
                 }
                 break
             case .notSupported:

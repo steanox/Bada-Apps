@@ -179,8 +179,31 @@ class Attendance{
                 
             }
         }
+    }
+    
+    static func observeForStatus(onResponse: @escaping (ClockStatus)->()){
+        let userID = (Auth.auth().currentUser?.uid)!
+        let dateComponent = Calendar.current.dateComponents(in: TimeZone.current, from: Date())
+        let dateID = "\(dateComponent.year!)\(dateComponent.month!)\(dateComponent.day!)"
         
-        
+        Database.database().reference().child("attendance/\(dateID)/\(userID)").observe(.childAdded, with: { (snapshot) in
+            
+            
+            
+            if snapshot.key == "checkInTime"{
+                print("check in bos")
+                onResponse(._in)
+            }
+            
+            if snapshot.key == "checkOutTime"{
+                print("check Out")
+                onResponse(._out)
+            }
+            
+            
+        }) { (error) in
+            print(error)
+        }
         
     }
     

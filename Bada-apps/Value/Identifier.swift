@@ -25,7 +25,7 @@ struct Identifier {
     
     public static let firebaseURL = "https://us-central1-bada-51073.cloudfunctions.net/helper/"
     
-    public static let checkInStartTime = 000
+    public static let checkInStartTime = 600
     public static let checkInLimitTime = 900
     
     public static let maximumLate = 1300
