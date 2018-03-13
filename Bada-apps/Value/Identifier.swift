@@ -26,6 +26,9 @@ struct Identifier {
     public static let firebaseURL = "https://us-central1-bada-51073.cloudfunctions.net/helper/"
     public static let timeUrl = "https://bada.apps.binus.ac.id/t/time"
     
+    public static let checkInNotification = "Check In Remainder"
+    public static let checkOutlocalNotification = "Check Out Remainder"
+    
     public static let checkInStartTime = 600
     public static let checkInLimitTime = 900
     

@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreLocation
+import UserNotifications
+import UserNotificationsUI
 
 class AttendanceViewController: BaseController {
     
@@ -16,11 +18,15 @@ class AttendanceViewController: BaseController {
     @IBOutlet weak var coverageAreaView: CoverageAreaView!
     @IBOutlet weak var clockInOutView: ClockInOutView!
     
+    var content: UNMutableNotificationContent?
+    
     var attendance: Attendance?
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        askNotificationAuthorization()
         
         Attendance.observeForStatus { (status) in
             switch status {
@@ -60,6 +66,11 @@ class AttendanceViewController: BaseController {
         })
         coverageAreaView.applyShadow(0.0)
         clockInOutView.applyShadow(15.0)
+        
+        content = UNMutableNotificationContent()
+        content?.title = "Remainder"
+        content?.sound = UNNotificationSound.default()
+        UNUserNotificationCenter.current().delegate = self
         
     }
     
@@ -104,42 +115,40 @@ class AttendanceViewController: BaseController {
         
     }
     
+    func askNotificationAuthorization() {
+        //Requesting Authorization for User Interactions
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+            // Enable or disable features based on authorization.
+        }
+    }
     
-    
-    
-    
-//    override func keyboard(will status: StatusKeyboard, with notification: NSNotification) {
-//
-//        let origin = self.view.frame.origin
-//        var size = CGSize()
-//
-//        switch status {
-//        case .show:
-//            if let keyboardSize = (notification.userInfo? [UIKeyboardFrameEndUserInfoKey]
-//                as? NSValue)?.cgRectValue {
-//
-//                size.width = self.view.frame.size.width
-//                size.height = UIWindow().frame.height - keyboardSize.height
-//                let newRect = CGRect(origin: origin, size: size)
-//                UIView.animate(withDuration: 0.3, animations: {
-//                    UIAni
-//                })
-//
-//                self.view.frame = newRect
-//
-//            }
-//        case .hide:
-//            print("c")
-////            if self.view.frame.height < UIWindow().frame.height {
-////                size.width = self.view.frame.size.width
-////                size.height = UIWindow().frame.height
-////                let newRect = CGRect(origin: origin, size: size)
-////                self.view.frame = newRect
-////            }
-//        }
-//    }
-    
-    
+    func triggeringNotification(with subtitle: String, and body: String) {
+        content?.subtitle = subtitle
+        content?.body = body
+        
+        Attendance.observeForStatus { (status) in
+            switch status {
+            case ._out:
+                print("out")
+                let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 5.0, repeats: false)
+                let request = UNNotificationRequest(identifier: Identifier.checkInNotification, content: self.content!, trigger: trigger)
+                UNUserNotificationCenter.current().add(request){(error) in
+                    if (error != nil){
+                        print(error?.localizedDescription as Any)
+                    }
+                }
+                
+            case ._in:
+                print("in")
+                let center = UNUserNotificationCenter.current()
+                center.removePendingNotificationRequests(withIdentifiers: [Identifier.checkInNotification])
+            case ._done:
+                print("Done")
+            }
+        }
+        
+    }
     
 }
 
@@ -165,4 +174,30 @@ extension AttendanceViewController: AttendanceDelegate{
     }
     
 }
+
+extension AttendanceViewController: UNUserNotificationCenterDelegate {
+    
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        print("Tapped in notification")
+    }
+    
+    //This is key callback to present notification while the app is in foreground
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        print("Notification being triggered")
+        //You can either present alert ,sound or increase badge while the app is in foreground too with ios 10
+        //to distinguish between notifications
+        if notification.request.identifier == Identifier.checkInNotification{
+            
+            completionHandler( [.alert,.sound,.badge])
+            
+        }
+    }
+}
+
+
+
+
 

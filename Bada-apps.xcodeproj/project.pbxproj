@@ -337,9 +337,9 @@
 		5509CB3920500E1000A87E88 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				01DFF88A2056E95C001CB88D /* Notification */,
 				55A5899920511E9E00266380 /* Notes */,
 				5509CB3A20500E2800A87E88 /* LoadingIndicator.swift */,
-				01DFF88A2056E95C001CB88D /* Notification */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
