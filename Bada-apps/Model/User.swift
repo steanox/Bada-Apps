@@ -52,7 +52,6 @@ class User{
         do{
             let tripleDesEnc = TripleDesEncryptor()
             let mailData = try tripleDesEnc.encrypt(data: appleID.toData()!) as NSData
-            
             Database.database().reference().child("checkUser").observeSingleEvent(of: .value) { (snapshot) in
                 
                 //check if the inputted appleID is exists on the checkUser node
