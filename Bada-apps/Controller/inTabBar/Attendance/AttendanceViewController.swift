@@ -100,6 +100,10 @@ class AttendanceViewController: BaseController {
                     view.showNotification(title: "Failed", description: "Something went wrong", buttonText: "close", onSuccess: {
                         self.tabBarController?.tabBar.isHidden = false
                     })
+                case .notCheckIn:
+                    view.showNotification(title: "Failed", description: "You have to check in First", buttonText: "close", onSuccess: {
+                        self.tabBarController?.tabBar.isHidden = false
+                    })
                 }
 
             case .far:

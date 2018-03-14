@@ -22,6 +22,7 @@
 		01E8C03B204F914B003BF95C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 01E8C03A204F914B003BF95C /* README.md */; };
 		01E8C03D204F9154003BF95C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 01E8C03C204F9153003BF95C /* .gitignore */; };
 		01E8C041204F9168003BF95C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01E8C040204F9168003BF95C /* GoogleService-Info.plist */; };
+		01F51FAE2058F761000EE4FC /* cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F51FAD2058F761000EE4FC /* cache.swift */; };
 		5509CB0F204FCE0A00A87E88 /* CoverageAreaView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5509CB05204FCE0A00A87E88 /* CoverageAreaView.xib */; };
 		5509CB10204FCE0A00A87E88 /* Attendance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5509CB06204FCE0A00A87E88 /* Attendance.storyboard */; };
 		5509CB11204FCE0A00A87E88 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5509CB07204FCE0A00A87E88 /* LaunchScreen.storyboard */; };
@@ -77,6 +78,7 @@
 		01E8C03A204F914B003BF95C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		01E8C03C204F9153003BF95C /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		01E8C040204F9168003BF95C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		01F51FAD2058F761000EE4FC /* cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cache.swift; sourceTree = "<group>"; };
 		5509CB05204FCE0A00A87E88 /* CoverageAreaView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoverageAreaView.xib; sourceTree = "<group>"; };
 		5509CB06204FCE0A00A87E88 /* Attendance.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Attendance.storyboard; sourceTree = "<group>"; };
 		5509CB08204FCE0A00A87E88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 				5509CB2B204FCE5E00A87E88 /* Identifier.swift */,
 				5509CB37204FEB3700A87E88 /* Message.swift */,
 				55A5898F2050F1D600266380 /* Encryption.swift */,
+				01F51FAD2058F761000EE4FC /* cache.swift */,
 			);
 			path = Value;
 			sourceTree = "<group>";
@@ -560,6 +563,7 @@
 				55BF52992057FB0600AA1C87 /* BDDate.swift in Sources */,
 				5509CB23204FCE4F00A87E88 /* CoverageAreaView.swift in Sources */,
 				5509CB26204FCE4F00A87E88 /* NewsViewController.swift in Sources */,
+				01F51FAE2058F761000EE4FC /* cache.swift in Sources */,
 				55A589922050F1FB00266380 /* NSData+String.swift in Sources */,
 				5509CB22204FCE4F00A87E88 /* BaseController.swift in Sources */,
 				5509CB38204FEB3700A87E88 /* Message.swift in Sources */,
@@ -706,13 +710,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C89FEC543S;
+				DEVELOPMENT_TEAM = ZK45DE64XX;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "Bada-apps/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Bada.Bada-apps";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -727,13 +731,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C89FEC543S;
+				DEVELOPMENT_TEAM = ZK45DE64XX;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "Bada-apps/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Bada.Bada-apps";
 				PRODUCT_NAME = "$(TARGET_NAME)";

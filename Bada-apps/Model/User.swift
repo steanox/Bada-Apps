@@ -67,7 +67,8 @@ class User{
                 if snapshot.hasChild(mailData.toHexString!){
                     snapshot.ref.child(mailData.toHexString!).observeSingleEvent(of: .value, with: { (userSnapshot) in
                         
-                        let data = userSnapshot.value as! [String:String]
+                        
+                        guard let data = userSnapshot.value as? [String:String] else { return }
                         let dateData = data["dateOfBirth"]
                         
                         if dateOfBirth == dateData{

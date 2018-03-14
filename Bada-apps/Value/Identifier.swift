@@ -31,9 +31,6 @@ struct Identifier {
     
     public static let checkInStartTime = 600
     public static let checkInLimitTime = 900
-    
-    public static let maximumLate = 1300
-    
     public static let checkOutTime = 1800
     
     public static let differenceViewOfKeyboard: CGFloat = 100.0

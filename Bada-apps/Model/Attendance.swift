@@ -19,9 +19,11 @@ enum AttendanceType{
     case notEligibleTime
     case late
     case earlyLeave
+    case notCheckIn
     case checkIn
     case checkOut
     case error
+
 }
 
 protocol AttendanceDelegate {
@@ -99,6 +101,8 @@ class Attendance{
                             self?.delegate?.attendanceFailed(error: error )
                             return
                         }
+                        checkInStatus.setObject("checkIn" as AnyObject, forKey: (self?.dateID)! as AnyObject)
+                        
                         self?.delegate?.attendanceSuccess()
                         
                     })
@@ -115,23 +119,35 @@ class Attendance{
      func checkStatus()-> AttendanceType{
         let dateComponent = Calendar.current.dateComponents(in: TimeZone.current, from: Date())
         
+        if let data = checkInStatus.object(forKey: dateID! as AnyObject){
+                print("already check In")
+            print(data)
+        }else{
+            print("notcheck in")
+        }
+        
        guard let currentTime = Int("\(dateComponent.hour!)\(dateComponent.minute!)") else {return AttendanceType.error}
-       print(currentTime)
-       
+              
         if currentTime < Identifier.checkInStartTime{
             return .notEligibleTime
         }else
         if currentTime > Identifier.checkInStartTime && currentTime < Identifier.checkInLimitTime{
             return .checkIn
         }else
-        if currentTime > Identifier.checkInLimitTime && currentTime < Identifier.maximumLate{
+        if currentTime > Identifier.checkInLimitTime && !isCheckIn(){
             return .late
         }else
-        if currentTime > Identifier.maximumLate && currentTime < Identifier.checkOutTime{
-            return .earlyLeave
+        if isCheckIn(){
+            print("you already check In")
+            if  currentTime < Identifier.checkOutTime{
+                return .earlyLeave
+            }else{
+                return .checkOut
+            }
         }else{
-            return .checkOut
+            return .notCheckIn
         }
+
         
         
     }
@@ -139,7 +155,7 @@ class Attendance{
     func performCheckOut(){
         delegate?.attendanceOnProgress()
         if let _ = dateID,let _ = time{
-            var data: [String:Any] = ["status":"2","checkInTime":self.time as Any]
+            var data: [String:Any] = ["status":"2","checkOutTime":self.time as Any]
             
             if let notes = notes{
                 data["checkOutNotes"] = notes
@@ -188,8 +204,6 @@ class Attendance{
         
         Database.database().reference().child("attendance/\(dateID)/\(userID)").observe(.childAdded, with: { (snapshot) in
             
-            
-            
             if snapshot.key == "checkInTime"{
                 print("check in bos")
                 onResponse(._in)
@@ -205,6 +219,14 @@ class Attendance{
             print(error)
         }
         
+    }
+    
+    private func isCheckIn()->Bool{
+        if let _ = checkInStatus.object(forKey: self.dateID! as! AnyObject){
+            return true
+        }else{
+            return false
+        }
     }
     
     private func updateTime(){

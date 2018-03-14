@@ -25,11 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
-//        if let _ = Auth.auth().currentUser{
-//            window = UIWindow(frame: UIScreen.main.bounds)
-//            window?.makeKeyAndVisible()
-//            window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! RootTabBarController
-//        }
+        if let _ = Auth.auth().currentUser{
+            window = UIWindow(frame: UIScreen.main.bounds)
+            window?.makeKeyAndVisible()
+            window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! RootTabBarController
+        }
         
         
         return true

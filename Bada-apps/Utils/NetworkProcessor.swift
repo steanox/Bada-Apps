@@ -37,14 +37,15 @@ class NetworkProcessor {
         // setting body with decoder,
         // so make sure you make object with codable
         if method == .post{
-            let encoder = JSONEncoder()
-            do{
-                let jsonData = try encoder.encode(parameter)
-                request.httpBody = jsonData
-            }catch {
-                print("error encoder: \(error.localizedDescription)")
-                completion(nil)
-            }
+            request.httpBody = parameter as! Data
+//            let encoder = JSONEncoder()
+//            do{
+//                let jsonData = try encoder.encode(parameter)
+//                request.httpBody = jsonData
+//            }catch {
+//                print("error encoder: \(error.localizedDescription)")
+//                completion(nil)
+//            }
         }
         
         // create session
