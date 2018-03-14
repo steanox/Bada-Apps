@@ -20,8 +20,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="qOE-4n-TJ7" kind="relationship" relationship="viewControllers" id="3qC-93-MPa"/>
-                        <segue destination="Zzf-iK-lDU" kind="relationship" relationship="viewControllers" id="EXJ-l0-9yB"/>
                         <segue destination="prq-i0-vYV" kind="relationship" relationship="viewControllers" id="Mdj-RR-U5t"/>
+                        <segue destination="tvD-Dw-27p" kind="relationship" relationship="viewControllers" id="IJs-Ck-xke"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ge7-qb-rdu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -32,31 +32,31 @@
         <scene sceneID="GeG-f3-Bpl">
             <objects>
                 <viewControllerPlaceholder storyboardName="Attendance" id="qOE-4n-TJ7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="5TH-96-wEv"/>
+                    <tabBarItem key="tabBarItem" title="Attendance" id="5TH-96-wEv"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XhJ-Ef-3pm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="10" y="858"/>
         </scene>
-        <!--History-->
-        <scene sceneID="J4y-hc-48M">
-            <objects>
-                <viewControllerPlaceholder storyboardName="History" id="Zzf-iK-lDU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="d4u-qY-ynN"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Hc9-rW-ZyM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="804" y="858"/>
-        </scene>
         <!--News-->
         <scene sceneID="ysH-4k-2xk">
             <objects>
                 <viewControllerPlaceholder storyboardName="News" id="prq-i0-vYV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="vqc-rS-Slm"/>
+                    <tabBarItem key="tabBarItem" title="News" id="vqc-rS-Slm"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eUg-Xz-Uky" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1605" y="858"/>
+            <point key="canvasLocation" x="803" y="858"/>
+        </scene>
+        <!--Account-->
+        <scene sceneID="d09-Mk-YlF">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Account" id="tvD-Dw-27p" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Account" id="g8Q-Mn-yhD"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tOA-su-Mfq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1572" y="858"/>
         </scene>
     </scenes>
 </document>

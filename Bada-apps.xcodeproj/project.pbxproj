@@ -57,6 +57,8 @@
 		55A589A1205135AE00266380 /* Responder+byPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A589A0205135AE00266380 /* Responder+byPass.swift */; };
 		55AA78932057F2CE00FE07F0 /* NetworkProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AA78922057F2CE00FE07F0 /* NetworkProcessor.swift */; };
 		55BF52992057FB0600AA1C87 /* BDDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BF52982057FB0600AA1C87 /* BDDate.swift */; };
+		55BF529F2058FD9100AA1C87 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55BF529E2058FD9100AA1C87 /* Account.storyboard */; };
+		55BF52A22058FE9900AA1C87 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BF52A12058FE9900AA1C87 /* AccountViewController.swift */; };
 		CB425E7B4D3ED9A3D74BB1B4 /* Pods_Bada_apps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB4F00DB43031080465883FF /* Pods_Bada_apps.framework */; };
 /* End PBXBuildFile section */
 
@@ -113,6 +115,8 @@
 		55A589A0205135AE00266380 /* Responder+byPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Responder+byPass.swift"; sourceTree = "<group>"; };
 		55AA78922057F2CE00FE07F0 /* NetworkProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkProcessor.swift; sourceTree = "<group>"; };
 		55BF52982057FB0600AA1C87 /* BDDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BDDate.swift; sourceTree = "<group>"; };
+		55BF529E2058FD9100AA1C87 /* Account.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
+		55BF52A12058FE9900AA1C87 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		6A9B1A48B702F6F6A79A6D61 /* Pods-Bada-apps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bada-apps.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bada-apps/Pods-Bada-apps.debug.xcconfig"; sourceTree = "<group>"; };
 		BB4F00DB43031080465883FF /* Pods_Bada_apps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bada_apps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F90989D1879C53958F9B2920 /* Pods-Bada-apps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bada-apps.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bada-apps/Pods-Bada-apps.release.xcconfig"; sourceTree = "<group>"; };
@@ -221,7 +225,7 @@
 			children = (
 				5509CB04204FCE0A00A87E88 /* Attendance */,
 				5509CB0B204FCE0A00A87E88 /* News */,
-				5509CB0D204FCE0A00A87E88 /* History */,
+				55BF529D2058FC3200AA1C87 /* Account */,
 				5509CB3920500E1000A87E88 /* Helper */,
 				5509CB07204FCE0A00A87E88 /* LaunchScreen.storyboard */,
 				5509CB09204FCE0A00A87E88 /* Main.storyboard */,
@@ -233,6 +237,7 @@
 		5509CB04204FCE0A00A87E88 /* Attendance */ = {
 			isa = PBXGroup;
 			children = (
+				5509CB0D204FCE0A00A87E88 /* History */,
 				01DFF8892056E470001CB88D /* Clock in & out */,
 				01DFF8882056E467001CB88D /* Coverage area */,
 				5509CB06204FCE0A00A87E88 /* Attendance.storyboard */,
@@ -272,7 +277,7 @@
 				5509CB1B204FCE4F00A87E88 /* RootTabBarController.swift */,
 				5509CB18204FCE4F00A87E88 /* Attendance */,
 				5509CB1C204FCE4F00A87E88 /* News */,
-				5509CB1E204FCE4F00A87E88 /* History */,
+				55BF52A02058FE8800AA1C87 /* Account */,
 			);
 			path = inTabBar;
 			sourceTree = "<group>";
@@ -280,6 +285,7 @@
 		5509CB18204FCE4F00A87E88 /* Attendance */ = {
 			isa = PBXGroup;
 			children = (
+				5509CB1E204FCE4F00A87E88 /* History */,
 				5509CB1A204FCE4F00A87E88 /* AttendanceViewController.swift */,
 			);
 			path = Attendance;
@@ -367,6 +373,22 @@
 			path = Notes;
 			sourceTree = "<group>";
 		};
+		55BF529D2058FC3200AA1C87 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				55BF529E2058FD9100AA1C87 /* Account.storyboard */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		55BF52A02058FE8800AA1C87 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				55BF52A12058FE9900AA1C87 /* AccountViewController.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
 		FAECD7D7CFBA22B8D7A3AE0E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -446,6 +468,7 @@
 				5509CB14204FCE0A00A87E88 /* History.storyboard in Resources */,
 				016A5D8E204F90A200F99270 /* Assets.xcassets in Resources */,
 				55A5899B20511EE500266380 /* NotesView.xib in Resources */,
+				55BF529F2058FD9100AA1C87 /* Account.storyboard in Resources */,
 				5509CB0F204FCE0A00A87E88 /* CoverageAreaView.xib in Resources */,
 				01E8C03B204F914B003BF95C /* README.md in Resources */,
 				5509CB12204FCE0A00A87E88 /* Main.storyboard in Resources */,
@@ -557,6 +580,7 @@
 				55A5899D2051240300266380 /* NotesView.swift in Sources */,
 				5509CB2D204FCE5E00A87E88 /* Identifier.swift in Sources */,
 				5509CB32204FCE6600A87E88 /* Color+Hex.swift in Sources */,
+				55BF52A22058FE9900AA1C87 /* AccountViewController.swift in Sources */,
 				5509CB24204FCE4F00A87E88 /* AttendanceViewController.swift in Sources */,
 				5509CB34204FCE6600A87E88 /* View+Shadow.swift in Sources */,
 				010BA03220512896001F8D44 /* RegistrationViewController.swift in Sources */,

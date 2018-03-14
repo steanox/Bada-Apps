@@ -42,19 +42,21 @@ class AttendanceViewController: BaseController {
         }
     }
     
-    
 
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         styleUI()
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     override func styleUI() {
         super.styleUI()
         
-        nameLabel.text = User.name
+        User.getUser().getName { (name) in
+            guard let name = name else {return}
+            self.nameLabel.text = name
+        }
         
         currentDateLabel.text = Date().current()
         bdDate?.getCurrent({ (data) in
@@ -145,8 +147,8 @@ class AttendanceViewController: BaseController {
                 
             case ._in:
                 print("in")
-                let center = UNUserNotificationCenter.current()
-                center.removePendingNotificationRequests(withIdentifiers: [Identifier.checkInNotification])
+                let current = UNUserNotificationCenter.current()
+                current.removePendingNotificationRequests(withIdentifiers: [Identifier.checkInNotification])
             case ._done:
                 print("Done")
             }
