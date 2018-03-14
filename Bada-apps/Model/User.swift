@@ -25,14 +25,16 @@ class User{
     var email: String?
     var name: String?
     
-    static var name: String {
-        get{
-            if let user = Auth.auth().currentUser{
-                return user.value(forKeyPath: "email") as! String
-            }
-            return ""
+    func getName(_ completion: @escaping ((String?)->())) {
+        guard let uid = Auth.auth().currentUser?.uid else {completion(nil);return}
+        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value) { (snapshot) in
+            let userData = snapshot.value as? NSDictionary
+            let name = userData?["name"] as? String ?? ""
+            completion(name)
         }
     }
+    
+    
     
     static var email: String {
         get{
@@ -156,7 +158,7 @@ class User{
         }
         
     }
-    
+
 
     
 }
