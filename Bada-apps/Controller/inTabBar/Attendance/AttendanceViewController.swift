@@ -184,10 +184,18 @@ extension AttendanceViewController: UNUserNotificationCenterDelegate {
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
             // Enable or disable features based on authorization.
+            if !granted{
+                let alert = UIAlertController(title: "Notification Access", message: "In order to remind you to fill attendance, turn on notification permissions.", preferredStyle: .alert)
+                let alertAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+                alert.addAction(alertAction)
+                self.present(alert , animated: true, completion: nil)
+            }
         }
     }
     
     func triggeringNotification() {
+        print("1")
+        self.notification(status: ._out)
         Attendance.observeForStatus { (status) in
             print("1")
             switch status {
@@ -201,7 +209,6 @@ extension AttendanceViewController: UNUserNotificationCenterDelegate {
                 print("Done")
             }
         }
-        
     }
     
     func notification(status: ClockStatus) {
@@ -232,6 +239,14 @@ extension AttendanceViewController: UNUserNotificationCenterDelegate {
     func removeAllNotification() {
         let current = UNUserNotificationCenter.current()
         current.removePendingNotificationRequests(withIdentifiers: [Identifier.checkInLocalNotification, Identifier.checkOutlocalNotification])
+    }
+    
+    func setCategories(title: String){
+        let snoozeAction = UNNotificationAction(identifier: Identifier.snoozelocalNotification, title: "Snooze 10 minute", options: [])
+        let clockInOutAction = UNNotificationAction(identifier: Identifier.snoozelocalNotification, title: title, options: [])
+        
+        let alarmCategory = UNNotificationCategory(identifier: Identifier.alarmCategoryNotification,actions: [snoozeAction, clockInOutAction], intentIdentifiers: [], options: [])
+        UNUserNotificationCenter.current().setNotificationCategories([alarmCategory])
     }
     
 }

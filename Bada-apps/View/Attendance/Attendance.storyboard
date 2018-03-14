@@ -19,34 +19,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="  " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="soQ-Yg-lgQ">
-                                <rect key="frame" x="27" y="275" width="320" height="32"/>
+                                <rect key="frame" x="27" y="250" width="320" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGj-kx-4lT">
-                                <rect key="frame" x="20" y="317" width="335" height="16"/>
+                                <rect key="frame" x="20" y="292" width="335" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dhG-eI-IzE" customClass="CoverageAreaView" customModule="Bada_apps" customModuleProvider="target">
-                                <rect key="frame" x="20" y="359" width="335" height="45"/>
+                                <rect key="frame" x="20" y="334" width="335" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="waterBlueOcean" translatesAutoresizingMaskIntoConstraints="NO" id="otC-mn-iXb">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="185"/>
+                            <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="TopBackground" translatesAutoresizingMaskIntoConstraints="NO" id="otC-mn-iXb">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ProfilePictDummy" translatesAutoresizingMaskIntoConstraints="NO" id="Mkh-yl-BKK">
-                                <rect key="frame" x="113" y="110" width="150" height="150"/>
+                                <rect key="frame" x="113" y="85" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eF6-l9-Wuz" customClass="ClockInOutView" customModule="Bada_apps" customModuleProvider="target">
-                                <rect key="frame" x="20" y="419" width="335" height="280"/>
+                                <rect key="frame" x="20" y="394" width="335" height="280"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -99,6 +99,6 @@
     </scenes>
     <resources>
         <image name="ProfilePictDummy" width="150" height="150"/>
-        <image name="waterBlueOcean" width="375" height="250"/>
+        <image name="TopBackground" width="375" height="140"/>
     </resources>
 </document>

@@ -24,7 +24,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="waterBlueOcean" translatesAutoresizingMaskIntoConstraints="NO" id="s1i-0R-nbu">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TopBackground" translatesAutoresizingMaskIntoConstraints="NO" id="s1i-0R-nbu">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="365.33333333333331"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XP0-5J-Mzd">
@@ -63,7 +63,9 @@
                                             <constraint firstAttribute="height" constant="26" id="diF-NY-jqi"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                        <state key="normal" title="Forgot your password ?"/>
+                                        <state key="normal" title="Forgot your password ?">
+                                            <color key="titleColor" red="0.0" green="0.32156862745098036" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <segue destination="vqJ-s9-NcS" kind="show" id="49K-Zz-QPu">
                                                 <nil key="action"/>
@@ -72,7 +74,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zuQ-p1-R89">
                                         <rect key="frame" x="42" y="481" width="250" height="40"/>
-                                        <color key="backgroundColor" red="0.14901960780000001" green="0.48627450979999998" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.0" green="0.32156862745098036" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="xU2-H4-tck"/>
                                         </constraints>
@@ -95,7 +97,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UBu-gg-NTE">
                                                 <rect key="frame" x="129.66666666666666" y="0.0" width="84" height="26"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                                <state key="normal" title="Create Account"/>
+                                                <state key="normal" title="Create Account">
+                                                    <color key="titleColor" red="0.0" green="0.32156862745098036" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
                                                 <connections>
                                                     <segue destination="MhP-OV-Vza" kind="show" id="Emg-m2-ra1">
                                                         <nil key="action"/>
@@ -172,7 +176,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="waterBlueOcean" translatesAutoresizingMaskIntoConstraints="NO" id="EGf-ud-zgO">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TopBackground" translatesAutoresizingMaskIntoConstraints="NO" id="EGf-ud-zgO">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="365.33333333333331"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c7O-Xf-M0n">
@@ -219,12 +223,12 @@
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2l-73-Bym">
                                         <rect key="frame" x="42" y="527" width="250" height="40"/>
-                                        <color key="backgroundColor" red="0.14901960780000001" green="0.48627450979999998" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.0" green="0.32156862749999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="lGI-Pb-ubs"/>
                                         </constraints>
                                         <state key="normal" title="REGISTER">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="handleRegister" destination="MhP-OV-Vza" eventType="touchUpInside" id="huG-6Y-g0l"/>
@@ -242,7 +246,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWE-EC-cip">
                                                 <rect key="frame" x="144" y="0.0" width="30" height="26"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                                <state key="normal" title="Login"/>
+                                                <state key="normal" title="Login">
+                                                    <color key="titleColor" red="0.0" green="0.32156862749999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="backToLogin" destination="MhP-OV-Vza" eventType="touchUpInside" id="Vkk-cI-vSy"/>
                                                 </connections>
@@ -318,7 +324,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="waterBlueOcean" translatesAutoresizingMaskIntoConstraints="NO" id="UaF-qh-vqr">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TopBackground" translatesAutoresizingMaskIntoConstraints="NO" id="UaF-qh-vqr">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="365.33333333333331"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zBe-MT-G5H">
@@ -353,7 +359,7 @@
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R69-JW-nDa">
                                         <rect key="frame" x="42" y="508" width="250" height="40"/>
-                                        <color key="backgroundColor" red="0.14901960780000001" green="0.48627450979999998" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.0" green="0.32156862749999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Bo8-2h-svr"/>
                                         </constraints>
@@ -409,7 +415,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="TopBackground" width="375" height="140"/>
         <image name="lockup-binus-apple" width="360" height="122"/>
-        <image name="waterBlueOcean" width="375" height="250"/>
     </resources>
 </document>
