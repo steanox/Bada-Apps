@@ -30,7 +30,7 @@ class RegisterViewController: BaseController{
         errorText.text = ""
         guard
             let email = emailField.text,
-            let fullname = fullNameField.text ,
+            let fullname = fullNameField.text,
             let birthDate = dateField.text
             else { return }
         

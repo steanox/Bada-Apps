@@ -54,6 +54,8 @@
 		55A5899B20511EE500266380 /* NotesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55A5899A20511EE500266380 /* NotesView.xib */; };
 		55A5899D2051240300266380 /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A5899C2051240300266380 /* NotesView.swift */; };
 		55A589A1205135AE00266380 /* Responder+byPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A589A0205135AE00266380 /* Responder+byPass.swift */; };
+		55AA78932057F2CE00FE07F0 /* NetworkProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AA78922057F2CE00FE07F0 /* NetworkProcessor.swift */; };
+		55BF52992057FB0600AA1C87 /* BDDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BF52982057FB0600AA1C87 /* BDDate.swift */; };
 		CB425E7B4D3ED9A3D74BB1B4 /* Pods_Bada_apps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB4F00DB43031080465883FF /* Pods_Bada_apps.framework */; };
 /* End PBXBuildFile section */
 
@@ -107,6 +109,8 @@
 		55A5899A20511EE500266380 /* NotesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotesView.xib; sourceTree = "<group>"; };
 		55A5899C2051240300266380 /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
 		55A589A0205135AE00266380 /* Responder+byPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Responder+byPass.swift"; sourceTree = "<group>"; };
+		55AA78922057F2CE00FE07F0 /* NetworkProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkProcessor.swift; sourceTree = "<group>"; };
+		55BF52982057FB0600AA1C87 /* BDDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BDDate.swift; sourceTree = "<group>"; };
 		6A9B1A48B702F6F6A79A6D61 /* Pods-Bada-apps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bada-apps.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bada-apps/Pods-Bada-apps.debug.xcconfig"; sourceTree = "<group>"; };
 		BB4F00DB43031080465883FF /* Pods_Bada_apps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bada_apps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F90989D1879C53958F9B2920 /* Pods-Bada-apps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bada-apps.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bada-apps/Pods-Bada-apps.release.xcconfig"; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 				014350D520503DD600512602 /* Attendance.swift */,
 				5509CB35204FCF1800A87E88 /* Beacon.swift */,
 				014350D620503DD600512602 /* User.swift */,
+				55BF52982057FB0600AA1C87 /* BDDate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -176,8 +181,8 @@
 		01DFF8882056E467001CB88D /* Coverage area */ = {
 			isa = PBXGroup;
 			children = (
-				5509CB19204FCE4F00A87E88 /* CoverageAreaView.swift */,
 				5509CB05204FCE0A00A87E88 /* CoverageAreaView.xib */,
+				5509CB19204FCE4F00A87E88 /* CoverageAreaView.swift */,
 			);
 			path = "Coverage area";
 			sourceTree = "<group>";
@@ -332,9 +337,9 @@
 		5509CB3920500E1000A87E88 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				01DFF88A2056E95C001CB88D /* Notification */,
 				55A5899920511E9E00266380 /* Notes */,
 				5509CB3A20500E2800A87E88 /* LoadingIndicator.swift */,
-				01DFF88A2056E95C001CB88D /* Notification */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -342,6 +347,7 @@
 		55A5898E2050F18E00266380 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				55AA78922057F2CE00FE07F0 /* NetworkProcessor.swift */,
 				55A589932050F23700266380 /* TripleDesEncryptor.swift */,
 				55A5899520510B2700266380 /* FaceID.swift */,
 				010BA035205147CB001F8D44 /* Mailer.swift */,
@@ -534,6 +540,7 @@
 				014350D720503DD600512602 /* Attendance.swift in Sources */,
 				5509CB28204FCE4F00A87E88 /* LoginViewController.swift in Sources */,
 				014350DD2050420300512602 /* NotificationView.swift in Sources */,
+				55AA78932057F2CE00FE07F0 /* NetworkProcessor.swift in Sources */,
 				010BA034205128B7001F8D44 /* Toolbar.swift in Sources */,
 				016A5D89204F90A200F99270 /* ViewController.swift in Sources */,
 				5509CB36204FCF1800A87E88 /* Beacon.swift in Sources */,
@@ -550,6 +557,7 @@
 				5509CB24204FCE4F00A87E88 /* AttendanceViewController.swift in Sources */,
 				5509CB34204FCE6600A87E88 /* View+Shadow.swift in Sources */,
 				010BA03220512896001F8D44 /* RegistrationViewController.swift in Sources */,
+				55BF52992057FB0600AA1C87 /* BDDate.swift in Sources */,
 				5509CB23204FCE4F00A87E88 /* CoverageAreaView.swift in Sources */,
 				5509CB26204FCE4F00A87E88 /* NewsViewController.swift in Sources */,
 				55A589922050F1FB00266380 /* NSData+String.swift in Sources */,
@@ -698,13 +706,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZK45DE64XX;
+				DEVELOPMENT_TEAM = C89FEC543S;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "Bada-apps/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Bada.Bada-apps";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -719,13 +727,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZK45DE64XX;
+				DEVELOPMENT_TEAM = C89FEC543S;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "Bada-apps/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Bada.Bada-apps";
 				PRODUCT_NAME = "$(TARGET_NAME)";
