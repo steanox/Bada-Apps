@@ -25,6 +25,13 @@ class ClockInOutView: UIView {
     @IBOutlet weak var clockInOutTitleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
+    var blackView: UIView = {
+        var bv = UIView(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+        bv.backgroundColor = UIColor.black
+        
+        return bv
+    }()
+    
 
     
     fileprivate weak var clockInOutArea: UIView!
