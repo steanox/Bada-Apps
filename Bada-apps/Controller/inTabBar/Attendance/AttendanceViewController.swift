@@ -45,7 +45,7 @@ class AttendanceViewController: BaseController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        triggeringNotification()
         styleUI()
         self.navigationController?.navigationBar.isHidden = true
     }
@@ -61,7 +61,6 @@ class AttendanceViewController: BaseController {
         currentDateLabel.text = Date().current()
         bdDate?.getCurrent({ (data) in
             DispatchQueue.main.async {
-                print(data)
                 self.currentDateLabel.text = data.getDate()
             }
             
@@ -121,40 +120,6 @@ class AttendanceViewController: BaseController {
         
     }
     
-    func askNotificationAuthorization() {
-        //Requesting Authorization for User Interactions
-        let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
-            // Enable or disable features based on authorization.
-        }
-    }
-    
-    func triggeringNotification(with subtitle: String, and body: String) {
-        content?.subtitle = subtitle
-        content?.body = body
-        
-        Attendance.observeForStatus { (status) in
-            switch status {
-            case ._out:
-                print("out")
-                let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 5.0, repeats: false)
-                let request = UNNotificationRequest(identifier: Identifier.checkInNotification, content: self.content!, trigger: trigger)
-                UNUserNotificationCenter.current().add(request){(error) in
-                    if (error != nil){
-                        print(error?.localizedDescription as Any)
-                    }
-                }
-                
-            case ._in:
-                print("in")
-                let current = UNUserNotificationCenter.current()
-                current.removePendingNotificationRequests(withIdentifiers: [Identifier.checkInNotification])
-            case ._done:
-                print("Done")
-            }
-        }
-        
-    }
     
 }
 
@@ -195,12 +160,69 @@ extension AttendanceViewController: UNUserNotificationCenterDelegate {
         print("Notification being triggered")
         //You can either present alert ,sound or increase badge while the app is in foreground too with ios 10
         //to distinguish between notifications
-        if notification.request.identifier == Identifier.checkInNotification{
+        if notification.request.identifier == Identifier.checkInLocalNotification{
             
             completionHandler( [.alert,.sound,.badge])
             
         }
     }
+    
+    
+    func askNotificationAuthorization() {
+        //Requesting Authorization for User Interactions
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+            // Enable or disable features based on authorization.
+        }
+    }
+    
+    func triggeringNotification() {
+        Attendance.observeForStatus { (status) in
+            print("1")
+            switch status {
+            case ._out:
+                print("2")
+                self.notification(status: ._out)
+            case ._in:
+                print("3")
+                self.notification(status: ._in)
+            case ._done:
+                print("Done")
+            }
+        }
+        
+    }
+    
+    func notification(status: ClockStatus) {
+        removeAllNotification()
+        
+        switch status {
+        case ._out:
+            content?.subtitle = "test"
+            content?.body = "ing"
+        case ._in:
+            content?.subtitle = "testing"
+            content?.body = "dikit"
+        case ._done:
+            print("done")
+        }
+        
+        
+        let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 5.0, repeats: false)
+        let request = UNNotificationRequest(identifier: Identifier.checkInLocalNotification, content: self.content!, trigger: trigger)
+        UNUserNotificationCenter.current().add(request){(error) in
+            if (error != nil){
+                print(error?.localizedDescription as Any)
+            }
+        }
+        
+    }
+    
+    func removeAllNotification() {
+        let current = UNUserNotificationCenter.current()
+        current.removePendingNotificationRequests(withIdentifiers: [Identifier.checkInLocalNotification, Identifier.checkOutlocalNotification])
+    }
+    
 }
 
 
