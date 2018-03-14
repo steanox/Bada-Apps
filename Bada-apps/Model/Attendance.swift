@@ -126,8 +126,13 @@ class Attendance{
             print("notcheck in")
         }
         
-       guard let currentTime = Int("\(dateComponent.hour!)\(dateComponent.minute!)") else {return AttendanceType.error}
-              
+        let minute = (String(dateComponent.minute!).count < 2) ? "0\(dateComponent.minute!)" : "\(dateComponent.minute!)"
+        
+        
+        
+        
+       guard let currentTime = Int("\(dateComponent.hour!)\(minute)") else {return AttendanceType.error}
+        print("current time: \(currentTime)")
         if currentTime < Identifier.checkInStartTime{
             return .notEligibleTime
         }else
@@ -205,12 +210,12 @@ class Attendance{
         Database.database().reference().child("attendance/\(dateID)/\(userID)").observe(.childAdded, with: { (snapshot) in
             
             if snapshot.key == "checkInTime"{
-                print("check in bos")
+                
                 onResponse(._in)
             }
             
             if snapshot.key == "checkOutTime"{
-                print("check Out")
+               
                 onResponse(._out)
             }
             

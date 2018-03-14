@@ -25,18 +25,29 @@ class AttendanceViewController: BaseController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        clockInOutView.isHidden = true
+        startActivityIndicator()
         askNotificationAuthorization()
+        
+        
+
         
         Attendance.observeForStatus { (status) in
             switch status {
             case ._in:
-                 self.clockInOutView.clockStatus = status
+                self.clockInOutView.isHidden = false
+                self.stopActivityIndicator()
+                self.clockInOutView.clockStatus = status
                 self.clockInOutView.clockInOutButton.setImage(#imageLiteral(resourceName: "clockOutButton"), for: UIControlState.normal)
             case ._out:
+                self.stopActivityIndicator()
+                self.clockInOutView.isHidden = false
                 self.clockInOutView.clockStatus = status
-                self.clockInOutView.clockInOutButton.setImage(#imageLiteral(resourceName: "clockInButton"), for: UIControlState.normal)
+                self.clockInOutView.clockInOutButton.setImage(#imageLiteral(resourceName: "Beacon-NotDetected"), for: UIControlState.normal)
+                self.clockInOutView.clockInOutButton.isUserInteractionEnabled = false
             case ._done:
+                self.clockInOutView.isHidden = false
+                self.stopActivityIndicator()
                 print("done")
             }
         }
