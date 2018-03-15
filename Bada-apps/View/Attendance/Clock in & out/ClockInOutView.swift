@@ -12,6 +12,7 @@ import FirebaseAuth
 
 
 enum ClockStatus {
+    case _notYet
     case _in
     case _out
     case _done

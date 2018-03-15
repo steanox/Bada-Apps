@@ -37,7 +37,7 @@ class NetworkProcessor {
         // setting body with decoder,
         // so make sure you make object with codable
         if method == .post{
-            request.httpBody = parameter as! Data
+            request.httpBody = parameter as? Data
 //            let encoder = JSONEncoder()
 //            do{
 //                let jsonData = try encoder.encode(parameter)
