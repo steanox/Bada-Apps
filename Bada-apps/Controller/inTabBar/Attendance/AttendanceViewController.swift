@@ -225,7 +225,6 @@ extension AttendanceViewController: UNUserNotificationCenterDelegate {
             print("done")
         }
         
-        
         let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 5.0, repeats: false)
         let request = UNNotificationRequest(identifier: Identifier.checkInLocalNotification, content: self.content!, trigger: trigger)
         UNUserNotificationCenter.current().add(request){(error) in
