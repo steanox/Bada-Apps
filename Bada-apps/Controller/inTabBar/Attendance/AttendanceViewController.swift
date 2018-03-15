@@ -34,6 +34,11 @@ class AttendanceViewController: BaseController {
         
         Attendance.observeForStatus { (status) in
             switch status {
+            case ._notYet:
+                self.clockInOutView.isHidden = false
+                self.stopActivityIndicator()
+                self.clockInOutView.clockStatus = status
+                self.clockInOutView.clockInOutButton.setImage(#imageLiteral(resourceName: "clockInButton"), for: UIControlState.normal)
             case ._in:
                 self.clockInOutView.isHidden = false
                 self.stopActivityIndicator()
@@ -191,6 +196,8 @@ extension AttendanceViewController: UNUserNotificationCenterDelegate {
         Attendance.observeForStatus { (status) in
             print("1")
             switch status {
+            case ._notYet:
+                self.notification(status: ._notYet)
             case ._out:
                 print("2")
                 self.notification(status: ._out)
@@ -208,6 +215,9 @@ extension AttendanceViewController: UNUserNotificationCenterDelegate {
         removeAllNotification()
         
         switch status {
+        case ._notYet:
+            content?.subtitle = "asdasdasdasd"
+            content?.body = "ing"
         case ._out:
             content?.subtitle = "test"
             content?.body = "ing"

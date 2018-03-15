@@ -187,27 +187,33 @@ class Attendance{
         
     }
     
-    static func checkAttendanceForToday(){
-        let userID = Auth.auth().currentUser?.uid
-        let dateComponent = Calendar.current.dateComponents(in: TimeZone.current, from: Date())
-        let dateID = "\(dateComponent.year!)\(dateComponent.month!)\(dateComponent.day!)"
-        
-        Database.database().reference().child("attendances/\(dateID)/\(userID)").observe(.value) { (snapshot) in
-            
-            if snapshot.hasChild("checkInTime"){
-                
-            }else{
-                
-            }
-        }
-    }
+//    static func checkAttendanceForToday(){
+//        let userID = Auth.auth().currentUser?.uid
+//        let dateComponent = Calendar.current.dateComponents(in: TimeZone.current, from: Date())
+//        let dateID = "\(dateComponent.year!)\(dateComponent.month!)\(dateComponent.day!)"
+//        
+//        Database.database().reference().child("attendances/\(dateID)/\(userID)").observe(.value) { (snapshot) in
+//            
+//            if snapshot.hasChild("checkInTime"){
+//                
+//            }else{
+//                
+//            }
+//        }
+//    }
     
     static func observeForStatus(onResponse: @escaping (ClockStatus)->()){
         let userID = (Auth.auth().currentUser?.uid)!
         let dateComponent = Calendar.current.dateComponents(in: TimeZone.current, from: Date())
         let dateID = "\(dateComponent.year!)\(dateComponent.month!)\(dateComponent.day!)"
-        
-        Database.database().reference().child("attendance/\(dateID)/\(userID)").observe(.childAdded, with: { (snapshot) in
+
+        Database.database().reference().child("attendance/\(dateID)/\(userID)").observe(.value, with: { (snapshot) in
+            
+            print(snapshot)
+            
+            if snapshot.value == nil{
+                onResponse(._notYet)
+            }
             
             if snapshot.key == "checkInTime"{
                 
@@ -219,7 +225,6 @@ class Attendance{
                 onResponse(._out)
             }
             
-            
         }) { (error) in
             print(error)
         }
@@ -227,7 +232,7 @@ class Attendance{
     }
     
     private func isCheckIn()->Bool{
-        if let _ = checkInStatus.object(forKey: self.dateID! as! AnyObject){
+        if let _ = checkInStatus.object(forKey: self.dateID! as AnyObject){
             return true
         }else{
             return false
