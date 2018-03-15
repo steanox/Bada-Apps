@@ -28,6 +28,8 @@ struct Identifier {
     
     public static let checkInLocalNotification = "Check In Remainder"
     public static let checkOutlocalNotification = "Check Out Remainder"
+    public static let snoozelocalNotification = "snooze"
+    public static let alarmCategoryNotification = "alarm.category"
     
     public static let checkInStartTime = 600
     public static let checkInLimitTime = 900
