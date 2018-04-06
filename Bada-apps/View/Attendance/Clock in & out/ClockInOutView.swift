@@ -59,8 +59,9 @@ class ClockInOutView: UIView {
     }
     
     @IBAction func clockInOutDidTap(_ sender: UIButton) {
-        let vc = parentViewController as! AttendanceViewController
-        vc.handleAttendance()
+        
+        tryingIdentifying()
+        
     }
     
 
@@ -71,7 +72,8 @@ class ClockInOutView: UIView {
             switch response {
             case .isSuccess:
                 DispatchQueue.main.async {
-               
+                    let vc = parentViewController as! AttendanceViewController
+                    vc.handleAttendance()
                 }
                 break
             case .notSupported:
