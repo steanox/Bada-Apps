@@ -72,7 +72,7 @@ class ClockInOutView: UIView {
             switch response {
             case .isSuccess:
                 DispatchQueue.main.async {
-                    let vc = parentViewController as! AttendanceViewController
+                    let vc = self.parentViewController as! AttendanceViewController
                     vc.handleAttendance()
                 }
                 break

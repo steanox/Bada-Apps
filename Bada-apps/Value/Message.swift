@@ -13,6 +13,11 @@ struct Message {
     public static let notInArea = "You’re not in the area"
     public static let finding = "Still Trying…"
     public static let inArea = "You’re in the area"
+    public static let attendance = "Attendance"
+    public static let news = "News"
+    public static let profile = "Profile"
+    
+    
     
 }
 

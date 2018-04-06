@@ -62,24 +62,24 @@ class AttendanceViewController: BaseController {
         }
         
         // setting up dragable history view controller
-        dragableHistoryView.translatesAutoresizingMaskIntoConstraints = false
-        
-        historyViewController = HistoryViewController()
-        historyViewController.attendanceViewController = self
-        historyViewController.transitioningDelegate = self
-        historyViewController.modalPresentationStyle = .fullScreen
-        
-        presentInteractor = MiniToLargeViewInteractive()
-        presentInteractor.attachToViewController(viewController: self, withView: dragableHistoryView, presentViewController: historyViewController)
-        dismissInteractor = MiniToLargeViewInteractive()
-        dismissInteractor.attachToViewController(viewController: historyViewController, withView: historyViewController.view, presentViewController: nil)
+//        dragableHistoryView.translatesAutoresizingMaskIntoConstraints = false
+//
+//        historyViewController = HistoryViewController()
+//        historyViewController.attendanceViewController = self
+//        historyViewController.transitioningDelegate = self
+//        historyViewController.modalPresentationStyle = .fullScreen
+//
+//        presentInteractor = MiniToLargeViewInteractive()
+//        presentInteractor.attachToViewController(viewController: self, withView: dragableHistoryView, presentViewController: historyViewController)
+//        dismissInteractor = MiniToLargeViewInteractive()
+//        dismissInteractor.attachToViewController(viewController: historyViewController, withView: historyViewController.view, presentViewController: nil)
         
     }
     
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        triggeringNotification()
+//        triggeringNotification()
         styleUI()
         self.navigationController?.navigationBar.isHidden = true
     }

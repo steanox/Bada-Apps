@@ -13,9 +13,10 @@ struct Color {
     public static let backgroundColor = 0xf7f7f7
     public static let dateClockInOut = 0x707070
     public static let beaconTextColor = 0x95989A
-    public static let attendanceImageColor = 0x07926d
+    public static let attendanceImageColor = 0x1C467B
     public static let historyImageColor = 0x02ce88
-    public static let newsImageColor = 0x024ece
+    public static let newsImageColor = 0x408EAE
+    public static let profileImageColor = 0x4EACC9
     
     
     public static let formColor = 0xA1A8AD

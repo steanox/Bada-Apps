@@ -26,9 +26,11 @@ class RootTabBarController: UITabBarController, UITabBarControllerDelegate {
         self.tabBar.clipsToBounds = true
         
         self.tabBar.items?[0].image = #imageLiteral(resourceName: "attendanceTabBarItem")
-        self.tabBar.items?[1].image = #imageLiteral(resourceName: "historyTabBarItem")
-        self.tabBar.items?[2].image = #imageLiteral(resourceName: "newsTabBarItem")
-        
+        self.tabBar.items?[0].title = Message.attendance
+        self.tabBar.items?[1].image = #imageLiteral(resourceName: "newsTabBarItem")
+        self.tabBar.items?[1].title = Message.news
+        self.tabBar.items?[2].image = #imageLiteral(resourceName: "profileTabBarItem")
+        self.tabBar.items?[2].title = Message.profile
         self.tabBar.tintColor = UIColor(rgb: Color.attendanceImageColor)
         
     }
@@ -37,10 +39,10 @@ class RootTabBarController: UITabBarController, UITabBarControllerDelegate {
         switch item.selectedImage {
         case #imageLiteral(resourceName: "attendanceTabBarItem")?:
             self.tabBar.tintColor = UIColor(rgb: Color.attendanceImageColor)
-        case #imageLiteral(resourceName: "historyTabBarItem")?:
-            self.tabBar.tintColor = UIColor(rgb: Color.historyImageColor)
         case #imageLiteral(resourceName: "newsTabBarItem")?:
             self.tabBar.tintColor = UIColor(rgb: Color.newsImageColor)
+        case #imageLiteral(resourceName: "profileTabBarItem")?:
+            self.tabBar.tintColor = UIColor(rgb: Color.profileImageColor)
         default:
             self.tabBar.tintColor = UIColor.brown
         }
