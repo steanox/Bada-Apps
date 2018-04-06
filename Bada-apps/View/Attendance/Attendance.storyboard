@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Dgl-1d-k1h">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Pb8-6M-SP5">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -19,25 +19,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="  " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="soQ-Yg-lgQ">
-                                <rect key="frame" x="27" y="250" width="320" height="32"/>
+                                <rect key="frame" x="27" y="245" width="320" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGj-kx-4lT">
-                                <rect key="frame" x="20" y="292" width="335" height="16"/>
+                                <rect key="frame" x="20" y="287" width="335" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dhG-eI-IzE" customClass="CoverageAreaView" customModule="Bada_apps" customModuleProvider="target">
-                                <rect key="frame" x="20" y="334" width="335" height="45"/>
+                                <rect key="frame" x="20" y="323" width="335" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="TopBackground" translatesAutoresizingMaskIntoConstraints="NO" id="otC-mn-iXb">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="TopBackground" translatesAutoresizingMaskIntoConstraints="NO" id="otC-mn-iXb">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -46,9 +46,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eF6-l9-Wuz" customClass="ClockInOutView" customModule="Bada_apps" customModuleProvider="target">
-                                <rect key="frame" x="20" y="394" width="335" height="280"/>
+                                <rect key="frame" x="20" y="378" width="335" height="280"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ALz-bB-VFq" customClass="DragableHistoryView" customModule="Bada_apps" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="693" width="375" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="tAv-XZ-nS4" appends="YES" id="9ps-Qb-IF6"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -59,42 +68,18 @@
                         <outlet property="clockInOutView" destination="eF6-l9-Wuz" id="7w5-mo-91p"/>
                         <outlet property="coverageAreaView" destination="dhG-eI-IzE" id="u22-Ky-kwz"/>
                         <outlet property="currentDateLabel" destination="wGj-kx-4lT" id="r61-Aa-Wat"/>
+                        <outlet property="dragableHistoryView" destination="ALz-bB-VFq" id="Y4g-dn-gAB"/>
                         <outlet property="nameLabel" destination="soQ-Yg-lgQ" id="rgj-sL-efR"/>
-                        <segue destination="F8y-7Y-G92" kind="show" identifier="toHistory" id="Gzd-u8-UaQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rgc-bQ-M8m" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2121" y="-202"/>
-        </scene>
-        <!--History-->
-        <scene sceneID="0FN-lI-oae">
-            <objects>
-                <viewControllerPlaceholder storyboardName="History" id="F8y-7Y-G92" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="lle-eK-i2f"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="89j-ZI-f7k" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2706.4000000000001" y="-202.46305418719211"/>
-        </scene>
-        <!--Attendance-->
-        <scene sceneID="duv-8A-q9u">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Dgl-1d-k1h" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Attendance" id="Daf-oJ-v3t"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="SVz-eQ-1ho">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
+                <tapGestureRecognizer id="tAv-XZ-nS4" userLabel="Tap toHistory">
                     <connections>
-                        <segue destination="Pb8-6M-SP5" kind="relationship" relationship="rootViewController" id="zgY-pY-O5j"/>
+                        <action selector="dragableHistoryDidTap" destination="Pb8-6M-SP5" id="4Dw-ao-4z7"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7uP-l2-49f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1284" y="-202"/>
+            <point key="canvasLocation" x="2120.8000000000002" y="-202.46305418719211"/>
         </scene>
     </scenes>
     <resources>

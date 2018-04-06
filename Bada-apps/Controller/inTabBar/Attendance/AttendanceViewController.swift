@@ -22,6 +22,12 @@ class AttendanceViewController: BaseController {
     
     var attendance: Attendance?
 
+    // setting up dragable history view controller
+    var disableInteractivePlayerTransitioning = false
+    @IBOutlet weak var dragableHistoryView: DragableHistoryView!
+    var historyViewController: HistoryViewController!
+    var presentInteractor: MiniToLargeViewInteractive!
+    var dismissInteractor: MiniToLargeViewInteractive!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,9 +35,7 @@ class AttendanceViewController: BaseController {
         startActivityIndicator()
         askNotificationAuthorization()
         
-        
-
-        
+    
         Attendance.observeForStatus { (status) in
             switch status {
             case ._notYet:
@@ -56,6 +60,20 @@ class AttendanceViewController: BaseController {
                 print("done")
             }
         }
+        
+        // setting up dragable history view controller
+        dragableHistoryView.translatesAutoresizingMaskIntoConstraints = false
+        
+        historyViewController = HistoryViewController()
+        historyViewController.attendanceViewController = self
+        historyViewController.transitioningDelegate = self
+        historyViewController.modalPresentationStyle = .fullScreen
+        
+        presentInteractor = MiniToLargeViewInteractive()
+        presentInteractor.attachToViewController(viewController: self, withView: dragableHistoryView, presentViewController: historyViewController)
+        dismissInteractor = MiniToLargeViewInteractive()
+        dismissInteractor.attachToViewController(viewController: historyViewController, withView: historyViewController.view, presentViewController: nil)
+        
     }
     
 
@@ -237,7 +255,7 @@ extension AttendanceViewController: UNUserNotificationCenterDelegate {
         
         let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 5.0, repeats: false)
         let request = UNNotificationRequest(identifier: Identifier.checkInLocalNotification, content: self.content!, trigger: trigger)
-        UNUserNotificationCenter.current().add(request){(error) in
+        UNUserNotificationCenter.current().add(request) {(error) in
             if (error != nil){
                 print(error?.localizedDescription as Any)
             }
@@ -256,6 +274,42 @@ extension AttendanceViewController: UNUserNotificationCenterDelegate {
         
         let alarmCategory = UNNotificationCategory(identifier: Identifier.alarmCategoryNotification,actions: [snoozeAction, clockInOutAction], intentIdentifiers: [], options: [])
         UNUserNotificationCenter.current().setNotificationCategories([alarmCategory])
+    }
+    
+}
+
+extension AttendanceViewController: UIViewControllerTransitioningDelegate {
+    
+    @IBAction func dragableHistoryDidTap() {
+        disableInteractivePlayerTransitioning = true
+        self.present(historyViewController, animated: true) { [unowned self] in
+            self.disableInteractivePlayerTransitioning = false
+        }
+    }
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let animator = MiniToLargeViewAnimator()
+        animator.initialY = dragableHistoryView.frame.size.height
+        animator.transitionType = .present
+        return animator
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let animator = MiniToLargeViewAnimator()
+        animator.initialY = dragableHistoryView.frame.size.height
+        animator.transitionType = .dismiss
+        return animator
+    }
+    
+    
+    func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        guard !disableInteractivePlayerTransitioning else { return nil }
+        return presentInteractor
+    }
+    
+    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        guard !disableInteractivePlayerTransitioning else { return nil }
+        return dismissInteractor
     }
     
 }

@@ -56,9 +56,14 @@
 		55A5899D2051240300266380 /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A5899C2051240300266380 /* NotesView.swift */; };
 		55A589A1205135AE00266380 /* Responder+byPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A589A0205135AE00266380 /* Responder+byPass.swift */; };
 		55AA78932057F2CE00FE07F0 /* NetworkProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AA78922057F2CE00FE07F0 /* NetworkProcessor.swift */; };
+		55AFAB05205B72BF003AF3EF /* MiniToLargeViewAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AFAB04205B72BF003AF3EF /* MiniToLargeViewAnimator.swift */; };
+		55AFAB07205B7318003AF3EF /* MiniToLargeViewInteractive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AFAB06205B7318003AF3EF /* MiniToLargeViewInteractive.swift */; };
+		55AFAB0B205B74D0003AF3EF /* DragableHistoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55AFAB0A205B74D0003AF3EF /* DragableHistoryView.xib */; };
+		55AFAB0D205B761D003AF3EF /* DragableHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AFAB0C205B761D003AF3EF /* DragableHistoryView.swift */; };
 		55BF52992057FB0600AA1C87 /* BDDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BF52982057FB0600AA1C87 /* BDDate.swift */; };
 		55BF529F2058FD9100AA1C87 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55BF529E2058FD9100AA1C87 /* Account.storyboard */; };
 		55BF52A22058FE9900AA1C87 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BF52A12058FE9900AA1C87 /* AccountViewController.swift */; };
+		55BF52A4205B684200AA1C87 /* BaseAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BF52A3205B684200AA1C87 /* BaseAnimator.swift */; };
 		CB425E7B4D3ED9A3D74BB1B4 /* Pods_Bada_apps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB4F00DB43031080465883FF /* Pods_Bada_apps.framework */; };
 /* End PBXBuildFile section */
 
@@ -114,9 +119,14 @@
 		55A5899C2051240300266380 /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
 		55A589A0205135AE00266380 /* Responder+byPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Responder+byPass.swift"; sourceTree = "<group>"; };
 		55AA78922057F2CE00FE07F0 /* NetworkProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkProcessor.swift; sourceTree = "<group>"; };
+		55AFAB04205B72BF003AF3EF /* MiniToLargeViewAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniToLargeViewAnimator.swift; sourceTree = "<group>"; };
+		55AFAB06205B7318003AF3EF /* MiniToLargeViewInteractive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniToLargeViewInteractive.swift; sourceTree = "<group>"; };
+		55AFAB0A205B74D0003AF3EF /* DragableHistoryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DragableHistoryView.xib; sourceTree = "<group>"; };
+		55AFAB0C205B761D003AF3EF /* DragableHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragableHistoryView.swift; sourceTree = "<group>"; };
 		55BF52982057FB0600AA1C87 /* BDDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BDDate.swift; sourceTree = "<group>"; };
 		55BF529E2058FD9100AA1C87 /* Account.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
 		55BF52A12058FE9900AA1C87 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		55BF52A3205B684200AA1C87 /* BaseAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAnimator.swift; sourceTree = "<group>"; };
 		6A9B1A48B702F6F6A79A6D61 /* Pods-Bada-apps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bada-apps.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bada-apps/Pods-Bada-apps.debug.xcconfig"; sourceTree = "<group>"; };
 		BB4F00DB43031080465883FF /* Pods_Bada_apps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bada_apps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F90989D1879C53958F9B2920 /* Pods-Bada-apps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bada-apps.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bada-apps/Pods-Bada-apps.release.xcconfig"; sourceTree = "<group>"; };
@@ -256,6 +266,8 @@
 		5509CB0D204FCE0A00A87E88 /* History */ = {
 			isa = PBXGroup;
 			children = (
+				55AFAB09205B748E003AF3EF /* DragableHistory */,
+				55BF52A5205B684800AA1C87 /* Animation */,
 				5509CB0E204FCE0A00A87E88 /* History.storyboard */,
 			);
 			path = History;
@@ -373,6 +385,15 @@
 			path = Notes;
 			sourceTree = "<group>";
 		};
+		55AFAB09205B748E003AF3EF /* DragableHistory */ = {
+			isa = PBXGroup;
+			children = (
+				55AFAB0A205B74D0003AF3EF /* DragableHistoryView.xib */,
+				55AFAB0C205B761D003AF3EF /* DragableHistoryView.swift */,
+			);
+			path = DragableHistory;
+			sourceTree = "<group>";
+		};
 		55BF529D2058FC3200AA1C87 /* Account */ = {
 			isa = PBXGroup;
 			children = (
@@ -387,6 +408,16 @@
 				55BF52A12058FE9900AA1C87 /* AccountViewController.swift */,
 			);
 			path = Account;
+			sourceTree = "<group>";
+		};
+		55BF52A5205B684800AA1C87 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				55BF52A3205B684200AA1C87 /* BaseAnimator.swift */,
+				55AFAB04205B72BF003AF3EF /* MiniToLargeViewAnimator.swift */,
+				55AFAB06205B7318003AF3EF /* MiniToLargeViewInteractive.swift */,
+			);
+			path = Animation;
 			sourceTree = "<group>";
 		};
 		FAECD7D7CFBA22B8D7A3AE0E /* Frameworks */ = {
@@ -411,7 +442,8 @@
 				016A5D81204F90A200F99270 /* Resources */,
 				6625BC4A1C62453F3DDBBA69 /* [CP] Embed Pods Frameworks */,
 				C07868E8DC51C7C76E3611DC /* [CP] Copy Pods Resources */,
-				55A5898D2050EE4900266380 /* ShellScript */,
+				55A5898D2050EE4900266380 /* Carthage Encryption */,
+				55B558112064A6C200D9B035 /* SwiftLint Script */,
 			);
 			buildRules = (
 			);
@@ -468,6 +500,7 @@
 				5509CB14204FCE0A00A87E88 /* History.storyboard in Resources */,
 				016A5D8E204F90A200F99270 /* Assets.xcassets in Resources */,
 				55A5899B20511EE500266380 /* NotesView.xib in Resources */,
+				55AFAB0B205B74D0003AF3EF /* DragableHistoryView.xib in Resources */,
 				55BF529F2058FD9100AA1C87 /* Account.storyboard in Resources */,
 				5509CB0F204FCE0A00A87E88 /* CoverageAreaView.xib in Resources */,
 				01E8C03B204F914B003BF95C /* README.md in Resources */,
@@ -500,7 +533,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		55A5898D2050EE4900266380 /* ShellScript */ = {
+		55A5898D2050EE4900266380 /* Carthage Encryption */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -508,11 +541,26 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/CommonCrypto.framework",
 			);
+			name = "Carthage Encryption";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		55B558112064A6C200D9B035 /* SwiftLint Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "SwiftLint Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
 		};
 		6625BC4A1C62453F3DDBBA69 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -560,14 +608,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55AFAB07205B7318003AF3EF /* MiniToLargeViewInteractive.swift in Sources */,
 				55A589A1205135AE00266380 /* Responder+byPass.swift in Sources */,
 				55A589942050F23700266380 /* TripleDesEncryptor.swift in Sources */,
 				55A589902050F1D600266380 /* Encryption.swift in Sources */,
 				014350D720503DD600512602 /* Attendance.swift in Sources */,
 				5509CB28204FCE4F00A87E88 /* LoginViewController.swift in Sources */,
+				55AFAB05205B72BF003AF3EF /* MiniToLargeViewAnimator.swift in Sources */,
 				014350DD2050420300512602 /* NotificationView.swift in Sources */,
+				55BF52A4205B684200AA1C87 /* BaseAnimator.swift in Sources */,
 				55AA78932057F2CE00FE07F0 /* NetworkProcessor.swift in Sources */,
 				010BA034205128B7001F8D44 /* Toolbar.swift in Sources */,
+				55AFAB0D205B761D003AF3EF /* DragableHistoryView.swift in Sources */,
 				016A5D89204F90A200F99270 /* ViewController.swift in Sources */,
 				5509CB36204FCF1800A87E88 /* Beacon.swift in Sources */,
 				5509CB3F2050158300A87E88 /* ClockInOutView.swift in Sources */,
@@ -734,7 +786,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZK45DE64XX;
+				DEVELOPMENT_TEAM = C89FEC543S;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -755,7 +807,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZK45DE64XX;
+				DEVELOPMENT_TEAM = C89FEC543S;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",

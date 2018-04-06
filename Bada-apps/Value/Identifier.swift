@@ -15,6 +15,7 @@ struct Identifier {
     
     public static let coverageArea = "CoverageAreaView"
     public static let clockInOut = "ClockInOutView"
+    public static let dragableHistory = "DragableHistoryView"
     
     public static let notification = "Notification"
     public static let notes = "NotesView"

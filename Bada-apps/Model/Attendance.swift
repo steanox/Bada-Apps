@@ -211,18 +211,21 @@ class Attendance{
             
             print(snapshot)
             
-            if snapshot.value == nil{
+            if snapshot.value == nil {
                 onResponse(._notYet)
             }
-            
+            else
             if snapshot.key == "checkInTime"{
                 
                 onResponse(._in)
             }
-            
+            else
             if snapshot.key == "checkOutTime"{
                
                 onResponse(._out)
+            }
+            else {
+                onResponse(._notYet)
             }
             
         }) { (error) in
