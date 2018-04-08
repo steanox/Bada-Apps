@@ -17,10 +17,11 @@ enum Status{
 
 enum AttendanceType{
     case notEligibleTime
+    case checkIn
     case late
     case earlyLeave
     case notCheckIn
-    case checkIn
+    
     case checkOut
     case error
 
@@ -101,7 +102,8 @@ class Attendance{
                             self?.delegate?.attendanceFailed(error: error )
                             return
                         }
-                        checkInStatus.setObject("checkIn" as AnyObject, forKey: (self?.dateID)! as AnyObject)
+                        
+                        lastCheckIn.setObject((self?.time)! as AnyObject, forKey: (self?.dateID)! as AnyObject)
                         
                         self?.delegate?.attendanceSuccess()
                         
@@ -119,7 +121,7 @@ class Attendance{
      func checkStatus()-> AttendanceType{
         let dateComponent = Calendar.current.dateComponents(in: TimeZone.current, from: Date())
         
-        if let data = checkInStatus.object(forKey: dateID! as AnyObject){
+        if let data = lastCheckIn.object(forKey: dateID! as AnyObject){
                 print("already check In")
             print(data)
         }else{
@@ -146,9 +148,18 @@ class Attendance{
             print("you already check In")
             if  currentTime < Identifier.checkOutTime{
                 return .earlyLeave
-            }else{
-                return .checkOut
             }
+            else{
+                
+                if isCheckOut(){
+                    return .notEligibleTime
+                }else{
+                   return .checkOut
+                }
+                
+            }
+            
+            
         }else{
             return .notCheckIn
         }
@@ -178,6 +189,9 @@ class Attendance{
                             self?.delegate?.attendanceFailed(error: error)
                             return
                         }
+                        
+                        lastCheckOut.setObject(self?.time as AnyObject, forKey: (self?.dateID)! as AnyObject)
+                        
                         self?.delegate?.attendanceSuccess()
                     })
                 }
@@ -235,7 +249,15 @@ class Attendance{
     }
     
     private func isCheckIn()->Bool{
-        if let _ = checkInStatus.object(forKey: self.dateID! as AnyObject){
+        if let _ = lastCheckIn.object(forKey: self.dateID! as AnyObject){
+            return true
+        }else{
+            return false
+        }
+    }
+    
+    private func isCheckOut()->Bool{
+        if let _ = lastCheckOut.object(forKey: self.dateID! as AnyObject){
             return true
         }else{
             return false
@@ -245,10 +267,10 @@ class Attendance{
     private func updateTime(){
         dateComponent = Calendar.current.dateComponents(in: TimeZone.current, from: Date())
     }
-    
-    
-    
-    
-    
+
+    static func getDateID() -> String? {
+        let dateComponent = Calendar.current.dateComponents(in: TimeZone.current, from: Date())
+        return "\(dateComponent.year!)\(dateComponent.month!)\(dateComponent.day!)"
+    }
     
 }

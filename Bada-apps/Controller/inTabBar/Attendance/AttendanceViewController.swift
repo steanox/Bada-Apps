@@ -35,7 +35,6 @@ class AttendanceViewController: BaseController {
         startActivityIndicator()
         askNotificationAuthorization()
         
-    
         Attendance.observeForStatus { (status) in
             switch status {
             case ._notYet:
@@ -43,17 +42,31 @@ class AttendanceViewController: BaseController {
                 self.stopActivityIndicator()
                 self.clockInOutView.clockStatus = status
                 self.clockInOutView.clockInOutButton.setImage(#imageLiteral(resourceName: "clockInButton"), for: UIControlState.normal)
+                self.clockInOutView.clockInOutTitleLabel.text = "Last Clock Out"
+                self.clockInOutView.clockInOutTitleLabel.textColor = UIColor.init(rgb: Color.clockOutColor)
+                guard let lastCheckOut = lastCheckOut.object(forKey: Attendance.getDateID() as AnyObject) else {return}
+                self.clockInOutView.dateLabel.text = lastCheckOut as? String
+                self.clockInOutView.dateLabel.textColor = UIColor.init(rgb: Color.clockOutColor)
             case ._in:
                 self.clockInOutView.isHidden = false
                 self.stopActivityIndicator()
                 self.clockInOutView.clockStatus = status
                 self.clockInOutView.clockInOutButton.setImage(#imageLiteral(resourceName: "clockOutButton"), for: UIControlState.normal)
+                self.clockInOutView.clockInOutTitleLabel.text = "Last Clock In"
+                self.clockInOutView.clockInOutTitleLabel.textColor = UIColor.init(rgb: Color.clockInColor)
+                guard let lastCheckIn = lastCheckOut.object(forKey: Attendance.getDateID() as AnyObject) else {return}
+                self.clockInOutView.dateLabel.text = lastCheckIn as? String
+                self.clockInOutView.dateLabel.textColor = UIColor.init(rgb: Color.clockOutColor)
             case ._out:
                 self.stopActivityIndicator()
                 self.clockInOutView.isHidden = false
                 self.clockInOutView.clockStatus = status
                 self.clockInOutView.clockInOutButton.setImage(#imageLiteral(resourceName: "Beacon-NotDetected"), for: UIControlState.normal)
                 self.clockInOutView.clockInOutButton.isUserInteractionEnabled = false
+                self.clockInOutView.clockInOutTitleLabel.textColor = UIColor.init(rgb: Color.clockInColor)
+                guard let lastCheckIn = lastCheckOut.object(forKey: Attendance.getDateID() as AnyObject) else {return}
+                self.clockInOutView.dateLabel.text = lastCheckIn as? String
+                self.clockInOutView.dateLabel.textColor = UIColor.init(rgb: Color.clockOutColor)
             case ._done:
                 self.clockInOutView.isHidden = false
                 self.stopActivityIndicator()
