@@ -93,6 +93,8 @@ class Attendance{
             self.ref.child("attendance/\(self.dateID!)/\(self.userID!)").observeSingleEvent(of: .value) { (snapshot) in
                 
                 //check if user already check in or not
+                print("hello")
+                print(snapshot.hasChild("checkOutTime"))
                 if !snapshot.hasChild("checkInTime") && !snapshot.hasChild("checkOutTime"){
                     snapshot.ref.setValue(data, withCompletionBlock: {[weak self] (error, currentRef) in
                         self?.delegate?.attendanceRemoveProgress()
@@ -104,13 +106,13 @@ class Attendance{
                         }
                         
                         lastCheckIn.setObject((self?.time)! as AnyObject, forKey: (self?.dateID)! as AnyObject)
-                        
+ 
                         self?.delegate?.attendanceSuccess()
                         
                     })
                 }else{
                     self.delegate?.attendanceRemoveProgress()
-                    self.delegate?.attendanceFailed(error: "You cannot attend again for today")
+                    self.delegate?.attendanceFailed(error: "You cannot check in again for today")
                 }
                 
             }
@@ -192,8 +194,12 @@ class Attendance{
                         
                         lastCheckOut.setObject(self?.time as AnyObject, forKey: (self?.dateID)! as AnyObject)
                         
+
                         self?.delegate?.attendanceSuccess()
                     })
+                }else{
+                    self.delegate?.attendanceRemoveProgress()
+                    self.delegate?.attendanceFailed(error: "You cannot check out again for today")
                 }
                 
             }
@@ -222,19 +228,18 @@ class Attendance{
         let dateID = "\(dateComponent.year!)\(dateComponent.month!)\(dateComponent.day!)"
 
         Database.database().reference().child("attendance/\(dateID)/\(userID)").observe(.value, with: { (snapshot) in
-            
-            print(snapshot)
-            
+    
+       
             if snapshot.value == nil {
                 onResponse(._notYet)
             }
             else
-            if snapshot.key == "checkInTime"{
+            if snapshot.hasChild("checkInTime") && !snapshot.hasChild("checkOutTime") {
                 
                 onResponse(._in)
             }
             else
-            if snapshot.key == "checkOutTime"{
+            if snapshot.hasChild("checkOutTime") && snapshot.hasChild("checkInTime"){
                
                 onResponse(._out)
             }
@@ -243,7 +248,7 @@ class Attendance{
             }
             
         }) { (error) in
-            print(error)
+         
         }
         
     }
