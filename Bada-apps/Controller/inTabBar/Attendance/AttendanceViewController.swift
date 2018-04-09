@@ -84,7 +84,7 @@ class AttendanceViewController: BaseController {
                 self.stopActivityIndicator()
                 self.clockInOutView.isHidden = false
                 self.clockInOutView.clockStatus = status
-                self.clockInOutView.clockInOutButton.setImage(#imageLiteral(resourceName: "Beacon-NotDetected"), for: UIControlState.normal)
+                self.clockInOutView.clockInOutButton.setImage(#imageLiteral(resourceName: "clockOutButton"), for: UIControlState.normal)
                 self.clockInOutView.clockInOutButton.isUserInteractionEnabled = false
                 self.clockInOutView.clockInOutTitleLabel.textColor = UIColor.init(rgb: Color.clockInColor)
                 self.clockInOutView.clockInOutTitleLabel.text = "Last Clock out"
