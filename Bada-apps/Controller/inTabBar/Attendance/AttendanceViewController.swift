@@ -35,6 +35,14 @@ class AttendanceViewController: BaseController {
         startActivityIndicator()
         askNotificationAuthorization()
         
+        do {
+            let tripleDesEnc = TripleDesEncryptor()
+            let data = "handy.kwok@gmail.com".data(using:String.Encoding.utf8)!
+            let mailData = try tripleDesEnc.encrypt(data: data)
+            print(mailData)
+        } catch let e {
+            print(e.localizedDescription)
+        }
         
         
         

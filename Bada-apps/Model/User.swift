@@ -62,12 +62,14 @@ class User{
         
         do{
             let tripleDesEnc = TripleDesEncryptor()
-            let mailData = try tripleDesEnc.encrypt(data: appleID.toData()!) as NSData
+            let data = appleID.data(using:String.Encoding.utf8)!
+            let mailData = try tripleDesEnc.encrypt(data: data) as NSData
             Database.database().reference().child("checkUser").observeSingleEvent(of: .value) { (snapshot) in
                 
                 //check if the inputted appleID is exists on the checkUser node
-                if snapshot.hasChild(mailData.toHexString!){
-                    snapshot.ref.child(mailData.toHexString!).observeSingleEvent(of: .value, with: { (userSnapshot) in
+                guard let myMailData = mailData.toHexString else {return}
+                if snapshot.hasChild("\(myMailData)"){
+                    snapshot.ref.child("\(myMailData)").observeSingleEvent(of: .value, with: { (userSnapshot) in
                         
                         
                         guard let data = userSnapshot.value as? [String:String] else { return }
@@ -76,7 +78,7 @@ class User{
                         if dateOfBirth == dateData{
                             
         
-                            let password = String(mailData.toHexString!.prefix(10))
+                            let password = String("\(myMailData)".prefix(10))
                             Auth.auth().createUser(withEmail: appleID, password: password) { (user, error) in
                                 if error != nil{
                                     onError(error!)
