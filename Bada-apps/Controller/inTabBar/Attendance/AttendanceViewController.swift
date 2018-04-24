@@ -35,14 +35,14 @@ class AttendanceViewController: BaseController {
         startActivityIndicator()
         askNotificationAuthorization()
         
-        do {
-            let tripleDesEnc = TripleDesEncryptor()
-            let data = "handy.kwok@gmail.com".data(using:String.Encoding.utf8)!
-            let mailData = try tripleDesEnc.encrypt(data: data)
-            print(mailData)
-        } catch let e {
-            print(e.localizedDescription)
-        }
+//        do {
+//            let tripleDesEnc = TripleDesEncryptor()
+//            let data = "muhammads0707@gmail.com".data(using:String.Encoding.utf8)!
+//            let mailData = try tripleDesEnc.encrypt(data: data) as? NSData
+//            print(mailData?.toHexString)
+//        } catch let e {
+//            print(e.localizedDescription)
+//        }
         
         
         
@@ -306,10 +306,18 @@ extension AttendanceViewController: UNUserNotificationCenterDelegate {
 extension AttendanceViewController: UIViewControllerTransitioningDelegate {
     
     @IBAction func dragableHistoryDidTap() {
-        disableInteractivePlayerTransitioning = true
-        self.present(historyViewController, animated: true) { [unowned self] in
-            self.disableInteractivePlayerTransitioning = false
-        }
+//        disableInteractivePlayerTransitioning = true
+//        self.present(historyViewController, animated: true) { [unowned self] in
+//            self.disableInteractivePlayerTransitioning = false
+//        }
+        
+        let infoText: [String] = [
+            "We really appriciate your curiousity 😇, Too bad this feature hasn't come up.",
+            "You'll be surprised when this feature come up, just wait for it 😏",
+            "Oopss.... You are on the wrong section, please come back in a few moments probably"
+        ]
+    
+        self.view.showNotification(title: "Sorry..", description: infoText[Int(arc4random_uniform(3))], buttonText: "Close", onSuccess: nil)
     }
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
