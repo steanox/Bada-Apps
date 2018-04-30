@@ -51,7 +51,17 @@ class Attendance{
     var dateComponent: DateComponents!{
         didSet{
             self.time = "\(dateComponent.hour!):\(dateComponent.minute!):\(dateComponent.second!)"
-            self.dateID = "\(dateComponent.year!)\(dateComponent.month!)\(dateComponent.day!)"
+            
+            
+            let formatter = DateFormatter()
+            let calendar = Calendar(identifier: .gregorian)
+            guard let date = calendar.date(from: dateComponent) else { return }
+            formatter.dateFormat = "yyyyMMdd"
+            
+           
+            self.dateID = formatter.string(from: date)
+            
+            //self.dateID = "\(dateComponent.year!)\(dateComponent.month!)\(dateComponent.day!)"
         }
     }
     
@@ -225,7 +235,13 @@ class Attendance{
     static func observeForStatus(onResponse: @escaping (ClockStatus)->()){
         let userID = (Auth.auth().currentUser?.uid)!
         let dateComponent = Calendar.current.dateComponents(in: TimeZone.current, from: Date())
-        let dateID = "\(dateComponent.year!)\(dateComponent.month!)\(dateComponent.day!)"
+        
+        let formatter = DateFormatter()
+        let calendar = Calendar(identifier: .gregorian)
+        guard let date = calendar.date(from: dateComponent) else { return }
+        formatter.dateFormat = "yyyyMMdd"
+        
+        let dateID = formatter.string(from: date)
 
         Database.database().reference().child("attendance/\(dateID)/\(userID)").observe(.value, with: { (snapshot) in
     
@@ -270,6 +286,7 @@ class Attendance{
     }
     
     private func updateTime(){
+        
         dateComponent = Calendar.current.dateComponents(in: TimeZone.current, from: Date())
     }
 
