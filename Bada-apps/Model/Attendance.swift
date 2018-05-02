@@ -103,8 +103,7 @@ class Attendance{
             self.ref.child("attendance/\(self.dateID!)/\(self.userID!)").observeSingleEvent(of: .value) { (snapshot) in
                 
                 //check if user already check in or not
-                print("hello")
-                print(snapshot.hasChild("checkOutTime"))
+
                 if !snapshot.hasChild("checkInTime") && !snapshot.hasChild("checkOutTime"){
                     snapshot.ref.setValue(data, withCompletionBlock: {[weak self] (error, currentRef) in
                         self?.delegate?.attendanceRemoveProgress()
@@ -141,16 +140,17 @@ class Attendance{
         }
         
         let minute = (String(dateComponent.minute!).count < 2) ? "0\(dateComponent.minute!)" : "\(dateComponent.minute!)"
+        let hour = (String(dateComponent.hour!).count < 2) ? "0\(dateComponent.hour!)" : "\(dateComponent.hour!)"
         
         
         
         
-       guard let currentTime = Int("\(dateComponent.hour!)\(minute)") else {return AttendanceType.error}
+       guard let currentTime = Int("\(hour)\(minute)") else {return AttendanceType.error}
         print("current time: \(currentTime)")
         if currentTime < Identifier.checkInStartTime{
             return .notEligibleTime
         }else
-        if currentTime > Identifier.checkInStartTime && currentTime < Identifier.checkInLimitTime{
+        if currentTime > Identifier.checkInStartTime && currentTime < Identifier.checkInLimitTime && !isCheckIn(){
             return .checkIn
         }else
         if currentTime > Identifier.checkInLimitTime && !isCheckIn(){

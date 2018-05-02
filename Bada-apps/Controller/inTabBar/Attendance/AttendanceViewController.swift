@@ -68,6 +68,8 @@ class AttendanceViewController: BaseController {
 //        triggeringNotification()
         styleUI()
         
+        
+        
         Attendance.observeForStatus { (status) in
             switch status {
             case ._notYet:
@@ -140,6 +142,8 @@ class AttendanceViewController: BaseController {
         
    
         if let distance = coverageAreaView.distanceToBeacon, let status = attendance?.status{
+            
+            print("Status: \(status)")
             switch distance {
             case .near , .immediate:
                 
