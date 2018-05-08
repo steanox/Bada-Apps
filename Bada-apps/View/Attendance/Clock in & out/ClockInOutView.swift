@@ -60,6 +60,8 @@ class ClockInOutView: UIView {
     
     @IBAction func clockInOutDidTap(_ sender: UIButton) {
         
+        
+        
         tryingIdentifying()
         
     }
@@ -71,10 +73,10 @@ class ClockInOutView: UIView {
         faceId.identifiyingFaceID { (response) in
             switch response {
             case .isSuccess:
-                DispatchQueue.main.async {
+                
                     let vc = self.parentViewController as! AttendanceViewController
                     vc.handleAttendance()
-                }
+                
                 break
             case .notSupported:
                 break

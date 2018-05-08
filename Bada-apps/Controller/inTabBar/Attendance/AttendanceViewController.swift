@@ -11,7 +11,8 @@ import CoreLocation
 import UserNotifications
 import UserNotificationsUI
 
-class AttendanceViewController: BaseController {
+
+class AttendanceViewController: BaseController, UIApplicationDelegate {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var currentDateLabel: UILabel!
@@ -29,11 +30,20 @@ class AttendanceViewController: BaseController {
     var presentInteractor: MiniToLargeViewInteractive!
     var dismissInteractor: MiniToLargeViewInteractive!
     
+    
+    
+    
+    
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+ 
         clockInOutView.isHidden = true
         startActivityIndicator()
         askNotificationAuthorization()
+        NotificationCenter.default.addObserver(self, selector: #selector(observeStatusAndText), name: Notification.Name.UIApplicationWillEnterForeground, object: nil)
         
 //        do {
 //            let tripleDesEnc = TripleDesEncryptor()
@@ -63,13 +73,22 @@ class AttendanceViewController: BaseController {
     }
     
 
+    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
 //        triggeringNotification()
-        styleUI()
         
         
         
+
+        statusObserver()
+        
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    func statusObserver(){
         Attendance.observeForStatus { (status) in
             switch status {
             case ._notYet:
@@ -89,15 +108,15 @@ class AttendanceViewController: BaseController {
                 self.clockInOutView.clockInOutButton.setImage(#imageLiteral(resourceName: "clockOutButton"), for: UIControlState.normal)
                 self.clockInOutView.clockInOutTitleLabel.text = "Last Clock In"
                 self.clockInOutView.clockInOutTitleLabel.textColor = UIColor.init(rgb: Color.clockInColor)
-           
+                
                 self.clockInOutView.clockInOutButton.isUserInteractionEnabled = true
                 self.clockInOutView.dateLabel.textColor = UIColor.init(rgb: Color.clockOutColor)
             case ._out:
                 self.stopActivityIndicator()
                 self.clockInOutView.isHidden = false
                 self.clockInOutView.clockStatus = status
-                    self.clockInOutView.clockInOutButton.setImage(#imageLiteral(resourceName: "button_Grey"), for: UIControlState.normal)
-                    self.clockInOutView.clockInOutButton.isUserInteractionEnabled = false
+                self.clockInOutView.clockInOutButton.setImage(#imageLiteral(resourceName: "button_Grey"), for: UIControlState.normal)
+                self.clockInOutView.clockInOutButton.isUserInteractionEnabled = false
                 self.clockInOutView.clockInOutTitleLabel.textColor = UIColor.init(rgb: Color.clockInColor)
                 self.clockInOutView.clockInOutTitleLabel.text = "Last Clock out"
                 
@@ -107,13 +126,17 @@ class AttendanceViewController: BaseController {
                 self.stopActivityIndicator()
             }
         }
+    }
+    
+    @objc func observeStatusAndText(){
+        styleUI()
+        statusObserver()
         
-        self.navigationController?.navigationBar.isHidden = true
     }
     
     override func styleUI() {
         super.styleUI()
-        
+
         User.getUser().getName { (name) in
             guard let name = name else {return}
             self.nameLabel.text = name
@@ -143,42 +166,43 @@ class AttendanceViewController: BaseController {
    
         if let distance = coverageAreaView.distanceToBeacon, let status = attendance?.status{
             
-            print("Status: \(status)")
-            switch distance {
-            case .near , .immediate:
-                
-                switch status {
-                case .checkIn:
-                    attendance?.performCheckIn()
-                case .checkOut:
-                    attendance?.performCheckOut()
-                case .late:
-                    getTabBarController()?.view.showNote(title: "Late Notes",source: self)
-                case .earlyLeave:
-                    getTabBarController()?.view.showNote(title: "Early Leave Notes",source: self)
-                case .notEligibleTime:
-                    view.showNotification(title: "Failed", description: "You only can attend at 6.00 AM", buttonText: "close", onSuccess: {
+            DispatchQueue.main.async {
+                switch distance {
+                case .near , .immediate:
+                    
+                    switch status {
+                    case .checkIn:
+                        self.attendance?.performCheckIn()
+                    case .checkOut:
+                        self.attendance?.performCheckOut()
+                    case .late:
+                        self.getTabBarController()?.view.showNote(title: "Late Notes",source: self)
+                    case .earlyLeave:
+                        self.getTabBarController()?.view.showNote(title: "Early Leave Notes",source: self)
+                    case .notEligibleTime:
+                        self.view.showNotification(title: "Failed", description: "You only can attend at 6.00 AM", buttonText: "close", onSuccess: {
+                            self.tabBarController?.tabBar.isHidden = false
+                        })
+                    case .error:
+                        self.view.showNotification(title: "Failed", description: "Something went wrong", buttonText: "close", onSuccess: {
+                            self.tabBarController?.tabBar.isHidden = false
+                        })
+                    case .notCheckIn:
+                        self.view.showNotification(title: "Failed", description: "You have to check in First", buttonText: "close", onSuccess: {
+                            self.tabBarController?.tabBar.isHidden = false
+                        })
+                    }
+
+                case .far:
+                    self.view.showNotification(title: "Failed", description: "Please move a little closer", buttonText: "close", onSuccess: {
                         self.tabBarController?.tabBar.isHidden = false
                     })
-                case .error:
-                    view.showNotification(title: "Failed", description: "Something went wrong", buttonText: "close", onSuccess: {
-                        self.tabBarController?.tabBar.isHidden = false
-                    })
-                case .notCheckIn:
-                    view.showNotification(title: "Failed", description: "You have to check in First", buttonText: "close", onSuccess: {
+                case .unknown:
+                    self.view.showNotification(title: "Failed", description: "You cannot attend here", buttonText: "close", onSuccess: {
                         self.tabBarController?.tabBar.isHidden = false
                     })
                 }
-
-            case .far:
-                view.showNotification(title: "Failed", description: "Please move a little closer", buttonText: "close", onSuccess: {
-                    self.tabBarController?.tabBar.isHidden = false
-                })
-            case .unknown:
-                view.showNotification(title: "Failed", description: "You cannot attend here", buttonText: "close", onSuccess: {
-                    self.tabBarController?.tabBar.isHidden = false
-                })
-            }
+        }
         }
         
     }
@@ -291,6 +315,8 @@ extension AttendanceViewController: UNUserNotificationCenterDelegate {
         }
         
     }
+    
+
     
     func removeAllNotification() {
         let current = UNUserNotificationCenter.current()
