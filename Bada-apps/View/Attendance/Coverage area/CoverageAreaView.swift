@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import CoreBluetooth
 
 class CoverageAreaView: UIView, CLLocationManagerDelegate {
 
@@ -19,6 +20,7 @@ class CoverageAreaView: UIView, CLLocationManagerDelegate {
     var locationManager: CLLocationManager = CLLocationManager()
     var distanceToBeacon: CLProximity?
     var beacon: Beacon = Beacon()
+    var manager = CBCentralManager()
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -78,20 +80,27 @@ class CoverageAreaView: UIView, CLLocationManagerDelegate {
     func updateDistance(_ distance: CLProximity){
         distanceToBeacon = distance
         UIView.animate(withDuration: 0.5) {
-            switch distance {
-            case .unknown:
+            if self.manager.state == .poweredOff{
                 self.beacon.beaconNotDetected()
                 self.beaconImageView.image = #imageLiteral(resourceName: "Beacon-NotDetected")
-                self.beaconLabel.text = Message.notInArea
-            case .far:
-                self.beacon.beaconNotDetected()
-                self.beaconImageView.image = #imageLiteral(resourceName: "Beacon-Finding")
-                self.beaconLabel.text = Message.finding
-            case .near , .immediate:
-                self.beacon.beaconDetected()
-                self.beaconImageView.image = #imageLiteral(resourceName: "Beacon-Detected")
-                self.beaconLabel.text = Message.inArea
+                self.beaconLabel.text = "Please turn on your bluetooth"
+            }else{
+                switch distance {
+                case .unknown:
+                    self.beacon.beaconNotDetected()
+                    self.beaconImageView.image = #imageLiteral(resourceName: "Beacon-NotDetected")
+                    self.beaconLabel.text = Message.notInArea
+                case .far:
+                    self.beacon.beaconNotDetected()
+                    self.beaconImageView.image = #imageLiteral(resourceName: "Beacon-Finding")
+                    self.beaconLabel.text = Message.finding
+                case .near , .immediate:
+                    self.beacon.beaconDetected()
+                    self.beaconImageView.image = #imageLiteral(resourceName: "Beacon-Detected")
+                    self.beaconLabel.text = Message.inArea
+                }
             }
+
         }
     }
     

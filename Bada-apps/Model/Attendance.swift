@@ -133,10 +133,9 @@ class Attendance{
         let dateComponent = Calendar.current.dateComponents(in: TimeZone.current, from: Date())
         
         if let data = lastCheckIn.object(forKey: dateID! as AnyObject){
-                print("already check In")
-            print(data)
+
         }else{
-            print("notcheck in")
+            
         }
         
         let minute = (String(dateComponent.minute!).count < 2) ? "0\(dateComponent.minute!)" : "\(dateComponent.minute!)"
@@ -146,7 +145,7 @@ class Attendance{
         
         
        guard let currentTime = Int("\(hour)\(minute)") else {return AttendanceType.error}
-        print("current time: \(currentTime)")
+        
         if currentTime < Identifier.checkInStartTime{
             return .notEligibleTime
         }else
@@ -157,7 +156,7 @@ class Attendance{
             return .late
         }else
         if isCheckIn(){
-            print("you already check In")
+            
             if  currentTime < Identifier.checkOutTime{
                 return .earlyLeave
             }
@@ -233,6 +232,7 @@ class Attendance{
 //    }
     
     static func observeForStatus(onResponse: @escaping (ClockStatus)->()){
+        print("called")
         let userID = (Auth.auth().currentUser?.uid)!
         let dateComponent = Calendar.current.dateComponents(in: TimeZone.current, from: Date())
         
@@ -242,7 +242,7 @@ class Attendance{
         formatter.dateFormat = "yyyyMMdd"
         
         let dateID = formatter.string(from: date)
-
+        Database.database().reference().removeAllObservers()
         Database.database().reference().child("attendance/\(dateID)/\(userID)").observe(.value, with: { (snapshot) in
     
        
