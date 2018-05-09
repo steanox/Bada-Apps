@@ -30,12 +30,6 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
     var presentInteractor: MiniToLargeViewInteractive!
     var dismissInteractor: MiniToLargeViewInteractive!
     
-    
-    
-    
-    
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
