@@ -104,8 +104,18 @@ class Attendance{
                 
                 //check if user already check in or not
 
-                if !snapshot.hasChild("checkInTime") && !snapshot.hasChild("checkOutTime"){
+                if !snapshot.hasChild("checkInTime") && !snapshot.hasChild("checkOutTime") , let timeInput = self.time ,let dateID = self.dateID{
                     snapshot.ref.setValue(data, withCompletionBlock: {[weak self] (error, currentRef) in
+                        
+                    
+                        let keyname = "checkIn\(dateID)"
+                        
+                        print("time: \(timeInput) --- dateid: \(dateID)")
+                        
+                        userData.set(timeInput as? Any, forKey: keyname)
+                        
+                        print(userData.object(forKey: keyname))
+                        
                         self?.delegate?.attendanceRemoveProgress()
                         if error != nil {
                             currentRef.cancelDisconnectOperations()
@@ -114,7 +124,8 @@ class Attendance{
                             return
                         }
                         
-                        lastCheckIn.setObject((self?.time)! as AnyObject, forKey: (self?.dateID)! as AnyObject)
+
+                        //lastCheckIn.setObject((self?.time)! as AnyObject, forKey: (self?.dateID)! as AnyObject)
  
                         self?.delegate?.attendanceSuccess()
                         
@@ -130,6 +141,7 @@ class Attendance{
     }
     
      func checkStatus()-> AttendanceType{
+
         let dateComponent = Calendar.current.dateComponents(in: TimeZone.current, from: Date())
         
         if let data = lastCheckIn.object(forKey: dateID! as AnyObject){
@@ -191,9 +203,16 @@ class Attendance{
             
             self.ref.child("attendance/\(self.dateID!)/\(self.userID!)").observeSingleEvent(of: .value) { (snapshot) in
                 
-                if !snapshot.hasChild("checkOutTime"){
+                if !snapshot.hasChild("checkOutTime") , let timeInput = self.time , let dateID = self.dateID {
                     snapshot.ref.updateChildValues(data, withCompletionBlock: {[weak self] (error, currentRef) in
+
+                        
+                        let keyname = "checkOut\(dateID)"
+                        
+                        userData.set(timeInput as? Any, forKey: keyname)
+                        
                         self?.delegate?.attendanceRemoveProgress()
+                        
                         if error != nil{
                             currentRef.cancelDisconnectOperations()
                             guard let error = error?.localizedDescription else {return}
@@ -201,9 +220,8 @@ class Attendance{
                             return
                         }
                         
-                        lastCheckOut.setObject(self?.time as AnyObject, forKey: (self?.dateID)! as AnyObject)
+                        //lastCheckOut.setObject(self?.time as AnyObject, forKey: (self?.dateID)! as AnyObject)
                         
-
                         self?.delegate?.attendanceSuccess()
                     })
                 }else{
@@ -232,7 +250,7 @@ class Attendance{
 //    }
     
     static func observeForStatus(onResponse: @escaping (ClockStatus)->()){
-        print("called")
+        
         let userID = (Auth.auth().currentUser?.uid)!
         let dateComponent = Calendar.current.dateComponents(in: TimeZone.current, from: Date())
         
@@ -270,7 +288,15 @@ class Attendance{
     }
     
     private func isCheckIn()->Bool{
-        if let _ = lastCheckIn.object(forKey: self.dateID! as AnyObject){
+        
+    
+//        if let _ = lastCheckIn.object(forKey: self.dateID! as AnyObject){
+//            return true
+//        }else{
+//            return false
+//        }
+        
+        if let _ = userData.object(forKey: "checkIn\(dateID!)"){
             return true
         }else{
             return false
@@ -278,7 +304,12 @@ class Attendance{
     }
     
     private func isCheckOut()->Bool{
-        if let _ = lastCheckOut.object(forKey: self.dateID! as AnyObject){
+//        if let _ = lastCheckOut.object(forKey: self.dateID! as AnyObject){
+//            return true
+//        }else{
+//            return false
+//        }
+        if let _ = userData.object(forKey: "checkOut\(dateID!)"){
             return true
         }else{
             return false
