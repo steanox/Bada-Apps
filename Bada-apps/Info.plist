@@ -19,9 +19,11 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>4</string>
+	<string>6</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Need check your bluetooth is active</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string>This app would like to access Face ID</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
