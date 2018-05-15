@@ -45,7 +45,9 @@ extension UIView {
         let notif = NotificationView(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height), title: title, description: description, buttonText: buttonText,onSuccess: onSuccess)
         
         UIView.transition(with: self, duration: 0.2, options: [.curveEaseInOut,.transitionCrossDissolve], animations: {
-            self.addSubview(notif)
+            
+                self.addSubview(notif)
+            
         }, completion: nil)
         
     }
@@ -54,6 +56,8 @@ extension UIView {
         let rect = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
         let notes = NotesView(frame: rect, title: title)
         notes.sources = source
+        
+        
         self.addSubview(notes)
         
         notes.alpha = 0.0

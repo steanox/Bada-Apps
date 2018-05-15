@@ -12,3 +12,5 @@ let checkInStatus = NSCache<AnyObject,AnyObject>()
 let checkOutStatus = NSCache<AnyObject,AnyObject>()
 let lastCheckIn = NSCache<AnyObject,AnyObject>()
 let lastCheckOut = NSCache<AnyObject,AnyObject>()
+
+let userData = UserDefaults.standard

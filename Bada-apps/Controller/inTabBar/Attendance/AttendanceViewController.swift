@@ -158,47 +158,48 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
         attendance?.delegate = self
         
    
-        if let distance = coverageAreaView.distanceToBeacon, let status = attendance?.status{
+        if let distance = coverageAreaView.distanceToBeacon{
             
-            DispatchQueue.main.async {
-                switch distance {
-                case .near , .immediate:
-                    
-                    switch status {
-                    case .checkIn:
-                        self.attendance?.performCheckIn()
-                    case .checkOut:
-                        self.attendance?.performCheckOut()
-                    case .late:
-                        self.getTabBarController()?.view.showNote(title: "Late Notes",source: self)
-                    case .earlyLeave:
-                        self.getTabBarController()?.view.showNote(title: "Early Leave Notes",source: self)
-                    case .notEligibleTime:
-                        self.view.showNotification(title: "Failed", description: "You only can attend at 6.00 AM", buttonText: "close", onSuccess: {
+            attendance?.checkStatusInDatabase(onResponse: { (status) in
+                
+                    switch distance {
+                    case .near , .immediate:
+                        
+                        switch status {
+                        case .checkIn:
+                            self.attendance?.performCheckIn()
+                        case .checkOut:
+                            self.attendance?.performCheckOut()
+                        case .late:
+                            self.getTabBarController()?.view.showNote(title: "Late Notes",source: self)
+                        case .earlyLeave:
+                            self.getTabBarController()?.view.showNote(title: "Early Leave Notes",source: self)
+                        case .notEligibleTime:
+                            self.view.showNotification(title: "Failed", description: "You only can attend at 6.00 AM", buttonText: "close", onSuccess: {
+                                self.tabBarController?.tabBar.isHidden = false
+                            })
+                        case .error:
+                            self.view.showNotification(title: "Failed", description: "Something went wrong", buttonText: "close", onSuccess: {
+                                self.tabBarController?.tabBar.isHidden = false
+                            })
+                        case .notCheckIn:
+                            self.view.showNotification(title: "Failed", description: "You have to check in First", buttonText: "close", onSuccess: {
+                                self.tabBarController?.tabBar.isHidden = false
+                            })
+                        }
+                        
+                    case .far:
+                        self.view.showNotification(title: "Failed", description: "Please move a little closer", buttonText: "close", onSuccess: {
                             self.tabBarController?.tabBar.isHidden = false
                         })
-                    case .error:
-                        self.view.showNotification(title: "Failed", description: "Something went wrong", buttonText: "close", onSuccess: {
-                            self.tabBarController?.tabBar.isHidden = false
-                        })
-                    case .notCheckIn:
-                        self.view.showNotification(title: "Failed", description: "You have to check in First", buttonText: "close", onSuccess: {
+                    case .unknown:
+                        self.view.showNotification(title: "Failed", description: "You cannot attend here", buttonText: "close", onSuccess: {
                             self.tabBarController?.tabBar.isHidden = false
                         })
                     }
-
-                case .far:
-                    self.view.showNotification(title: "Failed", description: "Please move a little closer", buttonText: "close", onSuccess: {
-                        self.tabBarController?.tabBar.isHidden = false
-                    })
-                case .unknown:
-                    self.view.showNotification(title: "Failed", description: "You cannot attend here", buttonText: "close", onSuccess: {
-                        self.tabBarController?.tabBar.isHidden = false
-                    })
-                }
+                
+            })
         }
-        }
-        
     }
     
     

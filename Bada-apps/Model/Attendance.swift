@@ -37,11 +37,6 @@ protocol AttendanceDelegate {
 class Attendance{
     
     var dateID: String?
-    var status: AttendanceType {
-        get{
-            return checkStatus()
-        }
-    }
     var userID = Auth.auth().currentUser?.uid
     var notes: String?
     var time: String?
@@ -58,10 +53,8 @@ class Attendance{
             guard let date = calendar.date(from: dateComponent) else { return }
             formatter.dateFormat = "yyyyMMdd"
             
-           
             self.dateID = formatter.string(from: date)
             
-            //self.dateID = "\(dateComponent.year!)\(dateComponent.month!)\(dateComponent.day!)"
         }
     }
     
@@ -78,14 +71,18 @@ class Attendance{
     }
     
     func performWithNotes(){
-        switch status {
-        case .late:
-            performCheckIn()
-        case .earlyLeave:
-            performCheckOut()
-        default:
-            self.delegate?.attendanceFailed(error: "You cannot perform")
+        
+        self.checkStatusInDatabase { [weak self](status) in
+            switch status {
+            case .late:
+                self?.performCheckIn()
+            case .earlyLeave:
+                self?.performCheckOut()
+            default:
+                self?.delegate?.attendanceFailed(error: "You cannot perform")
+            }
         }
+        
     }
     
     func performCheckIn(){
@@ -106,15 +103,6 @@ class Attendance{
 
                 if !snapshot.hasChild("checkInTime") && !snapshot.hasChild("checkOutTime") , let timeInput = self.time ,let dateID = self.dateID{
                     snapshot.ref.setValue(data, withCompletionBlock: {[weak self] (error, currentRef) in
-                        
-                    
-                        let keyname = "checkIn\(dateID)"
-                        
-                        print("time: \(timeInput) --- dateid: \(dateID)")
-                        
-                        userData.set(timeInput as? Any, forKey: keyname)
-                        
-                        print(userData.object(forKey: keyname))
                         
                         self?.delegate?.attendanceRemoveProgress()
                         if error != nil {
@@ -139,58 +127,7 @@ class Attendance{
         }
         
     }
-    
-     func checkStatus()-> AttendanceType{
-
-        let dateComponent = Calendar.current.dateComponents(in: TimeZone.current, from: Date())
-        
-        if let data = lastCheckIn.object(forKey: dateID! as AnyObject){
-
-        }else{
-            
-        }
-        
-        let minute = (String(dateComponent.minute!).count < 2) ? "0\(dateComponent.minute!)" : "\(dateComponent.minute!)"
-        let hour = (String(dateComponent.hour!).count < 2) ? "0\(dateComponent.hour!)" : "\(dateComponent.hour!)"
-        
-        
-        
-        
-       guard let currentTime = Int("\(hour)\(minute)") else {return AttendanceType.error}
-        
-        if currentTime < Identifier.checkInStartTime{
-            return .notEligibleTime
-        }else
-        if currentTime > Identifier.checkInStartTime && currentTime < Identifier.checkInLimitTime && !isCheckIn(){
-            return .checkIn
-        }else
-        if currentTime > Identifier.checkInLimitTime && !isCheckIn(){
-            return .late
-        }else
-        if isCheckIn(){
-            
-            if  currentTime < Identifier.checkOutTime{
-                return .earlyLeave
-            }
-            else{
-                
-                if isCheckOut(){
-                    return .notEligibleTime
-                }else{
-                   return .checkOut
-                }
-                
-            }
-            
-            
-        }else{
-            return .notCheckIn
-        }
-
-        
-        
-    }
-    
+ 
     func performCheckOut(){
         delegate?.attendanceOnProgress()
         if let _ = dateID,let _ = time{
@@ -206,11 +143,6 @@ class Attendance{
                 if !snapshot.hasChild("checkOutTime") , let timeInput = self.time , let dateID = self.dateID {
                     snapshot.ref.updateChildValues(data, withCompletionBlock: {[weak self] (error, currentRef) in
 
-                        
-                        let keyname = "checkOut\(dateID)"
-                        
-                        userData.set(timeInput as? Any, forKey: keyname)
-                        
                         self?.delegate?.attendanceRemoveProgress()
                         
                         if error != nil{
@@ -219,8 +151,6 @@ class Attendance{
                             self?.delegate?.attendanceFailed(error: error)
                             return
                         }
-                        
-                        //lastCheckOut.setObject(self?.time as AnyObject, forKey: (self?.dateID)! as AnyObject)
                         
                         self?.delegate?.attendanceSuccess()
                     })
@@ -233,21 +163,6 @@ class Attendance{
         }
         
     }
-    
-//    static func checkAttendanceForToday(){
-//        let userID = Auth.auth().currentUser?.uid
-//        let dateComponent = Calendar.current.dateComponents(in: TimeZone.current, from: Date())
-//        let dateID = "\(dateComponent.year!)\(dateComponent.month!)\(dateComponent.day!)"
-//        
-//        Database.database().reference().child("attendances/\(dateID)/\(userID)").observe(.value) { (snapshot) in
-//            
-//            if snapshot.hasChild("checkInTime"){
-//                
-//            }else{
-//                
-//            }
-//        }
-//    }
     
     static func observeForStatus(onResponse: @escaping (ClockStatus)->()){
         
@@ -287,34 +202,52 @@ class Attendance{
         
     }
     
-    private func isCheckIn()->Bool{
-        
     
-//        if let _ = lastCheckIn.object(forKey: self.dateID! as AnyObject){
-//            return true
-//        }else{
-//            return false
-//        }
+    public func checkStatusInDatabase(onResponse: @escaping (AttendanceType)->()){
+        guard
+            let dateID = self.dateID,
+            let userID = self.userID
+            else{
+                return
+        }
         
-        if let _ = userData.object(forKey: "checkIn\(dateID!)"){
-            return true
-        }else{
-            return false
+        let dateComponent = Calendar.current.dateComponents(in: TimeZone.current, from: Date())
+        
+        let minute = (String(dateComponent.minute!).count < 2) ? "0\(dateComponent.minute!)" : "\(dateComponent.minute!)"
+        let hour = (String(dateComponent.hour!).count < 2) ? "0\(dateComponent.hour!)" : "\(dateComponent.hour!)"
+        
+        guard let currentTime = Int("\(hour)\(minute)") else {return}
+        
+        Database.database().reference().child("attendance").child(dateID).child(userID).observeSingleEvent(of: .value) { (snapshot) in
+           
+            //Check In
+            if !snapshot.hasChild("checkInTime") &&  !snapshot.hasChild("checkOutTime"){
+                if currentTime < Identifier.checkInStartTime{
+                    onResponse(.notEligibleTime)
+                }else
+                if currentTime > Identifier.checkInStartTime && currentTime < Identifier.checkInLimitTime{
+                    onResponse(.checkIn)
+                }else
+                if currentTime > Identifier.checkInLimitTime{
+                    onResponse(.late)
+                }
+            }else
+            if snapshot.hasChild("checkInTime") && !snapshot.hasChild("checkOutTime"){
+                if currentTime < Identifier.checkOutTime{
+                    onResponse(.earlyLeave)
+                }else{
+                    onResponse(.checkOut)
+                }
+            }else
+            if snapshot.hasChild("checkInTime") && snapshot.hasChild("checkOutTime"){
+                onResponse(.notEligibleTime)
+            }else{
+                onResponse(.error)
+            }
+            
         }
     }
     
-    private func isCheckOut()->Bool{
-//        if let _ = lastCheckOut.object(forKey: self.dateID! as AnyObject){
-//            return true
-//        }else{
-//            return false
-//        }
-        if let _ = userData.object(forKey: "checkOut\(dateID!)"){
-            return true
-        }else{
-            return false
-        }
-    }
     
     private func updateTime(){
         

@@ -32,8 +32,8 @@ struct Identifier {
     public static let snoozelocalNotification = "snooze"
     public static let alarmCategoryNotification = "alarm.category"
     
-    public static let checkInStartTime = 600
-    public static let checkInLimitTime = 900
+    public static let checkInStartTime = 0600
+    public static let checkInLimitTime = 0900
     public static let checkOutTime = 1800
     
     public static let differenceViewOfKeyboard: CGFloat = 100.0
