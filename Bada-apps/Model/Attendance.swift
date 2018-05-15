@@ -24,7 +24,7 @@ enum AttendanceType{
     
     case checkOut
     case error
-
+    
 }
 
 protocol AttendanceDelegate {
@@ -66,7 +66,7 @@ class Attendance{
         
         self.notes = notes
         self.updateTime()
-       
+        
         
     }
     
@@ -88,7 +88,7 @@ class Attendance{
     func performCheckIn(){
         delegate?.attendanceOnProgress()
         if let _ = dateID,let _ = time{
-         
+            
             var data: [String:Any] = ["status":"1","checkInTime":self.time as Any]
             
             //check if notes avaiable
@@ -100,8 +100,8 @@ class Attendance{
             self.ref.child("attendance/\(self.dateID!)/\(self.userID!)").observeSingleEvent(of: .value) { (snapshot) in
                 
                 //check if user already check in or not
-
-                if !snapshot.hasChild("checkInTime") && !snapshot.hasChild("checkOutTime") , let timeInput = self.time ,let dateID = self.dateID{
+                
+                if !snapshot.hasChild("checkInTime") && !snapshot.hasChild("checkOutTime") , let _ = self.time ,let _ = self.dateID{
                     snapshot.ref.setValue(data, withCompletionBlock: {[weak self] (error, currentRef) in
                         
                         self?.delegate?.attendanceRemoveProgress()
@@ -112,9 +112,9 @@ class Attendance{
                             return
                         }
                         
-
+                        
                         //lastCheckIn.setObject((self?.time)! as AnyObject, forKey: (self?.dateID)! as AnyObject)
- 
+                        
                         self?.delegate?.attendanceSuccess()
                         
                     })
@@ -127,7 +127,7 @@ class Attendance{
         }
         
     }
- 
+    
     func performCheckOut(){
         delegate?.attendanceOnProgress()
         if let _ = dateID,let _ = time{
@@ -140,9 +140,9 @@ class Attendance{
             
             self.ref.child("attendance/\(self.dateID!)/\(self.userID!)").observeSingleEvent(of: .value) { (snapshot) in
                 
-                if !snapshot.hasChild("checkOutTime") , let timeInput = self.time , let dateID = self.dateID {
+                if !snapshot.hasChild("checkOutTime") , let _ = self.time , let _ = self.dateID {
                     snapshot.ref.updateChildValues(data, withCompletionBlock: {[weak self] (error, currentRef) in
-
+                        
                         self?.delegate?.attendanceRemoveProgress()
                         
                         if error != nil{
@@ -177,27 +177,27 @@ class Attendance{
         let dateID = formatter.string(from: date)
         Database.database().reference().removeAllObservers()
         Database.database().reference().child("attendance/\(dateID)/\(userID)").observe(.value, with: { (snapshot) in
-    
-       
+            
+            
             if snapshot.value == nil {
                 onResponse(._notYet)
             }
             else
-            if snapshot.hasChild("checkInTime") && !snapshot.hasChild("checkOutTime") {
-                
-                onResponse(._in)
-            }
-            else
-            if snapshot.hasChild("checkOutTime") && snapshot.hasChild("checkInTime"){
-               
-                onResponse(._out)
-            }
-            else {
-                onResponse(._notYet)
+                if snapshot.hasChild("checkInTime") && !snapshot.hasChild("checkOutTime") {
+                    
+                    onResponse(._in)
+                }
+                else
+                    if snapshot.hasChild("checkOutTime") && snapshot.hasChild("checkInTime"){
+                        
+                        onResponse(._out)
+                    }
+                    else {
+                        onResponse(._notYet)
             }
             
         }) { (error) in
-         
+            
         }
         
     }
@@ -219,30 +219,30 @@ class Attendance{
         guard let currentTime = Int("\(hour)\(minute)") else {return}
         
         Database.database().reference().child("attendance").child(dateID).child(userID).observeSingleEvent(of: .value) { (snapshot) in
-           
+            
             //Check In
             if !snapshot.hasChild("checkInTime") &&  !snapshot.hasChild("checkOutTime"){
                 if currentTime < Identifier.checkInStartTime{
                     onResponse(.notEligibleTime)
                 }else
-                if currentTime > Identifier.checkInStartTime && currentTime < Identifier.checkInLimitTime{
-                    onResponse(.checkIn)
+                    if currentTime > Identifier.checkInStartTime && currentTime < Identifier.checkInLimitTime{
+                        onResponse(.checkIn)
+                    }else
+                        if currentTime > Identifier.checkInLimitTime{
+                            onResponse(.late)
+                }
+            }else
+                if snapshot.hasChild("checkInTime") && !snapshot.hasChild("checkOutTime"){
+                    if currentTime < Identifier.checkOutTime{
+                        onResponse(.earlyLeave)
+                    }else{
+                        onResponse(.checkOut)
+                    }
                 }else
-                if currentTime > Identifier.checkInLimitTime{
-                    onResponse(.late)
-                }
-            }else
-            if snapshot.hasChild("checkInTime") && !snapshot.hasChild("checkOutTime"){
-                if currentTime < Identifier.checkOutTime{
-                    onResponse(.earlyLeave)
-                }else{
-                    onResponse(.checkOut)
-                }
-            }else
-            if snapshot.hasChild("checkInTime") && snapshot.hasChild("checkOutTime"){
-                onResponse(.notEligibleTime)
-            }else{
-                onResponse(.error)
+                    if snapshot.hasChild("checkInTime") && snapshot.hasChild("checkOutTime"){
+                        onResponse(.notEligibleTime)
+                    }else{
+                        onResponse(.error)
             }
             
         }
@@ -253,7 +253,7 @@ class Attendance{
         
         dateComponent = Calendar.current.dateComponents(in: TimeZone.current, from: Date())
     }
-
+    
     static func getDateID() -> String? {
         let dateComponent = Calendar.current.dateComponents(in: TimeZone.current, from: Date())
         return "\(dateComponent.year!)\(dateComponent.month!)\(dateComponent.day!)"
