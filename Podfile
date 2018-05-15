@@ -8,5 +8,6 @@ target 'Bada-apps' do
   # Pods for Bada-apps
   pod 'Firebase/Core'
   pod 'Firebase/Database'
-  pod 'Firebase/Auth' 
+  pod 'Firebase/Auth'
+  pod 'Firebase/Storage' 
 end

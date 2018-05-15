@@ -9,6 +9,9 @@
 import Foundation
 import FirebaseAuth
 import FirebaseDatabase
+import FirebaseStorage
+
+
 
 enum UserCheck:Error{
     case userNotExists
@@ -24,6 +27,8 @@ class User{
     
     var email: String?
     var name: String?
+    
+    
     
     func getName(_ completion: @escaping ((String?)->())) {
         guard let uid = Auth.auth().currentUser?.uid else {completion(nil);return}
@@ -55,6 +60,58 @@ class User{
 //        user.name = currentUser?.value(forKeyPath: "name") as? String
         
         return user
+        
+    }
+    
+    static func getProfilePictureURL(onSuccess: @escaping (String)->() ){
+        guard let userUID = Auth.auth().currentUser?.uid else { return }
+        
+        if let cachedImageURL = UserDefaults.standard.object(forKey: userUID) as? String{
+            onSuccess(cachedImageURL)
+        }else{
+            Database.database().reference().child("users").child(userUID).observeSingleEvent(of: .value) { (snapshot) in
+                
+                guard let value = snapshot.value as? [String : Any] else { return }
+                
+                if let profilePictureURL = value["profilePictureURL"] as? String{
+                  
+                    UserDefaults.standard.set(profilePictureURL as Any, forKey: userUID)
+                    onSuccess(profilePictureURL)
+                }
+            }
+        }
+        
+
+    }
+    
+    static func upload(profilePicture: UIImage,onSuccess: @escaping ()->()){
+        
+        guard let userUID = Auth.auth().currentUser?.uid else { return }
+        UserDefaults.standard.removeObject(forKey: userUID)
+        let storageRef = Storage.storage().reference().child(Identifier.profilePictureStoragePath).child("\(userUID).png")
+        
+        if let imageData = UIImageJPEGRepresentation(profilePicture, 0.25){
+            
+            storageRef.putData(imageData, metadata: nil) { (meta, err) in
+                if err != nil {
+                    print(err)
+                    return
+                }
+                guard let imageURL = meta?.downloadURL()?.absoluteString else { return }
+                
+                let imageValue = ["profilePictureURL" : imageURL]
+                
+                Database.database().reference().child("users").child(userUID).updateChildValues(imageValue)
+                onSuccess()
+            }
+        }
+        
+
+        
+        
+        
+        
+        
         
     }
     

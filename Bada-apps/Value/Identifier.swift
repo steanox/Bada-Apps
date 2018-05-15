@@ -38,6 +38,8 @@ struct Identifier {
     
     public static let differenceViewOfKeyboard: CGFloat = 100.0
     
+    public static let profilePictureStoragePath = "profilePicture/"
+    
 }
 
 

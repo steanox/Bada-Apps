@@ -41,6 +41,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w06-r0-qz4">
+                                <rect key="frame" x="112" y="85" width="150" height="150"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.6666712760925293" green="0.66665846109390259" blue="0.66666716337203979" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="2mj-9m-ZOM">
+                                <rect key="frame" x="178" y="150" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ProfilePictDummy" translatesAutoresizingMaskIntoConstraints="NO" id="Mkh-yl-BKK">
                                 <rect key="frame" x="113" y="85" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -69,7 +78,10 @@
                         <outlet property="coverageAreaView" destination="dhG-eI-IzE" id="u22-Ky-kwz"/>
                         <outlet property="currentDateLabel" destination="wGj-kx-4lT" id="r61-Aa-Wat"/>
                         <outlet property="dragableHistoryView" destination="ALz-bB-VFq" id="Y4g-dn-gAB"/>
+                        <outlet property="imageLoadingIndicator" destination="2mj-9m-ZOM" id="XuR-Xk-ebg"/>
                         <outlet property="nameLabel" destination="soQ-Yg-lgQ" id="rgj-sL-efR"/>
+                        <outlet property="profilePicturPlaceholder" destination="w06-r0-qz4" id="kYi-TQ-f0U"/>
+                        <outlet property="profilePicture" destination="Mkh-yl-BKK" id="KZT-0K-4jg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rgc-bQ-M8m" userLabel="First Responder" sceneMemberID="firstResponder"/>

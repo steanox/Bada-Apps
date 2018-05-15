@@ -19,6 +19,7 @@
 		016A5D89204F90A200F99270 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016A5D88204F90A200F99270 /* ViewController.swift */; };
 		016A5D8E204F90A200F99270 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 016A5D8D204F90A200F99270 /* Assets.xcassets */; };
 		01A409EB20505D0E00812123 /* CustomUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A409EA20505D0E00812123 /* CustomUITextField.swift */; };
+		01DC136520AAB5CF00B609BF /* UIImage+UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DC136420AAB5CF00B609BF /* UIImage+UIImageView.swift */; };
 		01E8C03B204F914B003BF95C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 01E8C03A204F914B003BF95C /* README.md */; };
 		01E8C03D204F9154003BF95C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 01E8C03C204F9153003BF95C /* .gitignore */; };
 		01E8C041204F9168003BF95C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01E8C040204F9168003BF95C /* GoogleService-Info.plist */; };
@@ -82,6 +83,7 @@
 		016A5D8D204F90A200F99270 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		016A5D92204F90A200F99270 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01A409EA20505D0E00812123 /* CustomUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUITextField.swift; sourceTree = "<group>"; };
+		01DC136420AAB5CF00B609BF /* UIImage+UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+UIImageView.swift"; sourceTree = "<group>"; };
 		01E8C03A204F914B003BF95C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		01E8C03C204F9153003BF95C /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		01E8C040204F9168003BF95C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 				55A589972051159500266380 /* Date+Format.swift */,
 				010BA033205128B7001F8D44 /* Toolbar.swift */,
 				55A589A0205135AE00266380 /* Responder+byPass.swift */,
+				01DC136420AAB5CF00B609BF /* UIImage+UIImageView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -634,6 +637,7 @@
 				5509CB32204FCE6600A87E88 /* Color+Hex.swift in Sources */,
 				55BF52A22058FE9900AA1C87 /* AccountViewController.swift in Sources */,
 				5509CB24204FCE4F00A87E88 /* AttendanceViewController.swift in Sources */,
+				01DC136520AAB5CF00B609BF /* UIImage+UIImageView.swift in Sources */,
 				5509CB34204FCE6600A87E88 /* View+Shadow.swift in Sources */,
 				010BA03220512896001F8D44 /* RegistrationViewController.swift in Sources */,
 				55BF52992057FB0600AA1C87 /* BDDate.swift in Sources */,

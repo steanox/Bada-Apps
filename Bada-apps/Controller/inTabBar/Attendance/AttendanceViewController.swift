@@ -16,8 +16,11 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var currentDateLabel: UILabel!
+    @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var coverageAreaView: CoverageAreaView!
     @IBOutlet weak var clockInOutView: ClockInOutView!
+    @IBOutlet weak var profilePicturPlaceholder: UIView!
+    @IBOutlet weak var imageLoadingIndicator: UIActivityIndicatorView!
     
     var content: UNMutableNotificationContent?
     
@@ -37,32 +40,11 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
         clockInOutView.isHidden = true
         startActivityIndicator()
         askNotificationAuthorization()
+        
         NotificationCenter.default.addObserver(self, selector: #selector(observeStatusAndText), name: Notification.Name.UIApplicationWillEnterForeground, object: nil)
+        profilePicture.isUserInteractionEnabled = true
+        profilePicture.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapToChangeProfilePicture)))
         
-        //        do {
-        //            let tripleDesEnc = TripleDesEncryptor()
-        //            let data = "muhammads0707@gmail.com".data(using:String.Encoding.utf8)!
-        //            let mailData = try tripleDesEnc.encrypt(data: data) as? NSData
-        //            print(mailData?.toHexString)
-        //        } catch let e {
-        //            print(e.localizedDescription)
-        //        }
-        
-        
-        
-        
-        // setting up dragable history view controller
-        //        dragableHistoryView.translatesAutoresizingMaskIntoConstraints = false
-        //
-        //        historyViewController = HistoryViewController()
-        //        historyViewController.attendanceViewController = self
-        //        historyViewController.transitioningDelegate = self
-        //        historyViewController.modalPresentationStyle = .fullScreen
-        //
-        //        presentInteractor = MiniToLargeViewInteractive()
-        //        presentInteractor.attachToViewController(viewController: self, withView: dragableHistoryView, presentViewController: historyViewController)
-        //        dismissInteractor = MiniToLargeViewInteractive()
-        //        dismissInteractor.attachToViewController(viewController: historyViewController, withView: historyViewController.view, presentViewController: nil)
         
     }
     
@@ -73,9 +55,6 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
         super.viewWillAppear(animated)
         
         //        triggeringNotification()
-        
-        
-        
         
         statusObserver()
         
@@ -147,10 +126,67 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
         clockInOutView.applyShadow(15.0)
         
         content = UNMutableNotificationContent()
-        content?.title = "Remainder"
+        content?.title = "Reminder"
         content?.sound = UNNotificationSound.default()
         UNUserNotificationCenter.current().delegate = self
         
+        self.profilePicturPlaceholder.layer.cornerRadius = self.profilePicturPlaceholder.frame.width / 2
+        self.profilePicturPlaceholder.clipsToBounds = true
+
+
+        self.profilePicture.layer.cornerRadius = self.profilePicture.frame.width / 2
+        self.profilePicture.clipsToBounds = true
+        
+        setProfilePicture()
+        
+    }
+    
+    private func setProfilePicture(){
+        
+        User.getProfilePictureURL {[weak self] (profilePictureURL) in
+            
+            if profilePictureURL == ""{
+                self?.profilePicture.image = #imageLiteral(resourceName: "ProfilePictDummy")
+            }else{
+                self?.profilePicture.loadImageUsingCacheWith(urlString: profilePictureURL)
+            }
+            
+        }
+    }
+    
+    @objc private func tapToChangeProfilePicture(){
+        // Object reponsible to handle accessing the photo Library
+        
+        let imagePicker = UIImagePickerController()
+        //connecting with the delegate
+        imagePicker.delegate = self
+        
+        
+        //show an alert
+        let alert = UIAlertController(title: "Change Profile Picture", message: "Please choose your picture source", preferredStyle: .actionSheet)
+        
+        //adding button
+        alert.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action) in
+            imagePicker.allowsEditing = true
+            imagePicker.sourceType = .photoLibrary
+            self.present(imagePicker, animated: true, completion: nil)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action) in
+            
+            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera){
+                imagePicker.allowsEditing = true
+                imagePicker.sourceType = .camera
+                imagePicker.modalPresentationStyle = .fullScreen
+                self.present(imagePicker, animated: true, completion: nil)
+            }
+            
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        //function to present ViewControllers
+        present(alert, animated: true)
     }
     
     func handleAttendance(with notes: String = ""){
@@ -265,21 +301,21 @@ extension AttendanceViewController: UNUserNotificationCenterDelegate {
     }
     
     func triggeringNotification() {
-        print("1")
+        
         self.notification(status: ._out)
         Attendance.observeForStatus { (status) in
-            print("1")
+            
             switch status {
             case ._notYet:
                 self.notification(status: ._notYet)
             case ._out:
-                print("2")
+                
                 self.notification(status: ._out)
             case ._in:
-                print("3")
+                
                 self.notification(status: ._in)
             case ._done:
-                print("Done")
+                self.notification(status: ._done)
             }
         }
     }
@@ -370,6 +406,29 @@ extension AttendanceViewController: UIViewControllerTransitioningDelegate {
         return dismissInteractor
     }
     
+}
+
+extension AttendanceViewController: UIImagePickerControllerDelegate,UINavigationControllerDelegate{
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let chosenImage:UIImage = info[UIImagePickerControllerEditedImage] as! UIImage
+        
+        picker.dismiss(animated: true) {
+            DispatchQueue.main.async {
+                self.startActivityIndicator()
+            }
+            User.upload(profilePicture: chosenImage){
+                DispatchQueue.main.async {
+                    self.setProfilePicture()
+                    self.stopActivityIndicator()
+                }
+            }
+        }
+    }
 }
 
 

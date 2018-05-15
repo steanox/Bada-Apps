@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Dispatch
 
 extension UIResponder {
     var viewController: UIViewController? {
@@ -14,6 +15,7 @@ extension UIResponder {
             return vc
         }
         
+
         return next?.viewController
     }
 
