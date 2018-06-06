@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 import UserNotifications
 import UserNotificationsUI
-
+import FirebaseDatabase
 
 class AttendanceViewController: BaseController, UIApplicationDelegate {
     
@@ -40,11 +40,22 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
         clockInOutView.isHidden = true
         startActivityIndicator()
         askNotificationAuthorization()
-        
         NotificationCenter.default.addObserver(self, selector: #selector(observeStatusAndText), name: Notification.Name.UIApplicationWillEnterForeground, object: nil)
         profilePicture.isUserInteractionEnabled = true
         profilePicture.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapToChangeProfilePicture)))
         
+        
+        historyViewController = HistoryViewController()
+    }
+    
+
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        let handler = Database.database().reference().observe(.value){ (snap) in
+            
+        }
+        Database.database().reference().removeObserver(withHandle: handler)
         
     }
     
@@ -367,18 +378,20 @@ extension AttendanceViewController: UNUserNotificationCenterDelegate {
 extension AttendanceViewController: UIViewControllerTransitioningDelegate {
     
     @IBAction func dragableHistoryDidTap() {
-        //        disableInteractivePlayerTransitioning = true
-        //        self.present(historyViewController, animated: true) { [unowned self] in
-        //            self.disableInteractivePlayerTransitioning = false
-        //        }
+        disableInteractivePlayerTransitioning = true
+        let sb = UIStoryboard(name: "History", bundle: nil)
         
-        let infoText: [String] = [
-            "We really appriciate your curiousity 😇, Too bad this feature hasn't come up.",
-            "You'll be surprised when this feature come up, just wait for it 😏",
-            "Oopss.... You are on the wrong section, please come back in a few moments probably"
-        ]
+        self.present(sb.instantiateInitialViewController()!, animated: true) { [unowned self] in
+                    self.disableInteractivePlayerTransitioning = false
+        }
         
-        self.view.showNotification(title: "Sorry..", description: infoText[Int(arc4random_uniform(3))], buttonText: "Close", onSuccess: nil)
+//        let infoText: [String] = [
+//            "We really appriciate your curiousity 😇, Too bad this feature hasn't come up.",
+//            "You'll be surprised when this feature come up, just wait for it 😏",
+//            "Oopss.... You are on the wrong section, please come back in a few moments probably"
+//        ]
+//        
+//        self.view.showNotification(title: "Sorry..", description: infoText[Int(arc4random_uniform(3))], buttonText: "Close", onSuccess: nil)
     }
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {

@@ -19,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        Database.database().isPersistenceEnabled = true
+        
         if Auth.auth().currentUser != nil {
             window = UIWindow(frame: UIScreen.main.bounds)
             window?.makeKeyAndVisible()

@@ -5,7 +5,6 @@
 This application used for the faculty member to manage and support the academy operational Team.
 Current on development Module:
 1. Attendance System
-
 </p>
 
 

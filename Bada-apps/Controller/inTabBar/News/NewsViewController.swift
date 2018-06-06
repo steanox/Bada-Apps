@@ -7,11 +7,17 @@
 //
 
 import UIKit
+import WebKit
 
 class NewsViewController: BaseController {
     
+    @IBOutlet weak var webView: WKWebView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+//        webView.loadHTMLString(htmlString, baseURL: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {

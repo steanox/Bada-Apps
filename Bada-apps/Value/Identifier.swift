@@ -16,6 +16,7 @@ struct Identifier {
     public static let coverageArea = "CoverageAreaView"
     public static let clockInOut = "ClockInOutView"
     public static let dragableHistory = "DragableHistoryView"
+    public static let history = "HistoryView"
     
     public static let notification = "Notification"
     public static let notes = "NotesView"
@@ -39,6 +40,21 @@ struct Identifier {
     public static let differenceViewOfKeyboard: CGFloat = 100.0
     
     public static let profilePictureStoragePath = "profilePicture/"
+    public static let userDatabasePath = "users/"
+    public static let attendanceDatabasePath = "attendance/"
+    
+    public static let baseHTMLString = """
+    <header>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            div{
+                font-family: 'Roboto', sans-serif;
+            }
+
+            
+        </style>
+    </header>
+    """
     
 }
 

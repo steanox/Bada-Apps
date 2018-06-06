@@ -60,4 +60,29 @@ extension String {
         return String(characters)
     }
     
+    //The format for this function should be yyyyMMdd
+    func dateIDtoDateString()->String{
+        var dateID = self
+ 
+        let year = (dateID[..<dateID.index(dateID.startIndex, offsetBy: 4)]),
+            month = (dateID[dateID.index(dateID.startIndex, offsetBy: 4)...dateID.index(dateID.startIndex, offsetBy: 5)]),
+            day = (dateID[dateID.index(dateID.startIndex, offsetBy: 6)...])
+ 
+        
+        var dateComponent = DateComponents()
+        
+        dateComponent.year = Int(year)
+        dateComponent.month = Int(month)
+        dateComponent.day = Int(day)! + 1 //Somehow the date object substract the day by 1
+
+        let calendar = Calendar(identifier: .gregorian)
+        let formatter = DateFormatter()
+
+        let date = calendar.date(from: dateComponent)
+        formatter.dateFormat = "EEEE, MMM d yyyy"
+        return formatter.string(from: date!)
+        
+        
+    }
+    
 }

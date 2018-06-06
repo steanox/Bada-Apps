@@ -8,25 +8,33 @@
 
 import UIKit
 
+
 class HistoryViewController: BaseController {
     
     var attendanceViewController: AttendanceViewController?
     
+    @IBOutlet weak var historyView: HistoryView!
+    
+    var attendanceData: [[String:String]] = []
+    
+    let showMoreButtonTotal = 1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let button = UIButton()
-        button.setTitle("Dismiss", for: .normal)
-        button.setTitleColor(.red, for: .normal)
-        button.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(button)
-        
-        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-6-[button]", options: [], metrics: nil, views: ["button": button]))
-        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-40-[button]", options: [], metrics: nil, views: ["button": button]))
+        User.getAttendanceHistory(limit: 10) { (attendance) in
+            self.historyView.attendanceData.append(attendance)
+            self.historyView.attendanceData.sort(by: { (first, second) -> Bool in
+                return Int(first["date"]!)! > Int(second["date"]!)!
+            })
+            DispatchQueue.main.async {
+                self.historyView.historyTable.reloadData()
+            }
+            
+        }
     }
     
-    @objc func buttonTapped() {
+    @IBAction func buttonTapped() {
         attendanceViewController?.disableInteractivePlayerTransitioning = true
         self.dismiss(animated: true) { [unowned self] in
             self.attendanceViewController?.disableInteractivePlayerTransitioning = false
@@ -37,4 +45,44 @@ class HistoryViewController: BaseController {
         super.viewWillAppear(animated)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+
+    }
 }
+
+//extension HistoryViewController: UITableViewDataSource{
+//
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return attendanceData.count + showMoreButtonTotal
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//
+//        if indexPath.row < attendanceData.count{
+//            let cell = historyListTable.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath)
+//            guard var dateID = attendanceData[indexPath.row]["date"] else { return UITableViewCell()}
+//            let date = dateID.dateIDtoDateString()
+//
+//            cell.textLabel?.text = dateID.dateIDtoDateString()
+//
+//            let checkInTime = attendanceData[indexPath.row]["checkInTime"] ?? "-"
+//            let checkOutTime =  attendanceData[indexPath.row]["checkOutTime"] ?? "-"
+//            cell.detailTextLabel?.text = "Checkin time: \(checkInTime) - Checkout time: \(checkOutTime)"
+//
+//            return cell
+//        }else{
+//            let cell = historyListTable.dequeueReusableCell(withIdentifier: "HistoryCellShowMore", for: indexPath)
+//
+//            return cell
+//        }
+//
+//
+//
+//    }
+//
+//    @IBAction func showMoreHistory(){
+//        print("asd")
+//    }
+//}

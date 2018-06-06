@@ -21,10 +21,8 @@ enum AttendanceType{
     case late
     case earlyLeave
     case notCheckIn
-    
     case checkOut
     case error
-    
 }
 
 protocol AttendanceDelegate {
@@ -42,18 +40,13 @@ class Attendance{
     var time: String?
     var delegate: AttendanceDelegate?
     var ref: DatabaseReference = Database.database().reference()
+    var handle:UInt!
     
     var dateComponent: DateComponents!{
         didSet{
             self.time = "\(dateComponent.hour!):\(dateComponent.minute!):\(dateComponent.second!)"
             
-            
-            let formatter = DateFormatter()
-            let calendar = Calendar(identifier: .gregorian)
-            guard let date = calendar.date(from: dateComponent) else { return }
-            formatter.dateFormat = "yyyyMMdd"
-            
-            self.dateID = formatter.string(from: date)
+            self.dateID = Attendance.getDateIDNow()
             
         }
     }
@@ -97,7 +90,7 @@ class Attendance{
                 data["checkInNotes"] = notes
             }
             
-            self.ref.child("attendance/\(self.dateID!)/\(self.userID!)").observeSingleEvent(of: .value) { (snapshot) in
+            self.ref.child("\(Identifier.attendanceDatabasePath)\(self.dateID!)/\(self.userID!)").observeSingleEvent(of: .value) { (snapshot) in
                 
                 //check if user already check in or not
                 
@@ -116,6 +109,8 @@ class Attendance{
                         //lastCheckIn.setObject((self?.time)! as AnyObject, forKey: (self?.dateID)! as AnyObject)
                         
                         self?.delegate?.attendanceSuccess()
+                        
+                        self?.ref.child("\(Identifier.userDatabasePath)\(self?.userID!)/attendances").updateChildValues(["\((self?.dateID)!)" : "true"])
                         
                     })
                 }else{
@@ -138,7 +133,7 @@ class Attendance{
             }
             
             
-            self.ref.child("attendance/\(self.dateID!)/\(self.userID!)").observeSingleEvent(of: .value) { (snapshot) in
+            self.ref.child("\(Identifier.attendanceDatabasePath)\(self.dateID!)/\(self.userID!)").observeSingleEvent(of: .value) { (snapshot) in
                 
                 if !snapshot.hasChild("checkOutTime") , let _ = self.time , let _ = self.dateID {
                     snapshot.ref.updateChildValues(data, withCompletionBlock: {[weak self] (error, currentRef) in
@@ -167,16 +162,9 @@ class Attendance{
     static func observeForStatus(onResponse: @escaping (ClockStatus)->()){
         
         let userID = (Auth.auth().currentUser?.uid)!
-        let dateComponent = Calendar.current.dateComponents(in: TimeZone.current, from: Date())
-        
-        let formatter = DateFormatter()
-        let calendar = Calendar(identifier: .gregorian)
-        guard let date = calendar.date(from: dateComponent) else { return }
-        formatter.dateFormat = "yyyyMMdd"
-        
-        let dateID = formatter.string(from: date)
+        let dateID = Attendance.getDateIDNow()
         Database.database().reference().removeAllObservers()
-        Database.database().reference().child("attendance/\(dateID)/\(userID)").observe(.value, with: { (snapshot) in
+        Database.database().reference().child("\(Identifier.attendanceDatabasePath)\(dateID)/\(userID)").observe(.value, with: { (snapshot) in
             
             
             if snapshot.value == nil {
@@ -200,6 +188,19 @@ class Attendance{
             
         }
         
+    }
+    
+    static func getDateIDNow()->String{
+        
+        let dateComponent = Calendar.current.dateComponents(in: TimeZone.current, from: Date())
+        let formatter = DateFormatter()
+        let calendar = Calendar(identifier: .gregorian)
+        
+        guard let date = calendar.date(from: dateComponent) else { return "" }
+        formatter.dateFormat = "yyyyMMdd"
+        
+        
+        return formatter.string(from: date)
     }
     
     
@@ -248,13 +249,15 @@ class Attendance{
         }
     }
     
+   
+    
+    
     
     private func updateTime(){
-        
         dateComponent = Calendar.current.dateComponents(in: TimeZone.current, from: Date())
     }
     
-    static func getDateID() -> String? {
+    static func getDateIDComponent() -> String? {
         let dateComponent = Calendar.current.dateComponents(in: TimeZone.current, from: Date())
         return "\(dateComponent.year!)\(dateComponent.month!)\(dateComponent.day!)"
     }
