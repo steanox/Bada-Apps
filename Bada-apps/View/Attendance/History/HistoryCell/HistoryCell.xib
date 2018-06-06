@@ -6,36 +6,76 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HistoryCell" customModule="Bada_apps" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HistoryCell" customModule="Bada_apps" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="53"/>
+            <rect key="frame" x="0.0" y="0.0" width="362" height="65"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WeA-UH-qJz">
-                    <rect key="frame" x="5" y="5" width="365" height="43"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KBg-tN-D3m">
+                    <rect key="frame" x="15" y="10.5" width="48" height="17"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clockInButton" translatesAutoresizingMaskIntoConstraints="NO" id="Sxf-PK-WiQ">
+                    <rect key="frame" x="15" y="37.5" width="15" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="UgQ-g3-NYA"/>
+                        <constraint firstAttribute="width" constant="15" id="di0-v2-mdb"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clockOutButton" translatesAutoresizingMaskIntoConstraints="NO" id="Mrg-fT-y8A">
+                    <rect key="frame" x="173.5" y="38" width="15" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="15" id="dQ5-F4-m1b"/>
+                        <constraint firstAttribute="height" constant="15" id="i3N-ot-dB5"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check out" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDp-jh-1f5">
+                    <rect key="frame" x="191.5" y="37.5" width="59" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                    <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check in" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdy-i8-C8C">
+                    <rect key="frame" x="33" y="36.5" width="50.5" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                    <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="WeA-UH-qJz" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="5" id="0WQ-E1-Gs5"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="WeA-UH-qJz" secondAttribute="trailing" constant="5" id="6EY-lO-Yx4"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="WeA-UH-qJz" secondAttribute="bottom" constant="5" id="Q0n-4Z-Uw5"/>
-                <constraint firstItem="WeA-UH-qJz" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="ija-iI-GMk"/>
+                <constraint firstItem="gDp-jh-1f5" firstAttribute="leading" secondItem="Mrg-fT-y8A" secondAttribute="trailing" constant="3" id="6gd-CI-0o7"/>
+                <constraint firstItem="KBg-tN-D3m" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="KiW-9T-CE8"/>
+                <constraint firstItem="Mrg-fT-y8A" firstAttribute="top" secondItem="gDp-jh-1f5" secondAttribute="bottom" constant="-14" id="PED-wo-JeN"/>
+                <constraint firstItem="sdy-i8-C8C" firstAttribute="leading" secondItem="Sxf-PK-WiQ" secondAttribute="trailing" constant="3" id="Sct-kc-UUq"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Sxf-PK-WiQ" secondAttribute="bottom" constant="12.5" id="Up0-51-e5e"/>
+                <constraint firstItem="KBg-tN-D3m" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="0.6" id="WIo-64-qoY"/>
+                <constraint firstItem="Mrg-fT-y8A" firstAttribute="top" secondItem="Sxf-PK-WiQ" secondAttribute="bottom" constant="-14.5" id="XUl-tL-Sen"/>
+                <constraint firstItem="Mrg-fT-y8A" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="ace-ZG-bzk"/>
+                <constraint firstItem="Sxf-PK-WiQ" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" multiplier="1.4" id="fL1-If-4vX"/>
+                <constraint firstItem="Sxf-PK-WiQ" firstAttribute="top" secondItem="sdy-i8-C8C" secondAttribute="bottom" constant="-13.5" id="sVP-16-KJs"/>
+                <constraint firstItem="KBg-tN-D3m" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10.5" id="sWh-Ax-WmP"/>
+                <constraint firstItem="Sxf-PK-WiQ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="ymD-Ek-89F"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
-                <outlet property="mainTitle" destination="WeA-UH-qJz" id="RNO-HQ-kt0"/>
+                <outlet property="checkInTimeLabel" destination="sdy-i8-C8C" id="LZd-R2-gb9"/>
+                <outlet property="checkOutTimeLabel" destination="gDp-jh-1f5" id="u0g-GU-Uli"/>
+                <outlet property="mainTitleLabel" destination="KBg-tN-D3m" id="g6r-vZ-6d7"/>
             </connections>
-            <point key="canvasLocation" x="33.5" y="-253.5"/>
+            <point key="canvasLocation" x="27" y="-259"/>
         </view>
     </objects>
+    <resources>
+        <image name="clockInButton" width="218" height="218"/>
+        <image name="clockOutButton" width="218" height="218"/>
+    </resources>
 </document>

@@ -73,7 +73,7 @@ extension String {
         
         dateComponent.year = Int(year)
         dateComponent.month = Int(month)
-        dateComponent.day = Int(day)! + 1 //Somehow the date object substract the day by 1
+        dateComponent.day = Int(day)!//Somehow the date object substract the day by 1
 
         let calendar = Calendar(identifier: .gregorian)
         let formatter = DateFormatter()

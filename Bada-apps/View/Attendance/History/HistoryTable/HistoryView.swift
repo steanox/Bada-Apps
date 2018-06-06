@@ -13,7 +13,11 @@ class HistoryView:UIView{
     
     @IBOutlet weak var historyTable:UITableView!
     
-    var attendanceData: [[String:String]] = []
+    var attendancesData: [String:[[String:String]]] = [:]
+    var orderedMonth:[String] = []
+    
+    let months:[String] = ["January","February","March","April","May","June","July","August","September","October","November","December"]
+    var availableMonth: [String] = []
     
     let showMoreButtonTotal = 1
     
@@ -28,6 +32,7 @@ class HistoryView:UIView{
         
         self.historyTable.register(UINib(nibName: "HistoryCell", bundle: nil), forCellReuseIdentifier: "historyCell")
         self.historyTable.register(UINib(nibName: "HistoryCellShowMore", bundle: nil), forCellReuseIdentifier: "historyCellShowMore")
+        self.historyTable.tableFooterView = UIView() 
         
         self.addSubview(history)
 
@@ -37,27 +42,44 @@ class HistoryView:UIView{
 
 extension HistoryView: UITableViewDataSource{
     
+    func refreshAvailableMonth(){
+        for att in attendancesData{
+            let monthKey: String = att.key
+            availableMonth.append(monthKey)
+        }
+        availableMonth.reverse()
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return orderedMonth.count + showMoreButtonTotal
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section < attendancesData.count{
+            return months[Int(orderedMonth[section])! - 1]
+        }
+        return ""
+        
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.attendanceData.count + showMoreButtonTotal
+        if section < attendancesData.count{
+            return (attendancesData["\(orderedMonth[section])"]?.count)!
+        }
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.row < attendanceData.count{
+        if indexPath.section < attendancesData.count{
             let cell = historyTable.dequeueReusableCell(withIdentifier: "historyCell", for: indexPath) as! HistoryCell
-            guard var dateID = attendanceData[indexPath.row]["date"] else { return UITableViewCell()}
-            let date = dateID.dateIDtoDateString()
             
-            cell.mainTitle.text = dateID.dateIDtoDateString()
-
-//
-//            let checkInTime = attendanceData[indexPath.row]["checkInTime"] ?? "-"
-//            let checkOutTime =  attendanceData[indexPath.row]["checkOutTime"] ?? "-"
-//            cell.detailTextLabel?.text = "Checkin time: \(checkInTime) - Checkout time: \(checkOutTime)"
+            
+            cell.attendanceData = self.attendancesData["\(orderedMonth[indexPath.section])"]![indexPath.row]
             
             return cell
         }else{
-            let cell = historyTable.dequeueReusableCell(withIdentifier: "historyCellShowMore", for: indexPath)
+            let cell = historyTable.dequeueReusableCell(withIdentifier: "historyCellShowMore", for: indexPath) as! HistoryCellShowMore
             
             return cell
         }
@@ -67,7 +89,8 @@ extension HistoryView: UITableViewDataSource{
     }
     
     @IBAction func showMoreHistory(){
-        print("asd")
+        let parentVC = self.parentViewController as! HistoryViewController
+        parentVC.showMoreButtonTapped()
     }
     
     

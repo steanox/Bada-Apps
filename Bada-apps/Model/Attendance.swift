@@ -110,7 +110,7 @@ class Attendance{
                         
                         self?.delegate?.attendanceSuccess()
                         
-                        self?.ref.child("\(Identifier.userDatabasePath)\(self?.userID!)/attendances").updateChildValues(["\((self?.dateID)!)" : "true"])
+                        self?.ref.child("\(Identifier.userDatabasePath)\(self?.userID!)/attendances").updateChildValues(["\((self?.dateID)!)" : data])
                         
                     })
                 }else{
@@ -148,6 +148,8 @@ class Attendance{
                         }
                         
                         self?.delegate?.attendanceSuccess()
+                        
+                        self?.ref.child("\(Identifier.userDatabasePath)\(self?.userID!)/attendances").updateChildValues(["\((self?.dateID)!)" : data])
                     })
                 }else{
                     self.delegate?.attendanceRemoveProgress()

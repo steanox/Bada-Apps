@@ -36,7 +36,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Close" style="plain" id="eBZ-Db-thr">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="buttonTapped" destination="udr-gT-5Fb" id="DAq-BX-zlP"/>
+                                <action selector="closeButton" destination="udr-gT-5Fb" id="3oU-1Y-CTz"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

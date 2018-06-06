@@ -11,6 +11,12 @@ import UIKit
 
 class HistoryCellShowMore:UITableViewCell{
     
+    override var isSelected: Bool{
+        didSet{
+           print("asd")
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

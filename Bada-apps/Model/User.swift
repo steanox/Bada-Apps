@@ -30,6 +30,7 @@ class User{
     
     
     
+    
     func getName(_ completion: @escaping ((String?)->())) {
         guard let uid = Auth.auth().currentUser?.uid else {completion(nil);return}
         Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value) { (snapshot) in
@@ -85,48 +86,16 @@ class User{
     }
     
     
-    static func getAttendanceHistory(limit: Int,onResponse: @escaping (_ AttendanceData: [String:String])->()){
-        guard let uid = Auth.auth().currentUser?.uid else {return}
+    static func getAttendanceHistory(by limit: Int,offset: String,onResponse: @escaping (_ AttendanceData: [String:Any])->())->UInt{
+        guard let uid = Auth.auth().currentUser?.uid else {return 0}
         let ref = Database.database().reference()
  
         let dateIDNow = Attendance.getDateIDNow()
-        
-        ref.child("users/\(uid)/attendances").queryOrderedByKey().queryEnding(atValue: dateIDNow as Any).queryLimited(toLast: UInt(limit)).observeSingleEvent(of: .value) { (snapshot) in
-            guard let attendances = snapshot.value as? [String: Any] else { return }
-            
-            for attendance in attendances{
-                let dateKey = attendance.key
-                
-                ref.child("attendance/\(dateKey)/\(uid)").observeSingleEvent(of: .value, with: { (attSnap) in
-                    
-                    guard var attendanceDetail = attSnap.value as? [String: String] else {return}
-                    attendanceDetail["date"] = dateKey
-                    onResponse(attendanceDetail)
-                })
-            }
-        }
 
-//        ref.child("users").observeSingleEvent(of: .value) { (users) in
-//            guard let users = users.value as? [String: Any] else {return}
-//
-//            for user in users{
-//                let userKey = user.key
-//
-//                ref.child("attendance").observeSingleEvent(of: .value) { (attendances) in
-//                    guard let dateIDs = attendances.value as? [String: Any] else { return }
-//                    for dateID in dateIDs{
-//                        guard let atts = dateID.value as? [String: Any] else { return }
-//
-//                        if let att = atts[userKey]{
-//                            let value = ["\(dateID.key)" : "true"]
-//                            ref.child("users").child(userKey).child("attendances").updateChildValues(value)
-//                        }
-//                    }
-//                }
-//
-//            }
-//        }
-        
+        return ref.child("users/\(uid)/attendances").queryOrderedByKey().queryEnding(atValue: offset as Any).queryLimited(toLast: UInt(limit)).observe(.value) { (snapshot) in
+            guard let attendances = snapshot.value as? [String: Any] else { return }
+            onResponse(attendances)
+        }
     }
     
     static func upload(profilePicture: UIImage,onSuccess: @escaping ()->()){
@@ -166,6 +135,8 @@ class User{
             }
         }
     }
+    
+    
     
     
     
@@ -249,9 +220,6 @@ class User{
     private func sendVerificationEmail(){
         
     }
-    
-    
-    
     
     
     static func login(email: String, password: String, onSuccess: @escaping loginSuccessHandler,onError: @escaping errorHandler){
