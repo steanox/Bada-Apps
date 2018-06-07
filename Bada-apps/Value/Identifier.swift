@@ -19,6 +19,7 @@ struct Identifier {
     public static let history = "HistoryView"
     
     public static let notification = "Notification"
+    public static let birthdayNotification = "BirthdayNotificationView"
     public static let notes = "NotesView"
     public static let noteTextView = "NoteTextView"
     

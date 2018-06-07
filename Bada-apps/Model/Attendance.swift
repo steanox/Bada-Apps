@@ -95,8 +95,8 @@ class Attendance{
                 //check if user already check in or not
                 
                 if !snapshot.hasChild("checkInTime") && !snapshot.hasChild("checkOutTime") , let _ = self.time ,let _ = self.dateID{
+                    self.ref.child("\(Identifier.userDatabasePath)\(self.userID!)/attendances").child("\(self.dateID!)").setValue(data)
                     snapshot.ref.setValue(data, withCompletionBlock: {[weak self] (error, currentRef) in
-                        
                         self?.delegate?.attendanceRemoveProgress()
                         if error != nil {
                             currentRef.cancelDisconnectOperations()
@@ -104,13 +104,11 @@ class Attendance{
                             self?.delegate?.attendanceFailed(error: error )
                             return
                         }
-                        
-                        
-                        //lastCheckIn.setObject((self?.time)! as AnyObject, forKey: (self?.dateID)! as AnyObject)
-                        
+                  
+                       
                         self?.delegate?.attendanceSuccess()
                         
-                        self?.ref.child("\(Identifier.userDatabasePath)\(self?.userID!)/attendances").updateChildValues(["\((self?.dateID)!)" : data])
+                       
                         
                     })
                 }else{
@@ -136,6 +134,8 @@ class Attendance{
             self.ref.child("\(Identifier.attendanceDatabasePath)\(self.dateID!)/\(self.userID!)").observeSingleEvent(of: .value) { (snapshot) in
                 
                 if !snapshot.hasChild("checkOutTime") , let _ = self.time , let _ = self.dateID {
+                    self.ref.child("\(Identifier.userDatabasePath)\(self.userID!)/attendances").child("\(self.dateID!)").updateChildValues(data)
+                    
                     snapshot.ref.updateChildValues(data, withCompletionBlock: {[weak self] (error, currentRef) in
                         
                         self?.delegate?.attendanceRemoveProgress()
@@ -146,10 +146,10 @@ class Attendance{
                             self?.delegate?.attendanceFailed(error: error)
                             return
                         }
-                        
+                        self?.ref.child("\(Identifier.userDatabasePath)\(self?.userID!)/attendances").updateChildValues(["\((self?.dateID)!)" : data])
                         self?.delegate?.attendanceSuccess()
                         
-                        self?.ref.child("\(Identifier.userDatabasePath)\(self?.userID!)/attendances").updateChildValues(["\((self?.dateID)!)" : data])
+                        
                     })
                 }else{
                     self.delegate?.attendanceRemoveProgress()

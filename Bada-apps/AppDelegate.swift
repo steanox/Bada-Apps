@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 import CommonCrypto
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        Fabric.with([Crashlytics.self])
+        
         Database.database().isPersistenceEnabled = true
         
         if Auth.auth().currentUser != nil {
@@ -28,6 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             guard (mainStoryboard as? RootTabBarController) != nil else {return true}
             window?.rootViewController = mainStoryboard
         }
+        
         return true
     }
 

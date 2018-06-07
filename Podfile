@@ -9,5 +9,7 @@ target 'Bada-apps' do
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
-  pod 'Firebase/Storage' 
+  pod 'Firebase/Storage'
+  pod 'Fabric', '~> 1.7.7'
+  pod 'Crashlytics', '~> 3.10.2'
 end

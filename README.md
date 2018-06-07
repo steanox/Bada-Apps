@@ -3,8 +3,11 @@
 
 <p>
 This application used for the faculty member to manage and support the academy operational Team.
-Current on development Module:
-1. Attendance System
+Currently on development:
+1. History Preview
 </p>
 
-
+<p>
+Finished:
+1. Attendance System
+</p>

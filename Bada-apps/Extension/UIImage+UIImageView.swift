@@ -18,7 +18,7 @@ extension UIImage{
 extension UIImageView{
     
     
-    func loadImageUsingCacheWith(urlString: String){
+    func loadImageUsingCacheWith(urlString: String,done: (()->())?){
         
         
         //self.image = nil //prevent flashing
@@ -44,6 +44,9 @@ extension UIImageView{
                 
                 imageCache.setObject(downloadedImage, forKey: urlString as AnyObject)
                 self.image = downloadedImage
+                if let d = done{
+                    d()
+                }
                 
             }
             

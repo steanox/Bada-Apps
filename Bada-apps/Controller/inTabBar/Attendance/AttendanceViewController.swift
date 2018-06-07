@@ -11,6 +11,7 @@ import CoreLocation
 import UserNotifications
 import UserNotificationsUI
 import FirebaseDatabase
+import Crashlytics
 
 class AttendanceViewController: BaseController, UIApplicationDelegate {
     
@@ -35,8 +36,6 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         clockInOutView.isHidden = true
         startActivityIndicator()
         askNotificationAuthorization()
@@ -45,8 +44,18 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
         profilePicture.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapToChangeProfilePicture)))
         
         
+        
         historyViewController = HistoryViewController()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.checkForBirthday()
+        }
+        
+        
+        
     }
+    
+    
     
 
     
@@ -60,7 +69,55 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
     }
     
     
+    private func checkForBirthday(){
+        
+        let dateComponent = Calendar.current.dateComponents(in: TimeZone.current, from: Date())
+        let formatter = DateFormatter()
+        let calendar = Calendar(identifier: .gregorian)
+
+        guard let date = calendar.date(from: dateComponent) else { return }
+        formatter.dateFormat = "MM/dd"
+        let formattedDateNow = formatter.string(from: date) as Any
+        
+       if let birthdayCache = UserDefaults.standard.object(forKey: "birthdayCache") as? String{
+            
+            if formatter.string(from: date) != birthdayCache{
+                UserDefaults.standard.set(formattedDateNow, forKey: "birthdayCache")
+                triggerBirthdayNotification(for: formattedDateNow)
+            }
+
+        }else{
+            UserDefaults.standard.set(formattedDateNow, forKey: "birthdayCache")
+            triggerBirthdayNotification(for: formattedDateNow)
+        }
+
+        
+        
+    }
     
+    private func triggerBirthdayNotification(for date: Any){
+        Database.database().reference().child("users").queryOrdered(byChild: "birthDate").queryEqual(toValue: date).observeSingleEvent(of: .value) { (snap) in
+            if snap == nil{
+                return
+            }
+            
+            guard let val = snap.value as? [String:Any] else {return}
+            
+            let key = Array(val.keys)[0]
+            guard let user = val[key] as? [String: Any] else {return}
+            
+            guard let name = user["name"] as? String else {return}
+            guard let picURL = user["profilePictureURL"] as? String else {return}
+            
+            let birthDayView = BirthdayNotificationView(frame: self.view.frame, for: name, profilePictureURL: picURL, onSuccess: nil)
+            
+            DispatchQueue.main.async {
+                self.view.addSubview(birthDayView)
+            }
+            
+        }
+
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -68,6 +125,7 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
         //        triggeringNotification()
         
         statusObserver()
+
         
         self.navigationController?.navigationBar.isHidden = true
     }
@@ -78,6 +136,7 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
             case ._notYet:
                 self.clockInOutView.isHidden = false
                 self.stopActivityIndicator()
+                
                 self.clockInOutView.clockStatus = status
                 self.clockInOutView.clockInOutButton.setImage( #imageLiteral(resourceName: "clockInButton"), for: UIControlState.normal)
                 self.clockInOutView.clockInOutTitleLabel.text = "Clock In"
@@ -159,7 +218,7 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
             if profilePictureURL == ""{
                 self?.profilePicture.image = #imageLiteral(resourceName: "ProfilePictDummy")
             }else{
-                self?.profilePicture.loadImageUsingCacheWith(urlString: profilePictureURL)
+                self?.profilePicture.loadImageUsingCacheWith(urlString: profilePictureURL,done: nil)
             }
             
         }

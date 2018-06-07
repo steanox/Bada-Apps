@@ -65,6 +65,11 @@
 		55BF529F2058FD9100AA1C87 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55BF529E2058FD9100AA1C87 /* Account.storyboard */; };
 		55BF52A22058FE9900AA1C87 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BF52A12058FE9900AA1C87 /* AccountViewController.swift */; };
 		55BF52A4205B684200AA1C87 /* BaseAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BF52A3205B684200AA1C87 /* BaseAnimator.swift */; };
+		7D3EA88420C8DBFA0050F38F /* BirthdayNotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D3EA88220C8DBFA0050F38F /* BirthdayNotificationView.xib */; };
+		7D3EA88520C8DBFA0050F38F /* BirthdayNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3EA88320C8DBFA0050F38F /* BirthdayNotificationView.swift */; };
+		7D5BFCD520C8C5EF000BB0B4 /* ConfettiEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5BFCD420C8C5EF000BB0B4 /* ConfettiEmitter.swift */; };
+		7DA2B33A20C8C3C00079F31F /* confetti.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DA2B33820C8C3C00079F31F /* confetti.png */; };
+		7DA2B33B20C8C3C00079F31F /* ConfettiParticle.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 7DA2B33920C8C3C00079F31F /* ConfettiParticle.scnp */; };
 		7DD3A1EF20C82D10006ABE02 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD3A1EE20C82D10006ABE02 /* Array.swift */; };
 		7DFEFAE520C787D400825B85 /* HistoryCellShowMore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFEFAE420C787D400825B85 /* HistoryCellShowMore.swift */; };
 		7DFEFAE720C78E1800825B85 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFEFAE620C78E1800825B85 /* HistoryView.swift */; };
@@ -137,6 +142,11 @@
 		55BF52A12058FE9900AA1C87 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		55BF52A3205B684200AA1C87 /* BaseAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAnimator.swift; sourceTree = "<group>"; };
 		6A9B1A48B702F6F6A79A6D61 /* Pods-Bada-apps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bada-apps.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bada-apps/Pods-Bada-apps.debug.xcconfig"; sourceTree = "<group>"; };
+		7D3EA88220C8DBFA0050F38F /* BirthdayNotificationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BirthdayNotificationView.xib; sourceTree = "<group>"; };
+		7D3EA88320C8DBFA0050F38F /* BirthdayNotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BirthdayNotificationView.swift; sourceTree = "<group>"; };
+		7D5BFCD420C8C5EF000BB0B4 /* ConfettiEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiEmitter.swift; sourceTree = "<group>"; };
+		7DA2B33820C8C3C00079F31F /* confetti.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = confetti.png; sourceTree = "<group>"; };
+		7DA2B33920C8C3C00079F31F /* ConfettiParticle.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = ConfettiParticle.scnp; sourceTree = "<group>"; };
 		7DD3A1EE20C82D10006ABE02 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		7DFEFAE420C787D400825B85 /* HistoryCellShowMore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCellShowMore.swift; sourceTree = "<group>"; };
 		7DFEFAE620C78E1800825B85 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
@@ -203,6 +213,7 @@
 				55A5898E2050F18E00266380 /* Utils */,
 				5509CB29204FCE5E00A87E88 /* Value */,
 				5509CB2E204FCE6600A87E88 /* Extension */,
+				7DA2B33620C8C3960079F31F /* resources */,
 				016A5D8D204F90A200F99270 /* Assets.xcassets */,
 				01E8C040204F9168003BF95C /* GoogleService-Info.plist */,
 				016A5D92204F90A200F99270 /* Info.plist */,
@@ -378,6 +389,7 @@
 		5509CB3920500E1000A87E88 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				7D3EA88620C8DC020050F38F /* BirthdayNotification */,
 				01DFF88A2056E95C001CB88D /* Notification */,
 				55A5899920511E9E00266380 /* Notes */,
 				5509CB3A20500E2800A87E88 /* LoadingIndicator.swift */,
@@ -392,6 +404,7 @@
 				55A589932050F23700266380 /* TripleDesEncryptor.swift */,
 				55A5899520510B2700266380 /* FaceID.swift */,
 				010BA035205147CB001F8D44 /* Mailer.swift */,
+				7D5BFCD420C8C5EF000BB0B4 /* ConfettiEmitter.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -440,6 +453,32 @@
 			path = Animation;
 			sourceTree = "<group>";
 		};
+		7D3EA88620C8DC020050F38F /* BirthdayNotification */ = {
+			isa = PBXGroup;
+			children = (
+				7D3EA88320C8DBFA0050F38F /* BirthdayNotificationView.swift */,
+				7D3EA88220C8DBFA0050F38F /* BirthdayNotificationView.xib */,
+			);
+			path = BirthdayNotification;
+			sourceTree = "<group>";
+		};
+		7DA2B33620C8C3960079F31F /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				7DA2B33720C8C3AC0079F31F /* particle */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		7DA2B33720C8C3AC0079F31F /* particle */ = {
+			isa = PBXGroup;
+			children = (
+				7DA2B33820C8C3C00079F31F /* confetti.png */,
+				7DA2B33920C8C3C00079F31F /* ConfettiParticle.scnp */,
+			);
+			path = particle;
+			sourceTree = "<group>";
+		};
 		7DFEFAE320C787BC00825B85 /* HistoryCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -481,9 +520,9 @@
 				016A5D80204F90A200F99270 /* Frameworks */,
 				016A5D81204F90A200F99270 /* Resources */,
 				6625BC4A1C62453F3DDBBA69 /* [CP] Embed Pods Frameworks */,
-				C07868E8DC51C7C76E3611DC /* [CP] Copy Pods Resources */,
 				55A5898D2050EE4900266380 /* Carthage Encryption */,
 				55B558112064A6C200D9B035 /* SwiftLint Script */,
+				7DCD9DA020C8DE310073750C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -533,10 +572,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DA2B33B20C8C3C00079F31F /* ConfettiParticle.scnp in Resources */,
 				014350DB20503FA500512602 /* Notification.xib in Resources */,
 				014350C9204FF6BC00512602 /* Authentication.storyboard in Resources */,
 				5509CB11204FCE0A00A87E88 /* LaunchScreen.storyboard in Resources */,
+				7DA2B33A20C8C3C00079F31F /* confetti.png in Resources */,
 				01E8C03D204F9154003BF95C /* .gitignore in Resources */,
+				7D3EA88420C8DBFA0050F38F /* BirthdayNotificationView.xib in Resources */,
 				5509CB14204FCE0A00A87E88 /* History.storyboard in Resources */,
 				016A5D8E204F90A200F99270 /* Assets.xcassets in Resources */,
 				7DFEFAEE20C78F1400825B85 /* HistoryCellShowMore.xib in Resources */,
@@ -629,20 +671,18 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bada-apps/Pods-Bada-apps-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C07868E8DC51C7C76E3611DC /* [CP] Copy Pods Resources */ = {
+		7DCD9DA020C8DE310073750C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bada-apps/Pods-Bada-apps-resources.sh\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" f3583287ce5d7009512da266c8373de6682571dd 3770c05e2d4ec6f3137834f5c456d2da02d2d43953a17cb10802fc0728da4470";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -652,11 +692,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				55AFAB07205B7318003AF3EF /* MiniToLargeViewInteractive.swift in Sources */,
+				7D3EA88520C8DBFA0050F38F /* BirthdayNotificationView.swift in Sources */,
 				55A589A1205135AE00266380 /* Responder+byPass.swift in Sources */,
 				55A589942050F23700266380 /* TripleDesEncryptor.swift in Sources */,
 				55A589902050F1D600266380 /* Encryption.swift in Sources */,
 				014350D720503DD600512602 /* Attendance.swift in Sources */,
 				5509CB28204FCE4F00A87E88 /* LoginViewController.swift in Sources */,
+				7D5BFCD520C8C5EF000BB0B4 /* ConfettiEmitter.swift in Sources */,
 				55AFAB05205B72BF003AF3EF /* MiniToLargeViewAnimator.swift in Sources */,
 				014350DD2050420300512602 /* NotificationView.swift in Sources */,
 				55BF52A4205B684200AA1C87 /* BaseAnimator.swift in Sources */,
@@ -835,6 +877,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = ZK45DE64XX;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
