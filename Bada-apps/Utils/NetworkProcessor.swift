@@ -22,6 +22,7 @@ class NetworkProcessor {
         self.method = method
         self.url = url
         self.parameter = parameter
+  
     }
     
     

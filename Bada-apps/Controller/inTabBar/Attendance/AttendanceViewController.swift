@@ -35,6 +35,7 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
     var dismissInteractor: MiniToLargeViewInteractive!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         clockInOutView.isHidden = true
         startActivityIndicator()
@@ -77,7 +78,9 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
 
         guard let date = calendar.date(from: dateComponent) else { return }
         formatter.dateFormat = "MM/dd"
-        let formattedDateNow = formatter.string(from: date) as Any
+        guard let formattedDateNow = formatter.string(from: date) as? Any else { return }
+        
+        UserDefaults.standard.removeObject(forKey: "birthdayCache")
         
        if let birthdayCache = UserDefaults.standard.object(forKey: "birthdayCache") as? String{
             
@@ -96,7 +99,9 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
     }
     
     private func triggerBirthdayNotification(for date: Any){
+        
         Database.database().reference().child("users").queryOrdered(byChild: "birthDate").queryEqual(toValue: date).observeSingleEvent(of: .value) { (snap) in
+            
             if snap == nil{
                 return
             }
@@ -105,6 +110,7 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
             
             let key = Array(val.keys)[0]
             guard let user = val[key] as? [String: Any] else {return}
+            
             
             guard let name = user["name"] as? String else {return}
             guard let picURL = user["profilePictureURL"] as? String else {return}
@@ -132,11 +138,10 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
     
     func statusObserver(){
         Attendance.observeForStatus { (status) in
+            self.stopActivityIndicator()
             switch status {
             case ._notYet:
                 self.clockInOutView.isHidden = false
-                self.stopActivityIndicator()
-                
                 self.clockInOutView.clockStatus = status
                 self.clockInOutView.clockInOutButton.setImage( #imageLiteral(resourceName: "clockInButton"), for: UIControlState.normal)
                 self.clockInOutView.clockInOutTitleLabel.text = "Clock In"
@@ -146,7 +151,6 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
                 self.clockInOutView.dateLabel.textColor = UIColor.init(rgb: Color.clockOutColor)
             case ._in:
                 self.clockInOutView.isHidden = false
-                self.stopActivityIndicator()
                 self.clockInOutView.clockStatus = status
                 self.clockInOutView.clockInOutButton.setImage( #imageLiteral(resourceName: "clockOutButton"), for: UIControlState.normal)
                 self.clockInOutView.clockInOutTitleLabel.text = "Last Clock In"
@@ -155,7 +159,6 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
                 self.clockInOutView.clockInOutButton.isUserInteractionEnabled = true
                 self.clockInOutView.dateLabel.textColor = UIColor.init(rgb: Color.clockOutColor)
             case ._out:
-                self.stopActivityIndicator()
                 self.clockInOutView.isHidden = false
                 self.clockInOutView.clockStatus = status
                 self.clockInOutView.clockInOutButton.setImage( #imageLiteral(resourceName: "button_Grey"), for: UIControlState.normal)
@@ -166,7 +169,7 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
                 self.clockInOutView.dateLabel.textColor = UIColor.init(rgb: Color.clockOutColor)
             case ._done:
                 self.clockInOutView.isHidden = false
-                self.stopActivityIndicator()
+                
             }
         }
     }
@@ -438,6 +441,7 @@ extension AttendanceViewController: UIViewControllerTransitioningDelegate {
     
     @IBAction func dragableHistoryDidTap() {
         disableInteractivePlayerTransitioning = true
+        
         let sb = UIStoryboard(name: "History", bundle: nil)
         
         self.present(sb.instantiateInitialViewController()!, animated: true) { [unowned self] in

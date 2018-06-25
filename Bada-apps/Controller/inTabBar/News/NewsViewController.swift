@@ -8,20 +8,80 @@
 
 import UIKit
 import WebKit
+import FirebaseFirestore
+
 
 class NewsViewController: BaseController {
     
-    @IBOutlet weak var webView: WKWebView!
+   
+    var ref = Firestore.firestore()
+    
+    var newsData: [News] = []
+    var selectedID: String = ""
+    
+    @IBOutlet weak var newsTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        newsTableView.dataSource = self
+        newsTableView.delegate = self
         
-        
-//        webView.loadHTMLString(htmlString, baseURL: nil)
+        fetchNewsFromDatabase()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    func fetchNewsFromDatabase(){
+        self.startActivityIndicator()
+        
+        self.ref.collection("news").getDocuments{ (snapshot, error) in
+            if error != nil {
+                return
+            }
+            
+            for document in snapshot!.documents{
+                let news = document.data()
+                self.newsData.append(News(id: document.documentID,title: news["title"] as! String))
+            }
+            
+            self.newsTableView.reloadData()
+            self.stopActivityIndicator()
+            
+        }
     }
+    
+    @IBAction func refreshData(){
+        newsData = []
+        fetchNewsFromDatabase()
+    }
+}
+
+extension NewsViewController: UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return newsData.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = newsTableView.dequeueReusableCell(withIdentifier: "newsCell", for: indexPath)
+        cell.textLabel?.text = newsData[indexPath.row].title
+        return cell
+    }
+}
+
+
+extension NewsViewController: UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedID = newsData[indexPath.row].documentID
+        performSegue(withIdentifier: "showDetail", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetail"{
+            let dest = segue.destination as! DetailNewsViewController
+            dest.newsID = selectedID
+            
+        }
+    }
+    
+    
 }
 

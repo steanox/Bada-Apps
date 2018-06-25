@@ -9,6 +9,7 @@
 import Foundation
 import FirebaseDatabase
 import FirebaseAuth
+import FirebaseAnalytics
 
 enum Status{
     case checkIn
@@ -34,6 +35,7 @@ protocol AttendanceDelegate {
 
 class Attendance{
     
+    
     var dateID: String?
     var userID = Auth.auth().currentUser?.uid
     var notes: String?
@@ -42,10 +44,10 @@ class Attendance{
     var ref: DatabaseReference = Database.database().reference()
     var handle:UInt!
     
+    
     var dateComponent: DateComponents!{
         didSet{
             self.time = "\(dateComponent.hour!):\(dateComponent.minute!):\(dateComponent.second!)"
-            
             self.dateID = Attendance.getDateIDNow()
             
         }
@@ -58,12 +60,15 @@ class Attendance{
         guard (Auth.auth().currentUser) != nil else { return }
         
         self.notes = notes
+        
+        
         self.updateTime()
         
         
     }
     
-    func performWithNotes(){
+    
+    public func performWithNotes(){
         
         self.checkStatusInDatabase { [weak self](status) in
             switch status {
@@ -84,41 +89,45 @@ class Attendance{
             
             var data: [String:Any] = ["status":"1","checkInTime":self.time as Any]
             
-            //check if notes avaiable
-            
+            //check if notes available
             if let notes = notes{
                 data["checkInNotes"] = notes
             }
             
-            self.ref.child("\(Identifier.attendanceDatabasePath)\(self.dateID!)/\(self.userID!)").observeSingleEvent(of: .value) { (snapshot) in
-                
-                //check if user already check in or not
-                
-                if !snapshot.hasChild("checkInTime") && !snapshot.hasChild("checkOutTime") , let _ = self.time ,let _ = self.dateID{
-                    self.ref.child("\(Identifier.userDatabasePath)\(self.userID!)/attendances").child("\(self.dateID!)").setValue(data)
-                    snapshot.ref.setValue(data, withCompletionBlock: {[weak self] (error, currentRef) in
-                        self?.delegate?.attendanceRemoveProgress()
-                        if error != nil {
-                            currentRef.cancelDisconnectOperations()
-                            guard let error = error?.localizedDescription else {return}
-                            self?.delegate?.attendanceFailed(error: error )
-                            return
-                        }
-                  
-                       
-                        self?.delegate?.attendanceSuccess()
+            self.ref
+                .child("\(Identifier.attendanceDatabasePath)\(self.dateID!)/\(self.userID!)")
+                .observeSingleEvent(of: .value) { (snapshot) in
+                    
+                    //check if user already check in or not
+                    if !snapshot.hasChild("checkInTime") && !snapshot.hasChild("checkOutTime") , let _ = self.time ,let _ = self.dateID{
                         
-                       
+                        //Set value to user node to improve performance on reading the history of attendance
+                        self.ref
+                            .child("\(Identifier.userDatabasePath)\(self.userID!)/attendances")
+                            .child("\(self.dateID!)")
+                            .setValue(data)
                         
-                    })
-                }else{
-                    self.delegate?.attendanceRemoveProgress()
-                    self.delegate?.attendanceFailed(error: "You cannot check in again for today")
+                        
+                        snapshot.ref
+                                .setValue(data, withCompletionBlock: {[weak self] (error, currentRef) in
+                                    self?.delegate?.attendanceRemoveProgress()
+                                    if error != nil {
+                                        currentRef.cancelDisconnectOperations()
+                                        guard let error = error?.localizedDescription else {return}
+                                        self?.delegate?.attendanceFailed(error: error )
+                                        return
+                                    }
+                      
+                                    Analytics.setUserProperty(self?.time, forName: "check_in_time")
+                                    self?.delegate?.attendanceSuccess()
+                            
+                                })
+                    }else{
+                        self.delegate?.attendanceRemoveProgress()
+                        self.delegate?.attendanceFailed(error: "You cannot check in again for today")
+                    }
                 }
-                
-            }
         }
-        
     }
     
     func performCheckOut(){
@@ -131,30 +140,38 @@ class Attendance{
             }
             
             
-            self.ref.child("\(Identifier.attendanceDatabasePath)\(self.dateID!)/\(self.userID!)").observeSingleEvent(of: .value) { (snapshot) in
+            self.ref
+                .child("\(Identifier.attendanceDatabasePath)\(self.dateID!)/\(self.userID!)")
+                .observeSingleEvent(of: .value) { (snapshot) in
                 
-                if !snapshot.hasChild("checkOutTime") , let _ = self.time , let _ = self.dateID {
-                    self.ref.child("\(Identifier.userDatabasePath)\(self.userID!)/attendances").child("\(self.dateID!)").updateChildValues(data)
                     
-                    snapshot.ref.updateChildValues(data, withCompletionBlock: {[weak self] (error, currentRef) in
+                    if !snapshot.hasChild("checkOutTime") , let _ = self.time , let _ = self.dateID {
+                        //Set value to user node to improve performance on reading the history of attendance
+                        self.ref
+                            .child("\(Identifier.userDatabasePath)\(self.userID!)/attendances")
+                            .child("\(self.dateID!)")
+                            .updateChildValues(data)
                         
-                        self?.delegate?.attendanceRemoveProgress()
-                        
-                        if error != nil{
-                            currentRef.cancelDisconnectOperations()
-                            guard let error = error?.localizedDescription else {return}
-                            self?.delegate?.attendanceFailed(error: error)
-                            return
-                        }
-                        self?.ref.child("\(Identifier.userDatabasePath)\(self?.userID!)/attendances").updateChildValues(["\((self?.dateID)!)" : data])
-                        self?.delegate?.attendanceSuccess()
-                        
-                        
-                    })
-                }else{
-                    self.delegate?.attendanceRemoveProgress()
-                    self.delegate?.attendanceFailed(error: "You cannot check out again for today")
-                }
+                        snapshot.ref
+                                .updateChildValues(data, withCompletionBlock: { [weak self] (error, currentRef) in
+                            
+                                    self?.delegate?.attendanceRemoveProgress()
+                                    
+                                    if error != nil{
+                                        currentRef.cancelDisconnectOperations()
+                                        guard let error = error?.localizedDescription else {return}
+                                        self?.delegate?.attendanceFailed(error: error)
+                                        return
+                                    }
+                                    self?.ref.child("\(Identifier.userDatabasePath)\(self?.userID!)/attendances").updateChildValues(["\((self?.dateID)!)" : data])
+                                    Analytics.setUserProperty(self?.time, forName: "check_out_time")
+                                    self?.delegate?.attendanceSuccess()
+                            
+                        })
+                    }else{
+                        self.delegate?.attendanceRemoveProgress()
+                        self.delegate?.attendanceFailed(error: "You cannot check out again for today")
+                    }
                 
             }
         }
@@ -166,6 +183,9 @@ class Attendance{
         let userID = (Auth.auth().currentUser?.uid)!
         let dateID = Attendance.getDateIDNow()
         Database.database().reference().removeAllObservers()
+        
+        
+        
         Database.database().reference().child("\(Identifier.attendanceDatabasePath)\(dateID)/\(userID)").observe(.value, with: { (snapshot) in
             
             

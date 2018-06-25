@@ -11,6 +11,7 @@ import Firebase
 import CommonCrypto
 import Fabric
 import Crashlytics
+import SystemConfiguration
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         Fabric.with([Crashlytics.self])
         
+
+        
         Database.database().isPersistenceEnabled = true
         
         if Auth.auth().currentUser != nil {
@@ -30,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.makeKeyAndVisible()
             let mainStoryboard = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
             guard (mainStoryboard as? RootTabBarController) != nil else {return true}
+            
             window?.rootViewController = mainStoryboard
         }
         
@@ -46,6 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
+        
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
