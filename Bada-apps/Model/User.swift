@@ -108,7 +108,8 @@ class User{
             
             storageRef.putData(imageData, metadata: nil) { (meta, err) in
                 if err != nil {
-                    print(err)
+                    let message = err.debugDescription
+                    print(message)
                     return
                 }
                 guard let imageURL = meta?.downloadURL()?.absoluteString else { return }
@@ -123,7 +124,7 @@ class User{
     
     static func checkBirthDataCache(onSuccess response: @escaping ()->()){
         
-        if let birthDate = UserDefaults.standard.object(forKey: "birthDate") as? String{
+        if let _ = UserDefaults.standard.object(forKey: "birthDate") as? String{
             response()
         }else{
             Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).observeSingleEvent(of: .value) { (snapshot) in
@@ -143,23 +144,22 @@ class User{
     static func register(appleID: String, fullName: String, dateOfBirth: String, userData:[String:Any] = [:],onSuccess: @escaping registerSuccessHandler ,onError:@escaping errorHandler)  {
         
         do{
+            //Encryting the Email to tripleDes
             let tripleDesEnc = TripleDesEncryptor()
             let data = appleID.data(using:String.Encoding.utf8)!
             let mailData = try tripleDesEnc.encrypt(data: data) as NSData
+            guard let myMailData = mailData.toHexString else {return}
+            
+            //check if the inputted appleID is exists on the checkUser node
             Database.database().reference().child("checkUser").observeSingleEvent(of: .value) { (snapshot) in
                 
-                //check if the inputted appleID is exists on the checkUser node
-                guard let myMailData = mailData.toHexString else {return}
                 if snapshot.hasChild("\(myMailData)"){
                     snapshot.ref.child("\(myMailData)").observeSingleEvent(of: .value, with: { (userSnapshot) in
                         
-                        
                         guard let data = userSnapshot.value as? [String:String] else { return }
-                        let dateData = data["dateOfBirth"]
+                        guard let dateData = data["dateOfBirth"] else {return}
                         
                         if dateOfBirth == dateData{
-                            
-        
                             let password = String("\(myMailData)".prefix(10))
                             Auth.auth().createUser(withEmail: appleID, password: password) { (user, error) in
                                 if error != nil{
@@ -175,8 +175,6 @@ class User{
                                 
                                 
                                 Mailer.sendPasswordMail(fullname: fullName, email: appleID, password: password)
-                                
-                                
                                 if error != nil{
                                     onError(error!)
                                     return
@@ -185,6 +183,8 @@ class User{
                                 values["email"] = appleID
                                 values["status"] = 0
                                 values["name"] = fullName
+                                values["birthDate"] = dateData[dateData.index(dateData.startIndex, offsetBy: 5)...]
+                                
                                 
                                 
                                 

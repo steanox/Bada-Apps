@@ -44,8 +44,6 @@ class HistoryViewController: BaseController {
             self?.lastDate = String(Int(orderedDateKey.last!)! - 1)
             
             orderedDateKey.map({ (s1) -> String in
-                
-                
                 let monthKey = String(s1[s1.index(s1.startIndex, offsetBy: 4)...s1.index(s1.startIndex, offsetBy: 5)])
                 
                 self?.historyView.orderedMonth.append(monthKey)

@@ -78,7 +78,7 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
 
         guard let date = calendar.date(from: dateComponent) else { return }
         formatter.dateFormat = "MM/dd"
-        guard let formattedDateNow = formatter.string(from: date) as? Any else { return }
+        let formattedDateNow = formatter.string(from: date) as Any 
         
         UserDefaults.standard.removeObject(forKey: "birthdayCache")
         
@@ -105,7 +105,7 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
             if snap == nil{
                 return
             }
-            
+            print("val \(snap.value)")
             guard let val = snap.value as? [String:Any] else {return}
             
             let key = Array(val.keys)[0]
@@ -169,7 +169,14 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
                 self.clockInOutView.dateLabel.textColor = UIColor.init(rgb: Color.clockOutColor)
             case ._done:
                 self.clockInOutView.isHidden = false
-                
+            case ._error:
+                self.view.showNotification(title: "Error", description: "Please check your internet connection and try again", buttonText: "Close", onSuccess: nil)
+                self.clockInOutView.isHidden = false
+                self.clockInOutView.clockStatus = status
+                self.clockInOutView.clockInOutButton.setImage( #imageLiteral(resourceName: "button_Grey"), for: UIControlState.normal)
+                self.clockInOutView.clockInOutButton.isUserInteractionEnabled = false
+                self.clockInOutView.clockInOutTitleLabel.textColor = UIColor.init(rgb: Color.clockInColor)
+                self.clockInOutView.clockInOutTitleLabel.text = "Connection Error"
             }
         }
     }
@@ -385,10 +392,11 @@ extension AttendanceViewController: UNUserNotificationCenterDelegate {
                 
                 self.notification(status: ._out)
             case ._in:
-                
                 self.notification(status: ._in)
             case ._done:
                 self.notification(status: ._done)
+            case ._error:
+                self.notification(status: ._error)
             }
         }
     }
@@ -396,19 +404,19 @@ extension AttendanceViewController: UNUserNotificationCenterDelegate {
     func notification(status: ClockStatus) {
         removeAllNotification()
         
-        switch status {
-        case ._notYet:
-            content?.subtitle = "asdasdasdasd"
-            content?.body = "ing"
-        case ._out:
-            content?.subtitle = "test"
-            content?.body = "ing"
-        case ._in:
-            content?.subtitle = "testing"
-            content?.body = "dikit"
-        case ._done:
-            print("done")
-        }
+//        switch status {
+//        case ._notYet:
+//            content?.subtitle = "asdasdasdasd"
+//            content?.body = "ing"
+//        case ._out:
+//            content?.subtitle = "test"
+//            content?.body = "ing"
+//        case ._in:
+//            content?.subtitle = "testing"
+//            content?.body = "dikit"
+//        case ._done:
+//            print("done")
+//        }
         
         let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 5.0, repeats: false)
         let request = UNNotificationRequest(identifier: Identifier.checkInLocalNotification, content: self.content!, trigger: trigger)

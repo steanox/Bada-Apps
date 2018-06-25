@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 
         
-        Database.database().isPersistenceEnabled = true
+        //Database.database().isPersistenceEnabled = true
         
         if Auth.auth().currentUser != nil {
             window = UIWindow(frame: UIScreen.main.bounds)

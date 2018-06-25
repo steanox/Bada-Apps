@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4t0-Al-XqP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4t0-Al-XqP">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,27 +13,21 @@
         <!--Account-->
         <scene sceneID="PgB-si-Kcp">
             <objects>
-                <viewController title="Account" id="4t0-Al-XqP" customClass="AccountViewController" customModule="Bada_apps" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Account" id="4t0-Al-XqP" customClass="TemporaryLogoutFile" customModule="Bada_apps" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wB9-KI-eJ4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coming soon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SO5-4p-4zJ">
-                                <rect key="frame" x="136" y="400.66666666666669" width="103" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="103" id="OQa-Pm-Nfl"/>
-                                    <constraint firstAttribute="height" constant="21" id="gN2-pB-yfP"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ef3-49-Kcu">
+                                <rect key="frame" x="163" y="391" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logout" destination="4t0-Al-XqP" eventType="touchUpInside" id="Cfs-rK-noe"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="SO5-4p-4zJ" firstAttribute="centerY" secondItem="TWD-al-LjL" secondAttribute="centerY" id="6Cx-8F-mcB"/>
-                            <constraint firstItem="SO5-4p-4zJ" firstAttribute="centerX" secondItem="TWD-al-LjL" secondAttribute="centerX" id="cJ7-iS-pBg"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="TWD-al-LjL"/>
                     </view>
                 </viewController>

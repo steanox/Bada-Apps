@@ -207,7 +207,7 @@ class Attendance{
             }
             
         }) { (error) in
-            
+            onResponse(._error)
         }
         
     }

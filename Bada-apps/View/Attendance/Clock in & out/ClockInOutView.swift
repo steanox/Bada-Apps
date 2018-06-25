@@ -16,6 +16,7 @@ enum ClockStatus {
     case _in
     case _out
     case _done
+    case _error
 }
 
 
