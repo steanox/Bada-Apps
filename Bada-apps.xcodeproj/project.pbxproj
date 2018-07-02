@@ -532,6 +532,7 @@
 				55A5898D2050EE4900266380 /* Carthage Encryption */,
 				55B558112064A6C200D9B035 /* SwiftLint Script */,
 				7DCD9DA020C8DE310073750C /* ShellScript */,
+				A901EE3F28C366C0F5B5E2C2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -704,6 +705,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" f3583287ce5d7009512da266c8373de6682571dd 3770c05e2d4ec6f3137834f5c456d2da02d2d43953a17cb10802fc0728da4470";
+		};
+		A901EE3F28C366C0F5B5E2C2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bada-apps/Pods-Bada-apps-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
