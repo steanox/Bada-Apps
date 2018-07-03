@@ -35,7 +35,6 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
     var dismissInteractor: MiniToLargeViewInteractive!
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         clockInOutView.isHidden = true
         startActivityIndicator()
@@ -52,13 +51,8 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
             self.checkForBirthday()
         }
         
-        
-        
     }
     
-    
-    
-
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -131,7 +125,6 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
         //        triggeringNotification()
         
         statusObserver()
-
         
         self.navigationController?.navigationBar.isHidden = true
     }

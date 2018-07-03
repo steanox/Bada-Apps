@@ -15,11 +15,12 @@ class NotesView: UIView, UITextViewDelegate{
     @IBOutlet weak var noteLabel: UILabel!
     @IBOutlet weak var notesTextContainer: UIView!
     @IBOutlet weak var notesTextView: UITextView!
-    
+    @IBOutlet weak var notesImageView: UIImageView!
     
     fileprivate weak var notesNibView: UIView!
     
-    var sources: AttendanceViewController?
+    var attendanceViewController: AttendanceViewController?
+    var loginViewController: LoginViewController?
     
     @IBOutlet var keyboardHeightLayoutConstraint: NSLayoutConstraint?
     
@@ -36,8 +37,6 @@ class NotesView: UIView, UITextViewDelegate{
        
     init(frame: CGRect, title: String) {
         super.init(frame: frame)
-        
-        
         setup(title)
     }
     
@@ -78,6 +77,28 @@ class NotesView: UIView, UITextViewDelegate{
         
         self.noteLabel.text = title
         self.applyShadow(0)
+        
+        if title == Message.forgotPassword {
+            notesTextView.keyboardType = .emailAddress
+            notesTextView.autocapitalizationType = .none
+            notesTextView.text = Message.appleID
+            notesTextView.textColor = UIColor.lightGray
+            notesImageView.image = #imageLiteral(resourceName: "ic_email")
+        }
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = Message.appleID
+            textView.textColor = UIColor.lightGray
+        }
     }
     
     func textViewDidChange(_ textView: UITextView) {
@@ -144,8 +165,13 @@ class NotesView: UIView, UITextViewDelegate{
     
     @IBAction func tapSubmit(){
         self.dismiss()
-        sources?.attendance?.notes = notesTextView.text
-        sources?.attendance?.performWithNotes()
+        if let viewController = attendanceViewController {
+            viewController.attendance?.notes = notesTextView.text
+            viewController.attendance?.performWithNotes()
+        }else if let viewController = loginViewController {
+            viewController.resetPassword(email: notesTextView.text)
+            self.dismiss()
+        }
     }
     
     @objc func keyboardNotification(notification: NSNotification) {
@@ -159,7 +185,8 @@ class NotesView: UIView, UITextViewDelegate{
             if endFrameY >= UIScreen.main.bounds.size.height {
                 self.keyboardHeightLayoutConstraint?.constant = -35.0
             } else {
-                self.keyboardHeightLayoutConstraint?.constant = (endFrame?.size.height ?? 0.0) - 35.0
+                self.keyboardHeightLayoutConstraint?.constant = 35.0
+//                self.keyboardHeightLayoutConstraint?.constant = (endFrame?.size.height ?? 0.0) - 35.0
             }
             UIView.animate(withDuration: duration,
                            delay: TimeInterval(0),

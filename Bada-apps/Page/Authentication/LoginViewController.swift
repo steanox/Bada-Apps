@@ -27,8 +27,6 @@ class LoginViewController: BaseController {
         loginTextField.delegate = self
         passwordTextField.delegate = self
         
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: self.view.window)
-        //NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: self.view.window)
     }
     
     
@@ -71,8 +69,24 @@ class LoginViewController: BaseController {
             self?.errorText.text = "Invalid apple ID or password"
         }
 
-   }
+    }
     
+    @IBAction func forgotPasswordDidTap() {
+        self.view.showNote(title: Message.forgotPassword, source: self)
+    }
+    
+    func resetPassword(email: String) {
+        self.loadingIndicator?.startLoading()
+        User.resetPassword(email: email, onSuccess: { (response) in
+            self.loadingIndicator?.stopLoading()
+            self.view.showNotification(title: Message.forgotPassword, description: response, buttonText: "Close", onSuccess: nil)
+            
+        }) { (error) in
+            self.loadingIndicator?.stopLoading()
+            self.view.showNotification(title: "Error", description: error.localizedDescription, buttonText: "Close", onSuccess: nil)
+        }
+        
+    }
 }
 
 extension LoginViewController:UITextFieldDelegate{

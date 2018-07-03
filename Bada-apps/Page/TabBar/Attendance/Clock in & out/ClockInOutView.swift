@@ -22,7 +22,7 @@ enum ClockStatus {
 
 
 class ClockInOutView: UIView {
-
+    
     @IBOutlet weak var clockInOutButton: UIButton!
     @IBOutlet weak var clockInOutTitleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -34,7 +34,7 @@ class ClockInOutView: UIView {
         return bv
     }()
     
-
+    
     
     fileprivate weak var clockInOutArea: UIView!
     
@@ -54,30 +54,24 @@ class ClockInOutView: UIView {
         self.clockInOutArea = clockInOut
         
         dateLabel.textColor = UIColor(rgb: Color.dateClockInOut)
-
+        
         
         
     }
     
     @IBAction func clockInOutDidTap(_ sender: UIButton) {
-        
-        
-        
         tryingIdentifying()
-        
     }
     
-
+    
     
     func tryingIdentifying() {
         let faceId = FaceID()
         faceId.identifiyingFaceID { (response) in
             switch response {
             case .isSuccess:
-                
-                    let vc = self.parentViewController as! AttendanceViewController
-                    vc.handleAttendance()
-                
+                let vc = self.parentViewController as! AttendanceViewController
+                vc.handleAttendance()
                 break
             case .notSupported:
                 break

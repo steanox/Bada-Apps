@@ -52,20 +52,20 @@ extension UIView {
         
     }
     
-    func showNote(title: String, source: AttendanceViewController) {
+    func showNote(title: String, source: BaseController) {
         let rect = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
         let notes = NotesView(frame: rect, title: title)
-        notes.sources = source
-        
+        if let viewController = source as? AttendanceViewController {
+            notes.attendanceViewController = viewController
+        } else if let viewController = source as? LoginViewController {
+            notes.loginViewController = viewController
+        }
         
         self.addSubview(notes)
-        
         notes.alpha = 0.0
-        
         UIView.animate(withDuration: 0.2) {
             notes.alpha = 1.0
         }
-    
     }
     
     var parentViewController: UIViewController? {

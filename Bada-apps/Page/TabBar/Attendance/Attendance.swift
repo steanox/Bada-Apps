@@ -61,7 +61,6 @@ class Attendance{
         
         self.notes = notes
         
-        
         self.updateTime()
         
         
@@ -144,7 +143,6 @@ class Attendance{
                 .child("\(Identifier.attendanceDatabasePath)\(self.dateID!)/\(self.userID!)")
                 .observeSingleEvent(of: .value) { (snapshot) in
                 
-                    
                     if !snapshot.hasChild("checkOutTime") , let _ = self.time , let _ = self.dateID {
                         //Set value to user node to improve performance on reading the history of attendance
                         self.ref
