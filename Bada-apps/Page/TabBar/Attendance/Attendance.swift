@@ -284,6 +284,4 @@ class Attendance{
         return "\(dateComponent.year!)\(dateComponent.month!)\(dateComponent.day!)"
     }
     
-    // testing git processing
-    
 }
