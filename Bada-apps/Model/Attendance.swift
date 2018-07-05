@@ -102,9 +102,19 @@ class Attendance{
                     if !snapshot.hasChild("checkInTime") && !snapshot.hasChild("checkOutTime") , let _ = self.time ,let _ = self.dateID{
                         
                         //Set value to user node to improve performance on reading the history of attendance
+                        
+                        guard
+                            let userID = self.userID,
+                            let dateID = self.dateID
+                            else{
+                                self.delegate?.attendanceRemoveProgress()
+                                self.delegate?.attendanceFailed(error: "Something went wrong please try contact our admin")
+                                return
+                        }
+                        
                         self.ref
-                            .child("\(Identifier.userDatabasePath)\(self.userID!)/attendances")
-                            .child("\(self.dateID!)")
+                            .child("\(Identifier.userDatabasePath)\(userID)/attendances")
+                            .child("\(dateID)")
                             .setValue(data)
                         
                         
@@ -147,9 +157,19 @@ class Attendance{
                     
                     if !snapshot.hasChild("checkOutTime") , let _ = self.time , let _ = self.dateID {
                         //Set value to user node to improve performance on reading the history of attendance
+                        
+                        guard
+                            let userID = self.userID,
+                            let dateID = self.dateID
+                        else{
+                            self.delegate?.attendanceRemoveProgress()
+                            self.delegate?.attendanceFailed(error: "Something went wrong please try contact our admin")
+                            return
+                        }
+                        
                         self.ref
-                            .child("\(Identifier.userDatabasePath)\(self.userID!)/attendances")
-                            .child("\(self.dateID!)")
+                            .child("\(Identifier.userDatabasePath)\(userID)/attendances")
+                            .child("\(dateID)")
                             .updateChildValues(data)
                         
                         snapshot.ref

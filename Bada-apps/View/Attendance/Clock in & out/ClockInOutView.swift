@@ -64,7 +64,6 @@ class ClockInOutView: UIView {
         
         
         tryingIdentifying()
-        
     }
     
 
