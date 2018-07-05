@@ -24,6 +24,7 @@ class User{
     typealias errorHandler = (_ error: Error) -> Void
     typealias registerSuccessHandler = () -> Void
     typealias loginSuccessHandler = (_ user: Any)->Void
+    typealias resetSuccessHandler = (String)->Void
     
     var email: String?
     var name: String?
@@ -224,8 +225,6 @@ class User{
     
     static func login(email: String, password: String, onSuccess: @escaping loginSuccessHandler,onError: @escaping errorHandler){
         
-        
-        
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             if error != nil{
                 onError(error!)
@@ -239,8 +238,18 @@ class User{
         }
         
     }
-
-
+    
+    static func resetPassword(email: String, onSuccess: @escaping resetSuccessHandler,onError: @escaping errorHandler) {
+        Auth.auth().sendPasswordReset(withEmail: email) { (error) in
+            if error != nil {
+                onError(error!)
+                return
+            }else {
+                onSuccess(Message.resetPasswordSuccess)
+            }
+        }
+    }
+    
     
 }
 

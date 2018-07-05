@@ -31,12 +31,8 @@ class HistoryViewController: BaseController {
         
     }
     
-    
-    
     func getUserHistoryLimited(by limit: Int){
         self.handler = User.getAttendanceHistory(by: limit,offset: lastDate) { [weak self] (attendances) in
-            
-
             
             let orderedDateKey: [String] = Array(attendances.keys).sorted(by: { (s1, s2) -> Bool in
                 return Int(s1)! > Int(s2)!

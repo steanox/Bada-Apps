@@ -16,8 +16,9 @@ struct Message {
     public static let attendance = "Attendance"
     public static let news = "News"
     public static let profile = "Profile"
-    
-    
+    public static let forgotPassword = "Forgot Password"
+    public static let appleID = "Apple ID"
+    public static let resetPasswordSuccess = "Succes!\nCheck your email to create new password."
     
 }
 

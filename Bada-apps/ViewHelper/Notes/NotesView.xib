@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,6 +16,7 @@
                 <outlet property="containerHeightConstraint" destination="2JL-wJ-mOl" id="qG8-dY-sb6"/>
                 <outlet property="keyboardHeightLayoutConstraint" destination="g1V-A1-woV" id="MHO-4s-lEx"/>
                 <outlet property="noteLabel" destination="ujV-Wj-ocy" id="ZHB-vJ-yIL"/>
+                <outlet property="notesImageView" destination="TvC-Up-uAX" id="c97-4U-6Sm"/>
                 <outlet property="notesTextContainer" destination="6sC-Nw-VsV" id="19S-qy-ftO"/>
                 <outlet property="notesTextContainerHeightConstraint" destination="DkL-d7-wvg" id="mb4-Ng-1t8"/>
                 <outlet property="notesTextView" destination="pGF-Xx-Txw" id="rhO-3l-Smf"/>
@@ -28,7 +29,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CGh-5c-sWI">
-                    <rect key="frame" x="0.0" y="812" width="375" height="305"/>
+                    <rect key="frame" x="0.0" y="507" width="375" height="305"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ujV-Wj-ocy">
                             <rect key="frame" x="20" y="30" width="335" height="28"/>
@@ -110,7 +111,7 @@
             <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="CGh-5c-sWI" firstAttribute="leading" secondItem="CYO-08-Aan" secondAttribute="leading" id="Kvj-3y-SOE"/>
-                <constraint firstAttribute="bottom" secondItem="CGh-5c-sWI" secondAttribute="bottom" constant="-305" id="g1V-A1-woV"/>
+                <constraint firstAttribute="bottom" secondItem="CGh-5c-sWI" secondAttribute="bottom" id="g1V-A1-woV"/>
                 <constraint firstItem="CGh-5c-sWI" firstAttribute="trailing" secondItem="CYO-08-Aan" secondAttribute="trailing" id="lL4-v1-Dxi"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="CYO-08-Aan"/>
