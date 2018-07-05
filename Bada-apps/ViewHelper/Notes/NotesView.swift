@@ -185,8 +185,11 @@ class NotesView: UIView, UITextViewDelegate{
             if endFrameY >= UIScreen.main.bounds.size.height {
                 self.keyboardHeightLayoutConstraint?.constant = -35.0
             } else {
-                self.keyboardHeightLayoutConstraint?.constant = 35.0
-//                self.keyboardHeightLayoutConstraint?.constant = (endFrame?.size.height ?? 0.0) - 35.0
+                if let _ = loginViewController {
+                    self.keyboardHeightLayoutConstraint?.constant = 35.0
+                }else if let _ = attendanceViewController {
+                    self.keyboardHeightLayoutConstraint?.constant = (endFrame?.size.height ?? 0.0) - 35.0
+                }
             }
             UIView.animate(withDuration: duration,
                            delay: TimeInterval(0),
