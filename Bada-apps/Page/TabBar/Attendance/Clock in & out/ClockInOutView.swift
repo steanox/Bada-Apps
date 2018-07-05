@@ -55,27 +55,24 @@ class ClockInOutView: UIView {
         
         dateLabel.textColor = UIColor(rgb: Color.dateClockInOut)
         
-        
-        
     }
     
     @IBAction func clockInOutDidTap(_ sender: UIButton) {
         tryingIdentifying()
     }
     
-    
-    
     func tryingIdentifying() {
         let faceId = FaceID()
+        let vc = self.parentViewController as! AttendanceViewController
         faceId.identifiyingFaceID { (response) in
             switch response {
             case .isSuccess:
-                let vc = self.parentViewController as! AttendanceViewController
                 vc.handleAttendance()
                 break
             case .notSupported:
                 break
             case .unknownError:
+                vc.showNotification(title: "Face ID", message: Message.faceIdUnknowError, buttonText: "Close")
                 break
             }
         }

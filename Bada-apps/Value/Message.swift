@@ -19,6 +19,7 @@ struct Message {
     public static let forgotPassword = "Forgot Password"
     public static let appleID = "Apple ID"
     public static let resetPasswordSuccess = "Succes!\nCheck your email to create new password."
+    public static let faceIdUnknowError = "Make sure your face id is active."
     
 }
 

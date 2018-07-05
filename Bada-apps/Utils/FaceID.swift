@@ -31,12 +31,14 @@ class FaceID {
         var error: NSError?
         
         guard context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) else {
+            print("Error - canEvaluatePolicy")
             return completion(.unknownError)
         }
         
         let reason = "Face ID authentication"
         context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { isAuthorized, error in
             guard isAuthorized == true else {
+                print("Error - evaluatePolicy")
                 return completion(.unknownError)
             }
             
