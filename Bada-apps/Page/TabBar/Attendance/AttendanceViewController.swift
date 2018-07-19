@@ -322,6 +322,9 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
         }
     }
     
+    func showNotification(title: String, message: String, buttonText: String) {
+        self.view.showNotification(title: title, description: message, buttonText: buttonText, onSuccess: nil)
+    }
     
 }
 
@@ -432,8 +435,6 @@ extension AttendanceViewController: UNUserNotificationCenterDelegate {
         }
         
     }
-    
-    
     
     func removeAllNotification() {
         let current = UNUserNotificationCenter.current()
