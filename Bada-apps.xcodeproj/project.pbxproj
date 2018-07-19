@@ -23,6 +23,7 @@
 		01E8C03D204F9154003BF95C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 01E8C03C204F9153003BF95C /* .gitignore */; };
 		01E8C041204F9168003BF95C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01E8C040204F9168003BF95C /* GoogleService-Info.plist */; };
 		01F51FAE2058F761000EE4FC /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F51FAD2058F761000EE4FC /* Cache.swift */; };
+		445E0695A9CC7058345D7E22 /* Pods_Bada_apps_Bada_appsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE300F24C742E7F65C9A72AB /* Pods_Bada_apps_Bada_appsTests.framework */; };
 		5509CB0F204FCE0A00A87E88 /* CoverageAreaView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5509CB05204FCE0A00A87E88 /* CoverageAreaView.xib */; };
 		5509CB10204FCE0A00A87E88 /* Attendance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5509CB06204FCE0A00A87E88 /* Attendance.storyboard */; };
 		5509CB11204FCE0A00A87E88 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5509CB07204FCE0A00A87E88 /* LaunchScreen.storyboard */; };
@@ -68,8 +69,18 @@
 		7D3EA88520C8DBFA0050F38F /* BirthdayNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3EA88320C8DBFA0050F38F /* BirthdayNotificationView.swift */; };
 		7D5BFCD520C8C5EF000BB0B4 /* ConfettiEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5BFCD420C8C5EF000BB0B4 /* ConfettiEmitter.swift */; };
 		7DBE723920DD24D800D82F16 /* DetailNewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBE723820DD24D800D82F16 /* DetailNewsController.swift */; };
+		7DCB30DD20EE155800833200 /* FirebaseAppSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCB30DC20EE155800833200 /* FirebaseAppSystem.swift */; };
 		7DD3A1EF20C82D10006ABE02 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD3A1EE20C82D10006ABE02 /* Array.swift */; };
 		7DEDBC2220DBFAC100C9EA50 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEDBC2120DBFAC100C9EA50 /* News.swift */; };
+		7DFB9A4420F45F6B00CA322B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFB9A4320F45F6B00CA322B /* AppDelegate.swift */; };
+		7DFB9A4920F45F6B00CA322B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DFB9A4720F45F6B00CA322B /* Main.storyboard */; };
+		7DFB9A4B20F45F6D00CA322B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DFB9A4A20F45F6D00CA322B /* Assets.xcassets */; };
+		7DFB9A4E20F45F6D00CA322B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DFB9A4C20F45F6D00CA322B /* LaunchScreen.storyboard */; };
+		7DFB9A5620F463BF00CA322B /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFB9A5520F463BF00CA322B /* BaseController.swift */; };
+		7DFB9A5820F464F600CA322B /* MasterMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFB9A5720F464F600CA322B /* MasterMenuViewController.swift */; };
+		7DFB9A5A20F467DC00CA322B /* EmptySegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFB9A5920F467DC00CA322B /* EmptySegue.swift */; };
+		7DFB9A6420F46C4000CA322B /* AccoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DFB9A6320F46C4000CA322B /* AccoundCell.xib */; };
+		7DFB9A6D20F47B2800CA322B /* Bada_appsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFB9A6C20F47B2800CA322B /* Bada_appsTests.swift */; };
 		7DFEF78620E0C22100F58069 /* TemporaryLogoutFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFEF78520E0C22100F58069 /* TemporaryLogoutFile.swift */; };
 		7DFEFAE520C787D400825B85 /* HistoryCellShowMore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFEFAE420C787D400825B85 /* HistoryCellShowMore.swift */; };
 		7DFEFAE720C78E1800825B85 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFEFAE620C78E1800825B85 /* HistoryView.swift */; };
@@ -78,7 +89,18 @@
 		7DFEFAEE20C78F1400825B85 /* HistoryCellShowMore.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DFEFAED20C78F1400825B85 /* HistoryCellShowMore.xib */; };
 		7DFEFAF020C791BA00825B85 /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFEFAEF20C791BA00825B85 /* HistoryCell.swift */; };
 		CB425E7B4D3ED9A3D74BB1B4 /* Pods_Bada_apps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB4F00DB43031080465883FF /* Pods_Bada_apps.framework */; };
+		DCA2316C47F1C3C394405DD5 /* Pods_Bada_apps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DFB99DB20F3726800CA322B /* Pods_Bada_apps.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7DFB9A6F20F47B2800CA322B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 016A5D7B204F90A200F99270 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 016A5D82204F90A200F99270;
+			remoteInfo = "Bada-apps";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		010BA03120512896001F8D44 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +121,9 @@
 		01E8C03C204F9153003BF95C /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		01E8C040204F9168003BF95C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		01F51FAD2058F761000EE4FC /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		088FDA6321A1B6FD7D53BFF8 /* Pods-Bada-apps-Bada-appsTests.debug admin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bada-apps-Bada-appsTests.debug admin.xcconfig"; path = "Pods/Target Support Files/Pods-Bada-apps-Bada-appsTests/Pods-Bada-apps-Bada-appsTests.debug admin.xcconfig"; sourceTree = "<group>"; };
+		412D58B435F0E11C32F45EB2 /* Pods-Bada-apps.debug admin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bada-apps.debug admin.xcconfig"; path = "Pods/Target Support Files/Pods-Bada-apps/Pods-Bada-apps.debug admin.xcconfig"; sourceTree = "<group>"; };
+		516BDE9C344A99AFE50E965C /* Pods-Bada-apps-Bada-appsTests.release admin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bada-apps-Bada-appsTests.release admin.xcconfig"; path = "Pods/Target Support Files/Pods-Bada-apps-Bada-appsTests/Pods-Bada-apps-Bada-appsTests.release admin.xcconfig"; sourceTree = "<group>"; };
 		5509CB05204FCE0A00A87E88 /* CoverageAreaView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoverageAreaView.xib; sourceTree = "<group>"; };
 		5509CB06204FCE0A00A87E88 /* Attendance.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Attendance.storyboard; sourceTree = "<group>"; };
 		5509CB08204FCE0A00A87E88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -140,13 +165,31 @@
 		55BF529E2058FD9100AA1C87 /* Account.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
 		55BF52A12058FE9900AA1C87 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		55BF52A3205B684200AA1C87 /* BaseAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAnimator.swift; sourceTree = "<group>"; };
+		60A3730FAE67A90D9539CE48 /* Pods-Bada-appsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bada-appsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bada-appsTests/Pods-Bada-appsTests.release.xcconfig"; sourceTree = "<group>"; };
 		6A9B1A48B702F6F6A79A6D61 /* Pods-Bada-apps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bada-apps.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bada-apps/Pods-Bada-apps.debug.xcconfig"; sourceTree = "<group>"; };
+		7547905C133849623E66DBDA /* Pods-Bada-apps-Bada-appsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bada-apps-Bada-appsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bada-apps-Bada-appsTests/Pods-Bada-apps-Bada-appsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7D3EA88220C8DBFA0050F38F /* BirthdayNotificationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BirthdayNotificationView.xib; sourceTree = "<group>"; };
 		7D3EA88320C8DBFA0050F38F /* BirthdayNotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BirthdayNotificationView.swift; sourceTree = "<group>"; };
 		7D5BFCD420C8C5EF000BB0B4 /* ConfettiEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiEmitter.swift; sourceTree = "<group>"; };
 		7DBE723820DD24D800D82F16 /* DetailNewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailNewsController.swift; sourceTree = "<group>"; };
+		7DCB30DC20EE155800833200 /* FirebaseAppSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAppSystem.swift; sourceTree = "<group>"; };
 		7DD3A1EE20C82D10006ABE02 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		7DEDBC2120DBFAC100C9EA50 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		7DFB99DB20F3726800CA322B /* Pods_Bada_apps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Bada_apps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DFB9A3420F3730600CA322B /* Bada-apps copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Bada-apps copy-Info.plist"; path = "/Users/octavianus/Documents/Bada-apps/Bada-apps copy-Info.plist"; sourceTree = "<absolute>"; };
+		7DFB9A4120F45F6B00CA322B /* Bada-apps-admin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bada-apps-admin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DFB9A4320F45F6B00CA322B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7DFB9A4820F45F6B00CA322B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7DFB9A4A20F45F6D00CA322B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7DFB9A4D20F45F6D00CA322B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7DFB9A4F20F45F6D00CA322B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7DFB9A5520F463BF00CA322B /* BaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
+		7DFB9A5720F464F600CA322B /* MasterMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterMenuViewController.swift; sourceTree = "<group>"; };
+		7DFB9A5920F467DC00CA322B /* EmptySegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySegue.swift; sourceTree = "<group>"; };
+		7DFB9A6320F46C4000CA322B /* AccoundCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccoundCell.xib; sourceTree = "<group>"; };
+		7DFB9A6A20F47B2800CA322B /* Bada-appsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bada-appsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DFB9A6C20F47B2800CA322B /* Bada_appsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bada_appsTests.swift; sourceTree = "<group>"; };
+		7DFB9A6E20F47B2800CA322B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7DFEF78520E0C22100F58069 /* TemporaryLogoutFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryLogoutFile.swift; sourceTree = "<group>"; };
 		7DFEFAE420C787D400825B85 /* HistoryCellShowMore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCellShowMore.swift; sourceTree = "<group>"; };
 		7DFEFAE620C78E1800825B85 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
@@ -154,8 +197,13 @@
 		7DFEFAEB20C78F0100825B85 /* HistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryCell.xib; sourceTree = "<group>"; };
 		7DFEFAED20C78F1400825B85 /* HistoryCellShowMore.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryCellShowMore.xib; sourceTree = "<group>"; };
 		7DFEFAEF20C791BA00825B85 /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
+		85EA8B0AF4C7D28996BCDA4F /* Pods-Bada-apps-Bada-appsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bada-apps-Bada-appsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bada-apps-Bada-appsTests/Pods-Bada-apps-Bada-appsTests.release.xcconfig"; sourceTree = "<group>"; };
+		ADA39DF8C7EC55509EE5733F /* Pods-Bada-appsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bada-appsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bada-appsTests/Pods-Bada-appsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BB4F00DB43031080465883FF /* Pods_Bada_apps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bada_apps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD1CEBD5D01435B5E7F01D78 /* Pods-Bada-apps.release admin.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bada-apps.release admin.xcconfig"; path = "Pods/Target Support Files/Pods-Bada-apps/Pods-Bada-apps.release admin.xcconfig"; sourceTree = "<group>"; };
+		DE300F24C742E7F65C9A72AB /* Pods_Bada_apps_Bada_appsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bada_apps_Bada_appsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F90989D1879C53958F9B2920 /* Pods-Bada-apps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bada-apps.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bada-apps/Pods-Bada-apps.release.xcconfig"; sourceTree = "<group>"; };
+		FDE54862055569A51F89A7B0 /* Pods_Bada_appsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bada_appsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +213,22 @@
 			files = (
 				CB425E7B4D3ED9A3D74BB1B4 /* Pods_Bada_apps.framework in Frameworks */,
 				55A5898C2050EE2100266380 /* CommonCrypto.framework in Frameworks */,
+				DCA2316C47F1C3C394405DD5 /* Pods_Bada_apps.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7DFB9A3E20F45F6B00CA322B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7DFB9A6720F47B2800CA322B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				445E0695A9CC7058345D7E22 /* Pods_Bada_apps_Bada_appsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,9 +241,12 @@
 				01E8C03A204F914B003BF95C /* README.md */,
 				01E8C03C204F9153003BF95C /* .gitignore */,
 				016A5D85204F90A200F99270 /* Bada-apps */,
+				7DFB9A4220F45F6B00CA322B /* Bada-apps-admin */,
+				7DFB9A6B20F47B2800CA322B /* Bada-appsTests */,
 				016A5D84204F90A200F99270 /* Products */,
 				30470825FED39B457A3AE20D /* Pods */,
 				FAECD7D7CFBA22B8D7A3AE0E /* Frameworks */,
+				7DFB9A3420F3730600CA322B /* Bada-apps copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -187,6 +254,8 @@
 			isa = PBXGroup;
 			children = (
 				016A5D83204F90A200F99270 /* Bada-apps.app */,
+				7DFB9A4120F45F6B00CA322B /* Bada-apps-admin.app */,
+				7DFB9A6A20F47B2800CA322B /* Bada-appsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -194,6 +263,7 @@
 		016A5D85204F90A200F99270 /* Bada-apps */ = {
 			isa = PBXGroup;
 			children = (
+				7DEEDE7F20EE10000071C73F /* Entities */,
 				016A5D86204F90A200F99270 /* AppDelegate.swift */,
 				5509CB07204FCE0A00A87E88 /* LaunchScreen.storyboard */,
 				55D49BDC20EB6F8C00C99F4B /* Page */,
@@ -241,6 +311,14 @@
 			children = (
 				6A9B1A48B702F6F6A79A6D61 /* Pods-Bada-apps.debug.xcconfig */,
 				F90989D1879C53958F9B2920 /* Pods-Bada-apps.release.xcconfig */,
+				ADA39DF8C7EC55509EE5733F /* Pods-Bada-appsTests.debug.xcconfig */,
+				60A3730FAE67A90D9539CE48 /* Pods-Bada-appsTests.release.xcconfig */,
+				412D58B435F0E11C32F45EB2 /* Pods-Bada-apps.debug admin.xcconfig */,
+				CD1CEBD5D01435B5E7F01D78 /* Pods-Bada-apps.release admin.xcconfig */,
+				7547905C133849623E66DBDA /* Pods-Bada-apps-Bada-appsTests.debug.xcconfig */,
+				088FDA6321A1B6FD7D53BFF8 /* Pods-Bada-apps-Bada-appsTests.debug admin.xcconfig */,
+				85EA8B0AF4C7D28996BCDA4F /* Pods-Bada-apps-Bada-appsTests.release.xcconfig */,
+				516BDE9C344A99AFE50E965C /* Pods-Bada-apps-Bada-appsTests.release admin.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -431,6 +509,55 @@
 			path = BirthdayNotification;
 			sourceTree = "<group>";
 		};
+		7DEEDE7F20EE10000071C73F /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				7DEEDE8020EE10170071C73F /* Firebase */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		7DEEDE8020EE10170071C73F /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				7DCB30DC20EE155800833200 /* FirebaseAppSystem.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		7DFB9A4220F45F6B00CA322B /* Bada-apps-admin */ = {
+			isa = PBXGroup;
+			children = (
+				7DFB9A6220F46C2B00CA322B /* MasterMenu */,
+				7DFB9A4320F45F6B00CA322B /* AppDelegate.swift */,
+				7DFB9A5520F463BF00CA322B /* BaseController.swift */,
+				7DFB9A4720F45F6B00CA322B /* Main.storyboard */,
+				7DFB9A5720F464F600CA322B /* MasterMenuViewController.swift */,
+				7DFB9A5920F467DC00CA322B /* EmptySegue.swift */,
+				7DFB9A4A20F45F6D00CA322B /* Assets.xcassets */,
+				7DFB9A4C20F45F6D00CA322B /* LaunchScreen.storyboard */,
+				7DFB9A4F20F45F6D00CA322B /* Info.plist */,
+			);
+			path = "Bada-apps-admin";
+			sourceTree = "<group>";
+		};
+		7DFB9A6220F46C2B00CA322B /* MasterMenu */ = {
+			isa = PBXGroup;
+			children = (
+				7DFB9A6320F46C4000CA322B /* AccoundCell.xib */,
+			);
+			path = MasterMenu;
+			sourceTree = "<group>";
+		};
+		7DFB9A6B20F47B2800CA322B /* Bada-appsTests */ = {
+			isa = PBXGroup;
+			children = (
+				7DFB9A6C20F47B2800CA322B /* Bada_appsTests.swift */,
+				7DFB9A6E20F47B2800CA322B /* Info.plist */,
+			);
+			path = "Bada-appsTests";
+			sourceTree = "<group>";
+		};
 		7DFEFAE320C787BC00825B85 /* HistoryCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -454,8 +581,11 @@
 		FAECD7D7CFBA22B8D7A3AE0E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7DFB99DB20F3726800CA322B /* Pods_Bada_apps.framework */,
 				55A5898B2050EE2100266380 /* CommonCrypto.framework */,
 				BB4F00DB43031080465883FF /* Pods_Bada_apps.framework */,
+				FDE54862055569A51F89A7B0 /* Pods_Bada_appsTests.framework */,
+				DE300F24C742E7F65C9A72AB /* Pods_Bada_apps_Bada_appsTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -475,7 +605,6 @@
 				55A5898D2050EE4900266380 /* Carthage Encryption */,
 				55B558112064A6C200D9B035 /* SwiftLint Script */,
 				7DCD9DA020C8DE310073750C /* ShellScript */,
-				A901EE3F28C366C0F5B5E2C2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -486,19 +615,65 @@
 			productReference = 016A5D83204F90A200F99270 /* Bada-apps.app */;
 			productType = "com.apple.product-type.application";
 		};
+		7DFB9A4020F45F6B00CA322B /* Bada-apps-admin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7DFB9A5020F45F6D00CA322B /* Build configuration list for PBXNativeTarget "Bada-apps-admin" */;
+			buildPhases = (
+				7DFB9A3D20F45F6B00CA322B /* Sources */,
+				7DFB9A3E20F45F6B00CA322B /* Frameworks */,
+				7DFB9A3F20F45F6B00CA322B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Bada-apps-admin";
+			productName = "Bada-apps-admin";
+			productReference = 7DFB9A4120F45F6B00CA322B /* Bada-apps-admin.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7DFB9A6920F47B2800CA322B /* Bada-appsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7DFB9A7120F47B2800CA322B /* Build configuration list for PBXNativeTarget "Bada-appsTests" */;
+			buildPhases = (
+				74BBD8A275AA348786808D55 /* [CP] Check Pods Manifest.lock */,
+				7DFB9A6620F47B2800CA322B /* Sources */,
+				7DFB9A6720F47B2800CA322B /* Frameworks */,
+				7DFB9A6820F47B2800CA322B /* Resources */,
+				464B783E3D992F96E59895B2 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7DFB9A7020F47B2800CA322B /* PBXTargetDependency */,
+			);
+			name = "Bada-appsTests";
+			productName = "Bada-appsTests";
+			productReference = 7DFB9A6A20F47B2800CA322B /* Bada-appsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		016A5D7B204F90A200F99270 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = Bada;
 				TargetAttributes = {
 					016A5D82204F90A200F99270 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+					};
+					7DFB9A4020F45F6B00CA322B = {
+						CreatedOnToolsVersion = 9.4.1;
+						ProvisioningStyle = Automatic;
+					};
+					7DFB9A6920F47B2800CA322B = {
+						CreatedOnToolsVersion = 9.4.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 016A5D82204F90A200F99270;
 					};
 				};
 			};
@@ -516,6 +691,8 @@
 			projectRoot = "";
 			targets = (
 				016A5D82204F90A200F99270 /* Bada-apps */,
+				7DFB9A4020F45F6B00CA322B /* Bada-apps-admin */,
+				7DFB9A6920F47B2800CA322B /* Bada-appsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -548,6 +725,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7DFB9A3F20F45F6B00CA322B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7DFB9A4E20F45F6D00CA322B /* LaunchScreen.storyboard in Resources */,
+				7DFB9A6420F46C4000CA322B /* AccoundCell.xib in Resources */,
+				7DFB9A4B20F45F6D00CA322B /* Assets.xcassets in Resources */,
+				7DFB9A4920F45F6B00CA322B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7DFB9A6820F47B2800CA322B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -567,6 +762,42 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		464B783E3D992F96E59895B2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Bada-apps-Bada-appsTests/Pods-Bada-apps-Bada-appsTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bada-apps-Bada-appsTests/Pods-Bada-apps-Bada-appsTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		55A5898D2050EE4900266380 /* Carthage Encryption */ = {
@@ -634,6 +865,24 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bada-apps/Pods-Bada-apps-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		74BBD8A275AA348786808D55 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Bada-apps-Bada-appsTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7DCD9DA020C8DE310073750C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -646,21 +895,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" f3583287ce5d7009512da266c8373de6682571dd 3770c05e2d4ec6f3137834f5c456d2da02d2d43953a17cb10802fc0728da4470";
-		};
-		A901EE3F28C366C0F5B5E2C2 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bada-apps/Pods-Bada-apps-resources.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -688,6 +922,7 @@
 				7DFEFAE520C787D400825B85 /* HistoryCellShowMore.swift in Sources */,
 				7DEDBC2220DBFAC100C9EA50 /* News.swift in Sources */,
 				5509CB3F2050158300A87E88 /* ClockInOutView.swift in Sources */,
+				7DCB30DD20EE155800833200 /* FirebaseAppSystem.swift in Sources */,
 				5509CB25204FCE4F00A87E88 /* RootTabBarController.swift in Sources */,
 				7DFEFAE720C78E1800825B85 /* HistoryView.swift in Sources */,
 				5509CB33204FCE6600A87E88 /* UINib+Loader.swift in Sources */,
@@ -721,7 +956,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7DFB9A3D20F45F6B00CA322B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7DFB9A5620F463BF00CA322B /* BaseController.swift in Sources */,
+				7DFB9A5820F464F600CA322B /* MasterMenuViewController.swift in Sources */,
+				7DFB9A4420F45F6B00CA322B /* AppDelegate.swift in Sources */,
+				7DFB9A5A20F467DC00CA322B /* EmptySegue.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7DFB9A6620F47B2800CA322B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7DFB9A6D20F47B2800CA322B /* Bada_appsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7DFB9A7020F47B2800CA322B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 016A5D82204F90A200F99270 /* Bada-apps */;
+			targetProxy = 7DFB9A6F20F47B2800CA322B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		5509CB07204FCE0A00A87E88 /* LaunchScreen.storyboard */ = {
@@ -738,6 +1000,22 @@
 				5509CB0A204FCE0A00A87E88 /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7DFB9A4720F45F6B00CA322B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7DFB9A4820F45F6B00CA322B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7DFB9A4C20F45F6D00CA322B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7DFB9A4D20F45F6D00CA322B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -855,23 +1133,43 @@
 			baseConfigurationReference = 6A9B1A48B702F6F6A79A6D61 /* Pods-Bada-apps.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUILD_NUMBER = 7;
+				BUNDLE_ID = "Bada.Bada-Apps";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = C89FEC543S;
+				DEVELOPMENT_TEAM = ZK45DE64XX;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"${PODS_ROOT}/Firebase/Core/Sources",
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public/Crashlytics\"",
+					"\"${PODS_ROOT}/Headers/Public/Fabric\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAnalytics\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAuth\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseCore\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseDatabase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseFirestore\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseInstanceID\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseStorage\"",
+				);
 				INFOPLIST_FILE = "Bada-apps/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "Bada.Bada-Apps";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSION_NUMBER = "";
 			};
 			name = Debug;
 		};
@@ -880,12 +1178,30 @@
 			baseConfigurationReference = F90989D1879C53958F9B2920 /* Pods-Bada-apps.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUILD_NUMBER = 7;
+				BUNDLE_ID = "Bada.Bada-Apps";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C89FEC543S;
+				DEVELOPMENT_TEAM = ZK45DE64XX;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"${PODS_ROOT}/Firebase/Core/Sources",
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public/Crashlytics\"",
+					"\"${PODS_ROOT}/Headers/Public/Fabric\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAnalytics\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAuth\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseCore\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseDatabase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseFirestore\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseInstanceID\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseStorage\"",
 				);
 				INFOPLIST_FILE = "Bada-apps/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
@@ -895,9 +1211,364 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSION_NUMBER = "";
 			};
 			name = Release;
+		};
+		7DFB9A3920F45F4000CA322B /* Debug Admin */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = "Debug Admin";
+		};
+		7DFB9A3A20F45F4000CA322B /* Debug Admin */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 412D58B435F0E11C32F45EB2 /* Pods-Bada-apps.debug admin.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUILD_NUMBER = 7;
+				BUNDLE_ID = "Bada.Bada-Apps";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = ZK45DE64XX;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"${PODS_ROOT}/Firebase/Core/Sources",
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public/Crashlytics\"",
+					"\"${PODS_ROOT}/Headers/Public/Fabric\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAnalytics\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAuth\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseCore\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseDatabase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseFirestore\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseInstanceID\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseStorage\"",
+				);
+				INFOPLIST_FILE = "Bada-apps/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Bada.Bada-Apps";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSION_NUMBER = "";
+			};
+			name = "Debug Admin";
+		};
+		7DFB9A3B20F45F4600CA322B /* Release Admin */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Release Admin";
+		};
+		7DFB9A3C20F45F4600CA322B /* Release Admin */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD1CEBD5D01435B5E7F01D78 /* Pods-Bada-apps.release admin.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUILD_NUMBER = 7;
+				BUNDLE_ID = "Bada.Bada-Apps";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZK45DE64XX;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"${PODS_ROOT}/Firebase/Core/Sources",
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public/Crashlytics\"",
+					"\"${PODS_ROOT}/Headers/Public/Fabric\"",
+					"\"${PODS_ROOT}/Headers/Public/Firebase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAnalytics\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseAuth\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseCore\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseDatabase\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseFirestore\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseInstanceID\"",
+					"\"${PODS_ROOT}/Headers/Public/FirebaseStorage\"",
+				);
+				INFOPLIST_FILE = "Bada-apps/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Bada.Bada-Apps";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSION_NUMBER = "";
+			};
+			name = "Release Admin";
+		};
+		7DFB9A5120F45F6D00CA322B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZK45DE64XX;
+				INFOPLIST_FILE = "Bada-apps-admin/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "AppleDeveloperAcademyBinus.Bada-apps-admin";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		7DFB9A5220F45F6D00CA322B /* Debug Admin */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZK45DE64XX;
+				INFOPLIST_FILE = "Bada-apps-admin/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "AppleDeveloperAcademyBinus.Bada-apps-admin";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = "Debug Admin";
+		};
+		7DFB9A5320F45F6D00CA322B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZK45DE64XX;
+				INFOPLIST_FILE = "Bada-apps-admin/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "AppleDeveloperAcademyBinus.Bada-apps-admin";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+		7DFB9A5420F45F6D00CA322B /* Release Admin */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZK45DE64XX;
+				INFOPLIST_FILE = "Bada-apps-admin/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "AppleDeveloperAcademyBinus.Bada-apps-admin";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = "Release Admin";
+		};
+		7DFB9A7220F47B2800CA322B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7547905C133849623E66DBDA /* Pods-Bada-apps-Bada-appsTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZK45DE64XX;
+				INFOPLIST_FILE = "Bada-appsTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "AppleDeveloperAcademyBinus.Bada-appsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bada-apps.app/Bada-apps";
+			};
+			name = Debug;
+		};
+		7DFB9A7320F47B2800CA322B /* Debug Admin */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 088FDA6321A1B6FD7D53BFF8 /* Pods-Bada-apps-Bada-appsTests.debug admin.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZK45DE64XX;
+				INFOPLIST_FILE = "Bada-appsTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "AppleDeveloperAcademyBinus.Bada-appsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bada-apps.app/Bada-apps";
+			};
+			name = "Debug Admin";
+		};
+		7DFB9A7420F47B2800CA322B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85EA8B0AF4C7D28996BCDA4F /* Pods-Bada-apps-Bada-appsTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZK45DE64XX;
+				INFOPLIST_FILE = "Bada-appsTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "AppleDeveloperAcademyBinus.Bada-appsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bada-apps.app/Bada-apps";
+			};
+			name = Release;
+		};
+		7DFB9A7520F47B2800CA322B /* Release Admin */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 516BDE9C344A99AFE50E965C /* Pods-Bada-apps-Bada-appsTests.release admin.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZK45DE64XX;
+				INFOPLIST_FILE = "Bada-appsTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "AppleDeveloperAcademyBinus.Bada-appsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bada-apps.app/Bada-apps";
+			};
+			name = "Release Admin";
 		};
 /* End XCBuildConfiguration section */
 
@@ -906,7 +1577,9 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				016A5D93204F90A200F99270 /* Debug */,
+				7DFB9A3920F45F4000CA322B /* Debug Admin */,
 				016A5D94204F90A200F99270 /* Release */,
+				7DFB9A3B20F45F4600CA322B /* Release Admin */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -915,7 +1588,31 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				016A5D96204F90A200F99270 /* Debug */,
+				7DFB9A3A20F45F4000CA322B /* Debug Admin */,
 				016A5D97204F90A200F99270 /* Release */,
+				7DFB9A3C20F45F4600CA322B /* Release Admin */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7DFB9A5020F45F6D00CA322B /* Build configuration list for PBXNativeTarget "Bada-apps-admin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7DFB9A5120F45F6D00CA322B /* Debug */,
+				7DFB9A5220F45F6D00CA322B /* Debug Admin */,
+				7DFB9A5320F45F6D00CA322B /* Release */,
+				7DFB9A5420F45F6D00CA322B /* Release Admin */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7DFB9A7120F47B2800CA322B /* Build configuration list for PBXNativeTarget "Bada-appsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7DFB9A7220F47B2800CA322B /* Debug */,
+				7DFB9A7320F47B2800CA322B /* Debug Admin */,
+				7DFB9A7420F47B2800CA322B /* Release */,
+				7DFB9A7520F47B2800CA322B /* Release Admin */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -28,8 +28,7 @@ class User{
     
     var email: String?
     var name: String?
-    
-    
+    var uid: String?
     
     
     func getName(_ completion: @escaping ((String?)->())) {
@@ -41,16 +40,11 @@ class User{
         }
     }
     
-
-    
-    
-    
     static var email: String {
         get{
             if let user = Auth.auth().currentUser{
                 return user.value(forKeyPath: "email") as! String
             }
-            
             return ""
         }
     }
@@ -60,8 +54,11 @@ class User{
         let currentUser = Auth.auth().currentUser
         
         let user = User()
+        
         user.email = currentUser?.value(forKeyPath: "email") as? String
-//        user.name = currentUser?.value(forKeyPath: "name") as? String
+        user.uid = currentUser?.uid
+        
+
         
         return user
         
@@ -91,8 +88,6 @@ class User{
         guard let uid = Auth.auth().currentUser?.uid else {return 0}
         let ref = Database.database().reference()
  
-        let dateIDNow = Attendance.getDateIDNow()
-
         return ref.child("users/\(uid)/attendances").queryOrderedByKey().queryEnding(atValue: offset as Any).queryLimited(toLast: UInt(limit)).observe(.value) { (snapshot) in
             guard let attendances = snapshot.value as? [String: Any] else { return }
             onResponse(attendances)
@@ -113,12 +108,23 @@ class User{
                     print(message)
                     return
                 }
-                guard let imageURL = meta?.downloadURL()?.absoluteString else { return }
                 
-                let imageValue = ["profilePictureURL" : imageURL]
+                storageRef.downloadURL(completion: { (url, err) in
+                    
+                    if err != nil{
+                        return
+                    }
+                    
+                    guard let imageURL =  url?.absoluteString else { return }
+                    
+                    let imageValue = ["profilePictureURL" : imageURL]
+                    
+                    Database.database().reference().child("users").child(userUID).updateChildValues(imageValue)
+                    onSuccess()
+                })
+
                 
-                Database.database().reference().child("users").child(userUID).updateChildValues(imageValue)
-                onSuccess()
+
             }
         }
     }
@@ -150,7 +156,7 @@ class User{
             let data = appleID.data(using:String.Encoding.utf8)!
             let mailData = try tripleDesEnc.encrypt(data: data) as NSData
             guard let myMailData = mailData.toHexString else {return}
-            
+
             //check if the inputted appleID is exists on the checkUser node
             Database.database().reference().child("checkUser").observeSingleEvent(of: .value) { (snapshot) in
                 
@@ -168,7 +174,8 @@ class User{
                                     return
                                 }
                                 
-                                guard let uid = user?.uid else{
+                                
+                                guard let uid = user?.user.uid else{
                                     
                                     onError(UserCheck.somethingWentWrong)
                                     return

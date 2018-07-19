@@ -166,8 +166,7 @@ class NotesView: UIView, UITextViewDelegate{
     @IBAction func tapSubmit(){
         self.dismiss()
         if let viewController = attendanceViewController {
-            viewController.attendance?.notes = notesTextView.text
-            viewController.attendance?.performWithNotes()
+            viewController.attendance?.performWith(notes: notesTextView.text, forUID: viewController.uid)
         }else if let viewController = loginViewController {
             viewController.resetPassword(email: notesTextView.text)
             self.dismiss()

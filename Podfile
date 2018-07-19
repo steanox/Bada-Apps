@@ -13,4 +13,12 @@ target 'Bada-apps' do
   pod 'Firebase/Firestore'
   pod 'Fabric', '~> 1.7.7'
   pod 'Crashlytics', '~> 3.10.2'
+  
+  target 'Bada-appsTests' do
+      pod 'Firebase'
+  end
 end
+
+
+
+

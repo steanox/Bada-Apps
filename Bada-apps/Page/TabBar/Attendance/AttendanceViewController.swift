@@ -11,6 +11,7 @@ import CoreLocation
 import UserNotifications
 import UserNotificationsUI
 import FirebaseDatabase
+import FirebaseAuth
 import Crashlytics
 
 class AttendanceViewController: BaseController, UIApplicationDelegate {
@@ -26,6 +27,7 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
     var content: UNMutableNotificationContent?
     
     var attendance: Attendance?
+    var uid: String = ""
     
     // setting up dragable history view controller
     var disableInteractivePlayerTransitioning = false
@@ -34,16 +36,19 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
     var presentInteractor: MiniToLargeViewInteractive!
     var dismissInteractor: MiniToLargeViewInteractive!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
         clockInOutView.isHidden = true
         startActivityIndicator()
         askNotificationAuthorization()
         NotificationCenter.default.addObserver(self, selector: #selector(observeStatusAndText), name: Notification.Name.UIApplicationWillEnterForeground, object: nil)
+        
         profilePicture.isUserInteractionEnabled = true
         profilePicture.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapToChangeProfilePicture)))
-        
-        
         
         historyViewController = HistoryViewController()
         
@@ -51,16 +56,34 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
             self.checkForBirthday()
         }
         
+        if let uid = Auth.auth().currentUser?.uid{
+            self.uid = uid
+        }else{
+            self.view.showNotification(title: "Error", description: "Please try to relogin", buttonText: "Logout") {
+                try? Auth.auth().signOut()
+                let authSB = UIStoryboard(name: "Authentication", bundle: nil).instantiateInitialViewController() as! LoginViewController
+                self.present(authSB, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //TODO: Notification
+        //        triggeringNotification()
+        
+        statusObserver()
+        
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         let handler = Database.database().reference().observe(.value){ (snap) in
-            
         }
         Database.database().reference().removeObserver(withHandle: handler)
-        
     }
     
     
@@ -87,19 +110,16 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
             UserDefaults.standard.set(formattedDateNow, forKey: "birthdayCache")
             triggerBirthdayNotification(for: formattedDateNow)
         }
-
-        
-        
     }
     
     private func triggerBirthdayNotification(for date: Any){
         
         Database.database().reference().child("users").queryOrdered(byChild: "birthDate").queryEqual(toValue: date).observeSingleEvent(of: .value) { (snap) in
             
-            if snap == nil{
+            if snap.value == nil{
                 return
             }
-            print("val \(snap.value)")
+            
             guard let val = snap.value as? [String:Any] else {return}
             
             let key = Array(val.keys)[0]
@@ -119,18 +139,10 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
 
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        //        triggeringNotification()
-        
-        statusObserver()
-        
-        self.navigationController?.navigationBar.isHidden = true
-    }
+
     
     func statusObserver(){
-        Attendance.observeForStatus { (status) in
+        Attendance.observeStatus(forUID: uid){ (status) in
             self.stopActivityIndicator()
             switch status {
             case ._notYet:
@@ -263,22 +275,21 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
     }
     
     func handleAttendance(with notes: String = ""){
-        attendance = Attendance(for: User.getUser(), notes: notes)
+        attendance = Attendance()
         attendance?.delegate = self
-        
         
         if let distance = coverageAreaView.distanceToBeacon{
             
-            attendance?.checkStatusInDatabase(onResponse: { (status) in
+            attendance?.checkStatusInDatabase(forUID: self.uid,onResponse: { (status) in
                 
                 switch distance {
                 case .near , .immediate:
                     
                     switch status {
                     case .checkIn:
-                        self.attendance?.performCheckIn()
+                        self.attendance?.performCheckIn(forUID: self.uid, notes: "")
                     case .checkOut:
-                        self.attendance?.performCheckOut()
+                        self.attendance?.performCheckOut(forUID: self.uid, notes: "")
                     case .late:
                         self.getTabBarController()?.view.showNote(title: "Late Notes",source: self)
                     case .earlyLeave:
@@ -327,6 +338,7 @@ extension AttendanceViewController: AttendanceDelegate{
     
     func attendanceFailed(error: String) {
         view.showNotification(title: "Failed", description: error, buttonText: "Close", onSuccess: {
+            
             self.tabBarController?.tabBar.isHidden = false
         })
     }
@@ -376,7 +388,7 @@ extension AttendanceViewController: UNUserNotificationCenterDelegate {
     func triggeringNotification() {
         
         self.notification(status: ._out)
-        Attendance.observeForStatus { (status) in
+        Attendance.observeStatus(forUID: uid){ (status) in
             
             switch status {
             case ._notYet:

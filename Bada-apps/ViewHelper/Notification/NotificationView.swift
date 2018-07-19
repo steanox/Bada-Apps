@@ -16,13 +16,22 @@ class NotificationView: UIView{
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var container: UIView!
     
+    var closeEnabled = true
+    
     var onSuccess:  (()-> Void )?
     
     
     fileprivate weak var notificationNibView: UIView!
     
     
-    init(frame: CGRect,title: String,description: String, buttonText: String,onSuccess: (()-> Void)? ) {
+    init(frame: CGRect,title: String,description: String, buttonText: String,onSuccess: (()-> Void)? ,closeEnabled: Bool) {
+        super.init(frame: frame)
+        self.onSuccess = onSuccess
+        self.closeEnabled = closeEnabled
+        setup(title,description,buttonText)
+        
+    }
+    init(frame: CGRect,title: String,description: String, buttonText: String,onSuccess: (()-> Void)?) {
         super.init(frame: frame)
         self.onSuccess = onSuccess
         setup(title,description,buttonText)
@@ -58,17 +67,28 @@ class NotificationView: UIView{
     
     @IBAction func close(){
         UIView.animate(withDuration: 0.2, animations: {
-            self.alpha = 0
+            
+            if self.closeEnabled{
+                self.alpha = 0
+            }
+            
         }) { (true) in
+            
             if let success = self.onSuccess{
                 success()
             }
-            self.removeFromSuperview()
+            
+            if self.closeEnabled{
+                self.removeFromSuperview()
+            }
+            
         }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        close()
+        if closeEnabled{
+            close()
+        }
     }
 }
 

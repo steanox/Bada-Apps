@@ -52,6 +52,18 @@ extension UIView {
         
     }
     
+    func showNotification(title: String, description: String, buttonText: String, onSuccess: (()->Void)? ,closeEnabled: Bool){
+        self.parentViewController?.tabBarController?.tabBar.isHidden = true
+        let notif = NotificationView(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height), title: title, description: description, buttonText: buttonText,onSuccess: onSuccess,closeEnabled: closeEnabled)
+        
+        UIView.transition(with: self, duration: 0.2, options: [.curveEaseInOut,.transitionCrossDissolve], animations: {
+            
+            self.addSubview(notif)
+            
+        }, completion: nil)
+        
+    }
+    
     func showNote(title: String, source: BaseController) {
         let rect = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
         let notes = NotesView(frame: rect, title: title)

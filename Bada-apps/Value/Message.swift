@@ -20,5 +20,12 @@ struct Message {
     public static let appleID = "Apple ID"
     public static let resetPasswordSuccess = "Succes!\nCheck your email to create new password."
     
+    
+    public static let update: (title: String,description: String, button: String) = (
+        "Sorry",
+        "You need the latest version of this application",
+        "Update"
+    )
+    
 }
 
