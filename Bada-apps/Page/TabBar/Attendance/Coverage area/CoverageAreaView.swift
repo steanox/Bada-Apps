@@ -49,14 +49,12 @@ class CoverageAreaView: UIView, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedWhenInUse{
-            print("yes")
             if CLLocationManager.isMonitoringAvailable(for: CLBeaconRegion.self){
                 if CLLocationManager.isRangingAvailable(){
                     startScanning()
                 }
             }
         }else {
-            print("Not")
             locationManager.requestWhenInUseAuthorization()
         }
     }
@@ -83,7 +81,7 @@ class CoverageAreaView: UIView, CLLocationManagerDelegate {
             if self.manager.state == .poweredOff{
                 self.beacon.beaconNotDetected()
                 self.beaconImageView.image = #imageLiteral(resourceName: "Beacon-NotDetected")
-                self.beaconLabel.text = "Please turn on your bluetooth"
+                self.beaconLabel.text = Message.bluetoothOff
             }else{
                 switch distance {
                 case .unknown:

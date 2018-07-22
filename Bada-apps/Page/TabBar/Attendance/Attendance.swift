@@ -269,10 +269,7 @@ class Attendance{
         }
     }
     
-   
-    
-    
-    
+
     private func updateTime(){
         dateComponent = Calendar.current.dateComponents(in: TimeZone.current, from: Date())
     }

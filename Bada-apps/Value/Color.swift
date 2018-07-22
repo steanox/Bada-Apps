@@ -14,14 +14,17 @@ struct Color {
     public static let dateClockInOut = 0x707070
     public static let beaconTextColor = 0x95989A
     public static let attendanceImageColor = 0x1C467B
+    public static let attendanceImageColorDark = 0x183D6B
     public static let historyImageColor = 0x02ce88
     public static let newsImageColor = 0x408EAE
     public static let profileImageColor = 0x4EACC9
+    public static let profileImageColorDark = 0x578EA6
     public static let clockOutColor = 0x0191B1
     public static let clockInColor = 0xC1020A
     
     
     public static let formColor = 0xA1A8AD
+    public static let textColor = 0x6E6E6E
     
     
 }

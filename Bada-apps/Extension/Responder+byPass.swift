@@ -14,8 +14,6 @@ extension UIResponder {
         if let vc = self as? UIViewController {
             return vc
         }
-        
-
         return next?.viewController
     }
 
