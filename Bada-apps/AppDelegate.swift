@@ -28,6 +28,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             guard let buildVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String else { return }
             if databaseVersion != buildVersion{
                 self.window?.rootViewController?.view.showNotification(title: Message.update.title, description: Message.update.description, buttonText: Message.update.button, onSuccess: {
+                    
+                    let urlString = "itms-beta://"
+                    guard let testFlightURL = URL(string: urlString) else { return }
+                    
+                    UIApplication.shared.open(testFlightURL, options: [:], completionHandler: { (isOpen) in
+                        if !isOpen{
+                            self.window?.rootViewController?.view.showNotification(title: "Warning", description: "You need to install Test Flight", buttonText: "Install", onSuccess: nil)
+                        }
+                    })
+                
                 }, closeEnabled: false)
             }
         }

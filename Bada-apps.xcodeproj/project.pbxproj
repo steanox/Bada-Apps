@@ -1132,6 +1132,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6A9B1A48B702F6F6A79A6D61 /* Pods-Bada-apps.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_NUMBER = 7;
 				BUNDLE_ID = "Bada.Bada-Apps";
@@ -1160,7 +1161,7 @@
 					"\"${PODS_ROOT}/Headers/Public/FirebaseStorage\"",
 				);
 				INFOPLIST_FILE = "Bada-apps/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "Bada.Bada-Apps";
@@ -1177,6 +1178,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F90989D1879C53958F9B2920 /* Pods-Bada-apps.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_NUMBER = 7;
 				BUNDLE_ID = "Bada.Bada-Apps";
@@ -1204,7 +1206,7 @@
 					"\"${PODS_ROOT}/Headers/Public/FirebaseStorage\"",
 				);
 				INFOPLIST_FILE = "Bada-apps/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Bada.Bada-Apps";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1277,6 +1279,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 412D58B435F0E11C32F45EB2 /* Pods-Bada-apps.debug admin.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_NUMBER = 7;
 				BUNDLE_ID = "Bada.Bada-Apps";
@@ -1305,7 +1308,7 @@
 					"\"${PODS_ROOT}/Headers/Public/FirebaseStorage\"",
 				);
 				INFOPLIST_FILE = "Bada-apps/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Bada.Bada-Apps";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1371,6 +1374,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CD1CEBD5D01435B5E7F01D78 /* Pods-Bada-apps.release admin.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_NUMBER = 7;
 				BUNDLE_ID = "Bada.Bada-Apps";
@@ -1398,7 +1402,7 @@
 					"\"${PODS_ROOT}/Headers/Public/FirebaseStorage\"",
 				);
 				INFOPLIST_FILE = "Bada-apps/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Bada.Bada-Apps";
 				PRODUCT_NAME = "$(TARGET_NAME)";

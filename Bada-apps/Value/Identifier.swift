@@ -51,8 +51,6 @@ struct Identifier {
             div{
                 font-family: 'Roboto', sans-serif;
             }
-
-            
         </style>
     </header>
     """
