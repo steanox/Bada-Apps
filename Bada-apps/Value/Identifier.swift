@@ -12,11 +12,13 @@ struct Identifier {
     
     public static let beaconUuid = "CB10023F-A318-3394-4199-A8730C7C1AEC"
     public static let beacon = "myBeacon"
+    public static let accountCell = "accountCell"
     
     public static let coverageArea = "CoverageAreaView"
     public static let clockInOut = "ClockInOutView"
     public static let dragableHistory = "DragableHistoryView"
     public static let history = "HistoryView"
+    public static let authentication = "Authentication"
     
     public static let notification = "Notification"
     public static let birthdayNotification = "BirthdayNotificationView"
@@ -37,6 +39,7 @@ struct Identifier {
     public static let checkInStartTime = 0600
     public static let checkInLimitTime = 0900
     public static let checkOutTime = 1800
+    public static let skimmerTag = 451890
     
     public static let differenceViewOfKeyboard: CGFloat = 100.0
     

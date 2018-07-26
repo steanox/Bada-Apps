@@ -20,6 +20,11 @@ struct Message {
     public static let appleID = "Apple ID"
     public static let resetPasswordSuccess = "Succes!\nCheck your email to create new password."
     public static let faceIdUnknowError = "Make sure your face id is active."
+    public static let signOut = "Sign Out"
+    public static let close = "Close"
+    public static let worldClassDeveloper = "World Class Developer"
+    public static let bluetoothOff = "Please turn on your bluetooth"
+    public static let changePassword = "Change Password"
     
     
     public static let update: (title: String,description: String, button: String) = (

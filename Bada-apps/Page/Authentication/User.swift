@@ -22,6 +22,7 @@ enum UserCheck:Error{
 class User{
     
     typealias errorHandler = (_ error: Error) -> Void
+    typealias successHandler = () -> Void
     typealias registerSuccessHandler = () -> Void
     typealias loginSuccessHandler = (_ user: Any)->Void
     typealias resetSuccessHandler = (String)->Void
@@ -254,6 +255,15 @@ class User{
             }else {
                 onSuccess(Message.resetPasswordSuccess)
             }
+        }
+    }
+    
+    static func logout(onSuccess: @escaping successHandler, onError: @escaping errorHandler) {
+        do{
+            try Auth.auth().signOut()
+            onSuccess()
+        }catch let error {
+            onError(error)
         }
     }
     

@@ -65,6 +65,8 @@
 		55BF529F2058FD9100AA1C87 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55BF529E2058FD9100AA1C87 /* Account.storyboard */; };
 		55BF52A22058FE9900AA1C87 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BF52A12058FE9900AA1C87 /* AccountViewController.swift */; };
 		55BF52A4205B684200AA1C87 /* BaseAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BF52A3205B684200AA1C87 /* BaseAnimator.swift */; };
+		55D49C2120EE11D200C99F4B /* Gradient+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D49C2020EE11D200C99F4B /* Gradient+Image.swift */; };
+		55F1929A2104E2390037D482 /* View + SkimmerEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F192992104E2390037D482 /* View + SkimmerEffect.swift */; };
 		7D3EA88420C8DBFA0050F38F /* BirthdayNotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D3EA88220C8DBFA0050F38F /* BirthdayNotificationView.xib */; };
 		7D3EA88520C8DBFA0050F38F /* BirthdayNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3EA88320C8DBFA0050F38F /* BirthdayNotificationView.swift */; };
 		7D5BFCD520C8C5EF000BB0B4 /* ConfettiEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5BFCD420C8C5EF000BB0B4 /* ConfettiEmitter.swift */; };
@@ -381,6 +383,8 @@
 				55A589A0205135AE00266380 /* Responder+byPass.swift */,
 				01DC136420AAB5CF00B609BF /* UIImage+UIImageView.swift */,
 				7DD3A1EE20C82D10006ABE02 /* Array.swift */,
+				55D49C2020EE11D200C99F4B /* Gradient+Image.swift */,
+				55F192992104E2390037D482 /* View + SkimmerEffect.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -432,7 +436,6 @@
 			children = (
 				55BF529E2058FD9100AA1C87 /* Account.storyboard */,
 				55BF52A12058FE9900AA1C87 /* AccountViewController.swift */,
-				7DFEF78520E0C22100F58069 /* TemporaryLogoutFile.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -912,6 +915,7 @@
 				5509CB28204FCE4F00A87E88 /* LoginViewController.swift in Sources */,
 				7D5BFCD520C8C5EF000BB0B4 /* ConfettiEmitter.swift in Sources */,
 				55AFAB05205B72BF003AF3EF /* MiniToLargeViewAnimator.swift in Sources */,
+				55F1929A2104E2390037D482 /* View + SkimmerEffect.swift in Sources */,
 				014350DD2050420300512602 /* NotificationView.swift in Sources */,
 				55BF52A4205B684200AA1C87 /* BaseAnimator.swift in Sources */,
 				55AA78932057F2CE00FE07F0 /* NetworkProcessor.swift in Sources */,
@@ -940,8 +944,8 @@
 				5509CB34204FCE6600A87E88 /* View+Shadow.swift in Sources */,
 				010BA03220512896001F8D44 /* RegistrationViewController.swift in Sources */,
 				55BF52992057FB0600AA1C87 /* BDDate.swift in Sources */,
-				7DFEF78620E0C22100F58069 /* TemporaryLogoutFile.swift in Sources */,
 				5509CB23204FCE4F00A87E88 /* CoverageAreaView.swift in Sources */,
+				55D49C2120EE11D200C99F4B /* Gradient+Image.swift in Sources */,
 				5509CB26204FCE4F00A87E88 /* NewsViewController.swift in Sources */,
 				01F51FAE2058F761000EE4FC /* Cache.swift in Sources */,
 				7DD3A1EF20C82D10006ABE02 /* Array.swift in Sources */,
