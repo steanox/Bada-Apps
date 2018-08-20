@@ -62,7 +62,7 @@ extension String {
     
     //The format for this function should be yyyyMMdd
     func dateIDtoDateString()->String{
-        var dateID = self
+        let dateID = self
  
         let year = (dateID[..<dateID.index(dateID.startIndex, offsetBy: 4)]),
             month = (dateID[dateID.index(dateID.startIndex, offsetBy: 4)...dateID.index(dateID.startIndex, offsetBy: 5)]),

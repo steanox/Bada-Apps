@@ -15,7 +15,7 @@ class ConfettiEmitter{
     public var emitter = CAEmitterLayer()
     
     private let colorSet: [UIColor] = [#colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1),#colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1),#colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1),#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1),#colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1),#colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1),#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1),#colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)]
-    private let imageSet: [UIImage] = [#imageLiteral(resourceName: "IconArrowUp"),#imageLiteral(resourceName: "Spiral"),#imageLiteral(resourceName: "Circle"),#imageLiteral(resourceName: "Box")]
+    private let imageSet: [UIImage] = [#imageLiteral(resourceName: "IconArrowUp"),#imageLiteral(resourceName: "Triangle"),#imageLiteral(resourceName: "Circle"),#imageLiteral(resourceName: "Box")]
     var cells: [CAEmitterCell] = []
     
     init(for view: UIView) {

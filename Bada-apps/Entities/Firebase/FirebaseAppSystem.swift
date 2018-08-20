@@ -16,12 +16,12 @@ class FirebaseAppSystem{
     static var config: FirebaseAppSystem = FirebaseAppSystem()
     
     
-    func checkForUpdate(onComplete: @escaping (String)->()){
+    func checkForUpdate(onComplete: @escaping (String,Bool)->()){
         Database.database().reference().child("currentBuild").observeSingleEvent(of: .value, with: { (snap) in
             guard let currentBuild = snap.value as? String else { return }
-            onComplete(currentBuild)
+            onComplete(currentBuild,false)
         }) { (err) in
-            print(err.localizedDescription)
+            onComplete("0",true)
         }
     }
     

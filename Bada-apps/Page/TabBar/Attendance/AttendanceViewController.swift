@@ -40,8 +40,6 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         clockInOutView.isHidden = true
         startActivityIndicator()
         askNotificationAuthorization()
@@ -65,6 +63,7 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
                 self.present(authSB, animated: true, completion: nil)
             }
         }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,7 +73,6 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
         //        triggeringNotification()
         
         statusObserver()
-        
         self.navigationController?.navigationBar.isHidden = true
     }
     
@@ -95,20 +93,38 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
 
         guard let date = calendar.date(from: dateComponent) else { return }
         formatter.dateFormat = "MM/dd"
-        let formattedDateNow = formatter.string(from: date) as Any 
-        
+        let formattedDateNow = formatter.string(from: date) as Any
+
         UserDefaults.standard.removeObject(forKey: "birthdayCache")
+
+        testBirthday()
         
-       if let birthdayCache = UserDefaults.standard.object(forKey: "birthdayCache") as? String{
+        if let birthdayCache = UserDefaults.standard.object(forKey: "birthdayCache") as? String{
             
             if formatter.string(from: date) != birthdayCache{
                 UserDefaults.standard.set(formattedDateNow, forKey: "birthdayCache")
-                triggerBirthdayNotification(for: formattedDateNow)
+                //triggerBirthdayNotification(for: formattedDateNow)
             }
 
         }else{
             UserDefaults.standard.set(formattedDateNow, forKey: "birthdayCache")
-            triggerBirthdayNotification(for: formattedDateNow)
+            //triggerBirthdayNotification(for: formattedDateNow)
+        }
+    }
+    //MARK:- Delete this after done testing
+    private func testBirthday(){
+    
+        let data: [Birthday] = [
+        Birthday(profileImageURL: "https://firebasestorage.googleapis.com/v0/b/bada-51073.appspot.com/o/profilePicture%2F1LKK5s067MUy1i15famw7I90QSB3.png?alt=media&token=ffa3fb6d-4f94-4345-b79f-407bd1806295"),
+        Birthday(profileImageURL: "https://firebasestorage.googleapis.com/v0/b/bada-51073.appspot.com/o/profilePicture%2F2xHwfNfWUidQY08Org2OScI9ixE3.png?alt=media&token=d34bfe85-adf8-4c4e-b46e-696251d970a9"),
+        Birthday(profileImageURL: "https://firebasestorage.googleapis.com/v0/b/bada-51073.appspot.com/o/profilePicture%2F2xHwfNfWUidQY08Org2OScI9ixE3.png?alt=media&token=d34bfe85-adf8-4c4e-b46e-696251d970a9"),
+    
+        ]
+    
+    
+        let birthDayView = BirthdayNotificationView(frame: self.view.frame, profilePictureURL: data, onSuccess: nil)
+        DispatchQueue.main.async {
+            self.view.addSubview(birthDayView)
         }
     }
     
@@ -119,24 +135,35 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
             if snap.value == nil{
                 return
             }
+
             
             guard let val = snap.value as? [String:Any] else {return}
             
-            let key = Array(val.keys)[0]
-            guard let user = val[key] as? [String: Any] else {return}
+            let keys = Array(val.keys)
+            var data: [Birthday] = []
+            
+            for key in keys{
+                guard let user = val[key] as? [String: Any] else {return}
+                
+                guard let picURL = user["profilePictureURL"] as? String else {return}
+                
+                data.append(Birthday(profileImageURL: picURL))
+            }
             
             
-            guard let name = user["name"] as? String else {return}
-            guard let picURL = user["profilePictureURL"] as? String else {return}
             
-            let birthDayView = BirthdayNotificationView(frame: self.view.frame, for: name, profilePictureURL: picURL, onSuccess: nil)
+            let birthDayView = BirthdayNotificationView(frame: self.view.frame, profilePictureURL: data, onSuccess: nil)
+            
             
             DispatchQueue.main.async {
                 self.view.addSubview(birthDayView)
             }
-            
         }
-
+    }
+    
+    private func addBirthdayActionButton(){
+        let mainAction = BirthdayMainActionButtonView(frame:  CGRect(x: 50, y: 20, width: 50, height: 50), for: .viewWished, totalNotification: 2)
+        self.view.addSubview(mainAction)
     }
     
 
@@ -451,6 +478,7 @@ extension AttendanceViewController: UNUserNotificationCenterDelegate {
     
 }
 
+//MARK:- Transition setup for the history
 extension AttendanceViewController: UIViewControllerTransitioningDelegate {
     
     @IBAction func dragableHistoryDidTap() {
@@ -498,6 +526,8 @@ extension AttendanceViewController: UIViewControllerTransitioningDelegate {
     
 }
 
+
+//MARK:- Image Picker Delegate
 extension AttendanceViewController: UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

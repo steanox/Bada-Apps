@@ -39,7 +39,7 @@ class HistoryViewController: BaseController {
             })
             self?.lastDate = String(Int(orderedDateKey.last!)! - 1)
             
-            orderedDateKey.map({ (s1) -> String in
+            for s1 in orderedDateKey{
                 let monthKey = String(s1[s1.index(s1.startIndex, offsetBy: 4)...s1.index(s1.startIndex, offsetBy: 5)])
                 
                 self?.historyView.orderedMonth.append(monthKey)
@@ -47,13 +47,11 @@ class HistoryViewController: BaseController {
                 if self?.historyView.attendancesData["\(monthKey)"] == nil{
                     self?.historyView.attendancesData.updateValue([], forKey: monthKey)
                 }
-                guard var attendance = attendances["\(s1)"] as? [String:String] else {return ""}
+                guard var attendance = attendances["\(s1)"] as? [String:String] else {return}
                 attendance.updateValue(s1, forKey: "date")
                 self?.historyView.attendancesData["\(monthKey)"]?.append(attendance)
                 
-                return ""
-            })
-            
+            }
             
             self?.historyView.orderedMonth = (self?.historyView.orderedMonth.unique.reversed())!
             

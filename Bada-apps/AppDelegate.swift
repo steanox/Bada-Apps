@@ -24,21 +24,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
-        FirebaseAppSystem.config.checkForUpdate { (databaseVersion) in
+        FirebaseAppSystem.config.checkForUpdate { (databaseVersion,error) in
+            
+            //Check for internet connection if error equals to true
+            if error{
+                self.window?.rootViewController?.view.showNotification(
+                    title: "Warning",
+                    description: "Please Check Your Internet Connection ",
+                    buttonText: "Close",
+                    onSuccess: nil,
+                    closeEnabled: false)
+                return
+            }
+            
+            //check for the build version from the database
             guard let buildVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String else { return }
             if databaseVersion != buildVersion{
-                self.window?.rootViewController?.view.showNotification(title: Message.update.title, description: Message.update.description, buttonText: Message.update.button, onSuccess: {
-                    
-                    let urlString = "itms-beta://"
-                    guard let testFlightURL = URL(string: urlString) else { return }
-                    
-                    UIApplication.shared.open(testFlightURL, options: [:], completionHandler: { (isOpen) in
-                        if !isOpen{
-                            self.window?.rootViewController?.view.showNotification(title: "Warning", description: "You need to install Test Flight", buttonText: "Install", onSuccess: nil)
-                        }
-                    })
                 
-                }, closeEnabled: false)
+                self.window?.rootViewController?.view.showNotification(
+                    title: Message.update.title,
+                    description: Message.update.description,
+                    buttonText: Message.update.button,
+                    onSuccess: {
+                        let urlString = "itms-beta://"
+                        guard let testFlightURL = URL(string: urlString) else { return }
+                        
+                        UIApplication.shared.open(testFlightURL, options: [:], completionHandler: { (isOpen) in
+                            if !isOpen{
+                                self.window?.rootViewController?.view.showNotification(
+                                    title: "Warning",
+                                    description: "You need to install Test Flight",
+                                    buttonText: "Install",
+                                    onSuccess: nil)
+                            }
+                        })
+                
+                    },
+                    closeEnabled: false)
             }
         }
         Fabric.with([Crashlytics.self])
