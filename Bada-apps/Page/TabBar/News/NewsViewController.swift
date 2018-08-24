@@ -13,20 +13,27 @@ import FirebaseFirestore
 
 class NewsViewController: BaseController {
     
-   
     var ref = Firestore.firestore()
     
     var newsData: [News] = []
     var selectedID: String = ""
     
     @IBOutlet weak var newsTableView: UITableView!
+    @IBOutlet weak var refreshButton: UIBarButtonItem!
+    @IBOutlet weak var backgroundNewsView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         newsTableView.dataSource = self
         newsTableView.delegate = self
         
-        fetchNewsFromDatabase()
+        //        fetchNewsFromDatabase()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.setupNavigationBar()
+        backgroundNewsView.backgroundColor = UIColor.init(rgb: Color.backgroundColor)
     }
     
     func fetchNewsFromDatabase(){

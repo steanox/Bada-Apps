@@ -41,4 +41,12 @@ extension UINavigationBar {
         barTintColor = UIColor(patternImage: #imageLiteral(resourceName: "TopBackground"))
         isTranslucent = false
     }
+    
+    func setupNavigationBar() {
+        var colors = [UIColor]()
+        colors.append(UIColor.init(rgb: Color.profileImageColor))
+        colors.append(UIColor.init(rgb: Color.attendanceImageColor))
+        self.setGradientBackground(colors: colors)
+        
+    }
 }

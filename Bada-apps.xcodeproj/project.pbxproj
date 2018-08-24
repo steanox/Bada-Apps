@@ -65,7 +65,7 @@
 		55BF529F2058FD9100AA1C87 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55BF529E2058FD9100AA1C87 /* Account.storyboard */; };
 		55BF52A22058FE9900AA1C87 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BF52A12058FE9900AA1C87 /* AccountViewController.swift */; };
 		55BF52A4205B684200AA1C87 /* BaseAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BF52A3205B684200AA1C87 /* BaseAnimator.swift */; };
-		55D49C2120EE11D200C99F4B /* Gradient+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D49C2020EE11D200C99F4B /* Gradient+Image.swift */; };
+		55D49C2120EE11D200C99F4B /* Gradient+NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D49C2020EE11D200C99F4B /* Gradient+NavBar.swift */; };
 		55F1929A2104E2390037D482 /* View + SkimmerEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F192992104E2390037D482 /* View + SkimmerEffect.swift */; };
 		7D3EA88420C8DBFA0050F38F /* BirthdayNotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D3EA88220C8DBFA0050F38F /* BirthdayNotificationView.xib */; };
 		7D3EA88520C8DBFA0050F38F /* BirthdayNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3EA88320C8DBFA0050F38F /* BirthdayNotificationView.swift */; };
@@ -177,9 +177,10 @@
 		55BF529E2058FD9100AA1C87 /* Account.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
 		55BF52A12058FE9900AA1C87 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		55BF52A3205B684200AA1C87 /* BaseAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAnimator.swift; sourceTree = "<group>"; };
-		55D49C2020EE11D200C99F4B /* Gradient+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gradient+Image.swift"; sourceTree = "<group>"; };
+		55D49C2020EE11D200C99F4B /* Gradient+NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gradient+NavBar.swift"; sourceTree = "<group>"; };
 		55F192992104E2390037D482 /* View + SkimmerEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View + SkimmerEffect.swift"; sourceTree = "<group>"; };
 		6A9B1A48B702F6F6A79A6D61 /* Pods-Bada-apps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bada-apps.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bada-apps/Pods-Bada-apps.debug.xcconfig"; sourceTree = "<group>"; };
+		7A47BDF3F1020CB62BCB1E35 /* Pods-Bada-apps-Bada-appsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bada-apps-Bada-appsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bada-apps-Bada-appsTests/Pods-Bada-apps-Bada-appsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7D3EA88220C8DBFA0050F38F /* BirthdayNotificationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BirthdayNotificationView.xib; sourceTree = "<group>"; };
 		7D3EA88320C8DBFA0050F38F /* BirthdayNotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BirthdayNotificationView.swift; sourceTree = "<group>"; };
 		7D5BFCD420C8C5EF000BB0B4 /* ConfettiEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiEmitter.swift; sourceTree = "<group>"; };
@@ -199,7 +200,6 @@
 		7DD3A1EE20C82D10006ABE02 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		7DEDBC2120DBFAC100C9EA50 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		7DFB99DB20F3726800CA322B /* Pods_Bada_apps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Bada_apps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7DFB9A3420F3730600CA322B /* Bada-apps copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Bada-apps copy-Info.plist"; path = "/Users/octavianus/Documents/Bada-apps/Bada-apps copy-Info.plist"; sourceTree = "<absolute>"; };
 		7DFB9A4120F45F6B00CA322B /* Bada-apps-admin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bada-apps-admin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DFB9A4320F45F6B00CA322B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7DFB9A4820F45F6B00CA322B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -268,7 +268,6 @@
 				016A5D84204F90A200F99270 /* Products */,
 				30470825FED39B457A3AE20D /* Pods */,
 				FAECD7D7CFBA22B8D7A3AE0E /* Frameworks */,
-				7DFB9A3420F3730600CA322B /* Bada-apps copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -339,6 +338,7 @@
 				088FDA6321A1B6FD7D53BFF8 /* Pods-Bada-apps-Bada-appsTests.debug admin.xcconfig */,
 				85EA8B0AF4C7D28996BCDA4F /* Pods-Bada-apps-Bada-appsTests.release.xcconfig */,
 				516BDE9C344A99AFE50E965C /* Pods-Bada-apps-Bada-appsTests.release admin.xcconfig */,
+				7A47BDF3F1020CB62BCB1E35 /* Pods-Bada-apps-Bada-appsTests.debug.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -402,7 +402,7 @@
 				55A589A0205135AE00266380 /* Responder+byPass.swift */,
 				01DC136420AAB5CF00B609BF /* UIImage+UIImageView.swift */,
 				7DD3A1EE20C82D10006ABE02 /* Array.swift */,
-				55D49C2020EE11D200C99F4B /* Gradient+Image.swift */,
+				55D49C2020EE11D200C99F4B /* Gradient+NavBar.swift */,
 				55F192992104E2390037D482 /* View + SkimmerEffect.swift */,
 			);
 			path = Extension;
@@ -669,6 +669,7 @@
 				55A5898D2050EE4900266380 /* Carthage Encryption */,
 				55B558112064A6C200D9B035 /* SwiftLint Script */,
 				7DCD9DA020C8DE310073750C /* ShellScript */,
+				9DAEFB9C33FD63A1B89F2121 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -705,6 +706,7 @@
 				7DFB9A6720F47B2800CA322B /* Frameworks */,
 				7DFB9A6820F47B2800CA322B /* Resources */,
 				464B783E3D992F96E59895B2 /* [CP] Embed Pods Frameworks */,
+				261F0A0AD6175F1F056C2051 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -815,6 +817,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		261F0A0AD6175F1F056C2051 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bada-apps-Bada-appsTests/Pods-Bada-apps-Bada-appsTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		2E9DC9A28ABBEB936423C244 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -842,7 +859,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Bada-apps-Bada-appsTests/Pods-Bada-apps-Bada-appsTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
@@ -855,7 +872,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
@@ -907,7 +924,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Bada-apps/Pods-Bada-apps-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
@@ -920,7 +937,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
@@ -964,6 +981,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" f3583287ce5d7009512da266c8373de6682571dd 3770c05e2d4ec6f3137834f5c456d2da02d2d43953a17cb10802fc0728da4470";
+		};
+		9DAEFB9C33FD63A1B89F2121 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bada-apps/Pods-Bada-apps-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1016,7 +1048,7 @@
 				010BA03220512896001F8D44 /* RegistrationViewController.swift in Sources */,
 				55BF52992057FB0600AA1C87 /* BDDate.swift in Sources */,
 				5509CB23204FCE4F00A87E88 /* CoverageAreaView.swift in Sources */,
-				55D49C2120EE11D200C99F4B /* Gradient+Image.swift in Sources */,
+				55D49C2120EE11D200C99F4B /* Gradient+NavBar.swift in Sources */,
 				7D621380211AE8F300D2029A /* BirthdayPersonListCell.swift in Sources */,
 				5509CB26204FCE4F00A87E88 /* NewsViewController.swift in Sources */,
 				01F51FAE2058F761000EE4FC /* Cache.swift in Sources */,
@@ -1215,7 +1247,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = ZK45DE64XX;
+				DEVELOPMENT_TEAM = C89FEC543S;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1260,7 +1292,7 @@
 				BUNDLE_ID = "Bada.Bada-Apps";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZK45DE64XX;
+				DEVELOPMENT_TEAM = C89FEC543S;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1362,7 +1394,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = ZK45DE64XX;
+				DEVELOPMENT_TEAM = C89FEC543S;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1456,7 +1488,7 @@
 				BUNDLE_ID = "Bada.Bada-Apps";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZK45DE64XX;
+				DEVELOPMENT_TEAM = C89FEC543S;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1568,6 +1600,7 @@
 		};
 		7DFB9A7220F47B2800CA322B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7A47BDF3F1020CB62BCB1E35 /* Pods-Bada-apps-Bada-appsTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_OBJC_WEAK = YES;

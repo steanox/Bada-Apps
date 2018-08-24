@@ -18,46 +18,63 @@ class AccountViewController: BaseController {
     
     let accountArray = [Message.changePassword, Message.signOut]
     
+    let dispatchGroup: DispatchGroup = DispatchGroup()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupInitialView()
         accountTableView.delegate = self
         accountTableView.dataSource = self
     }
     
-    func setupNavigationBar() {
-        var colors = [UIColor]()
-        colors.append(UIColor.init(rgb: Color.profileImageColor))
-        colors.append(UIColor.init(rgb: Color.attendanceImageColor))
-        navigationController?.navigationBar.setGradientBackground(colors: colors)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.setupNavigationBar()
+        setupInitialView()
     }
     
     func setupInitialView() {
-        setupNavigationBar()
-        //
         nameLabel.text = Message.worldClassDeveloper
         nameLabel.textColor = UIColor.init(rgb: Color.textColor)
         //
-        nameLabel.applySkimmerEffect()
-        //
-        accountImageView.applySkimmerEffect()
         accountImageView.layer.cornerRadius = accountImageView.frame.width / 2.0
         accountImageView.layer.masksToBounds = true
         //
-        accountTableView.applySkimmerEffect()
+        
+        view.skimmer(state: .start,
+                     views: nameLabel, accountImageView, accountTableView)
+        
+        startRequest()
+    }
+    
+    func startRequest() {
+        getUserName()
+        getUserPhoto()
+        dispatchGroup.notify(queue: .main) {
+            self.view.skimmer(state: .stop,
+                              views: self.nameLabel, self.accountImageView, self.accountTableView)
+        }
+    }
+    
+    func getUserName() {
+        dispatchGroup.enter()
+        User.getUser().getName {[weak self] (name) in
+            guard let name = name else {return}
+            self?.dispatchGroup.leave()
+            self?.nameLabel.text = name
+        }
         
     }
     
-    @IBAction func check() {
-        nameLabel.removeSkimmerEffect()
-        accountImageView.removeSkimmerEffect()
-        accountTableView.removeSkimmerEffect()
-    }
-    
-    @IBAction func start() {
-        nameLabel.applySkimmerEffect()
-        accountImageView.applySkimmerEffect()
-        accountTableView.applySkimmerEffect()
+    private func getUserPhoto(){
+        dispatchGroup.enter()
+        User.getProfilePictureURL {[weak self] (profilePictureURL) in
+            self?.dispatchGroup.leave()
+            if profilePictureURL == "" {
+                self?.accountImageView.image = #imageLiteral(resourceName: "ProfilePictDummy")
+            }else{
+                self?.accountImageView.loadImageUsingCacheWith(urlString: profilePictureURL,done: nil)
+            }
+        }
     }
     
     func userTryingToSignOut() {
@@ -97,6 +114,18 @@ extension AccountViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch accountArray[indexPath.row] {
+        case Message.changePassword:
+            print(Message.changePassword)
+        case Message.signOut:
+            userTryingToSignOut()
+        default:
+            print("Error")
+        }
+    }
+    
 }
 
 

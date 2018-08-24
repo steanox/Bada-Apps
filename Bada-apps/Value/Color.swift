@@ -26,5 +26,7 @@ struct Color {
     public static let formColor = 0xA1A8AD
     public static let textColor = 0x6E6E6E
     
+    public static let mercury = 0xEBEBEB
+    public static let silver = 0xD6D6D6
     
 }
