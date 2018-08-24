@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lrQ-M6-n2B">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Birthday View Controller-->
+        <scene sceneID="53y-CT-Q2x">
+            <objects>
+                <viewController id="MmK-xQ-q0z" customClass="BirthdayViewController" customModule="Bada_apps" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cUw-Zc-aag">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qp3-ub-bsD" customClass="BirthdayPersonCollectionView" customModule="Bada_apps" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <color key="backgroundColor" red="0.098257710318521249" green="0.14693052030456855" blue="0.14552249331042152" alpha="0.27108304794520549" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="qp3-ub-bsD" firstAttribute="top" secondItem="Dai-gb-gaR" secondAttribute="top" id="2Qr-ue-SYo"/>
+                            <constraint firstItem="Dai-gb-gaR" firstAttribute="bottom" secondItem="qp3-ub-bsD" secondAttribute="bottom" id="9Nr-Ao-MuE"/>
+                            <constraint firstItem="Dai-gb-gaR" firstAttribute="trailing" secondItem="qp3-ub-bsD" secondAttribute="trailing" id="Tg3-1p-SJf"/>
+                            <constraint firstItem="qp3-ub-bsD" firstAttribute="leading" secondItem="Dai-gb-gaR" secondAttribute="leading" id="mqk-d5-qIS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Dai-gb-gaR"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Uis-Kj-t5c"/>
+                    <connections>
+                        <outlet property="birthdayCollection" destination="qp3-ub-bsD" id="Dg9-kz-bu6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L3P-zt-wty" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1284" y="198.76847290640396"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Jk2-1I-Iqw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lrQ-M6-n2B" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mgy-Jd-vGr">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="MmK-xQ-q0z" kind="relationship" relationship="rootViewController" id="1G6-j0-Npu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dCT-EW-B9f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="341.60000000000002" y="198.76847290640396"/>
+        </scene>
+    </scenes>
+</document>

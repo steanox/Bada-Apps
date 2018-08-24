@@ -74,9 +74,11 @@
 		7D621382211AEAFE00D2029A /* Birthday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D621381211AEAFE00D2029A /* Birthday.swift */; };
 		7D838249210AD84700BB212D /* BirthdayPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D838248210AD84700BB212D /* BirthdayPhotoCell.xib */; };
 		7D83824B210AD86300BB212D /* BirthdayPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D83824A210AD86300BB212D /* BirthdayPhotoCell.swift */; };
-		7D83824E21106F8000BB212D /* BIrthdayPersonCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D83824D21106F8000BB212D /* BIrthdayPersonCollectionView.xib */; };
-		7D83825021106FB300BB212D /* BIrthdayPersonListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D83824F21106FB300BB212D /* BIrthdayPersonListCell.xib */; };
+		7D83824E21106F8000BB212D /* BirthdayPersonCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D83824D21106F8000BB212D /* BirthdayPersonCollectionView.xib */; };
+		7D83825021106FB300BB212D /* BirthdayPersonListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D83824F21106FB300BB212D /* BirthdayPersonListCell.xib */; };
 		7D8382522110722C00BB212D /* BirthdayPersonCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8382512110722C00BB212D /* BirthdayPersonCollectionView.swift */; };
+		7D8EADB0212BF867005C55D4 /* Birthday.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D8EADAF212BF867005C55D4 /* Birthday.storyboard */; };
+		7D8EADB2212BF8F5005C55D4 /* BirthdayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D8EADB1212BF8F5005C55D4 /* BirthdayViewController.swift */; };
 		7DA40DF421097FB100BDF6FC /* BIrthdayMainActionButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DA40DF321097FB100BDF6FC /* BIrthdayMainActionButtonView.xib */; };
 		7DA40DF6210982D600BDF6FC /* BIrthdayMainActionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA40DF5210982D600BDF6FC /* BIrthdayMainActionButtonView.swift */; };
 		7DBE723920DD24D800D82F16 /* DetailNewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBE723820DD24D800D82F16 /* DetailNewsController.swift */; };
@@ -185,9 +187,11 @@
 		7D621381211AEAFE00D2029A /* Birthday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Birthday.swift; sourceTree = "<group>"; };
 		7D838248210AD84700BB212D /* BirthdayPhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BirthdayPhotoCell.xib; sourceTree = "<group>"; };
 		7D83824A210AD86300BB212D /* BirthdayPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayPhotoCell.swift; sourceTree = "<group>"; };
-		7D83824D21106F8000BB212D /* BIrthdayPersonCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BIrthdayPersonCollectionView.xib; sourceTree = "<group>"; };
-		7D83824F21106FB300BB212D /* BIrthdayPersonListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BIrthdayPersonListCell.xib; sourceTree = "<group>"; };
+		7D83824D21106F8000BB212D /* BirthdayPersonCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BirthdayPersonCollectionView.xib; sourceTree = "<group>"; };
+		7D83824F21106FB300BB212D /* BirthdayPersonListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BirthdayPersonListCell.xib; sourceTree = "<group>"; };
 		7D8382512110722C00BB212D /* BirthdayPersonCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayPersonCollectionView.swift; sourceTree = "<group>"; };
+		7D8EADAF212BF867005C55D4 /* Birthday.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Birthday.storyboard; sourceTree = "<group>"; };
+		7D8EADB1212BF8F5005C55D4 /* BirthdayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayViewController.swift; sourceTree = "<group>"; };
 		7DA40DF321097FB100BDF6FC /* BIrthdayMainActionButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BIrthdayMainActionButtonView.xib; sourceTree = "<group>"; };
 		7DA40DF5210982D600BDF6FC /* BIrthdayMainActionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BIrthdayMainActionButtonView.swift; sourceTree = "<group>"; };
 		7DBE723820DD24D800D82F16 /* DetailNewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailNewsController.swift; sourceTree = "<group>"; };
@@ -342,7 +346,7 @@
 		5509CB04204FCE0A00A87E88 /* Attendance */ = {
 			isa = PBXGroup;
 			children = (
-				7D83824C21106F5600BB212D /* BirthdayAction */,
+				7D83824C21106F5600BB212D /* Birthday */,
 				5509CB0D204FCE0A00A87E88 /* History */,
 				01DFF8892056E470001CB88D /* Clock in & out */,
 				01DFF8882056E467001CB88D /* Coverage area */,
@@ -531,16 +535,42 @@
 			path = BirthdayNotification;
 			sourceTree = "<group>";
 		};
-		7D83824C21106F5600BB212D /* BirthdayAction */ = {
+		7D83824C21106F5600BB212D /* Birthday */ = {
+			isa = PBXGroup;
+			children = (
+				7D8EADB3212BF91E005C55D4 /* View */,
+				7D621381211AEAFE00D2029A /* Birthday.swift */,
+				7D8EADB1212BF8F5005C55D4 /* BirthdayViewController.swift */,
+			);
+			path = Birthday;
+			sourceTree = "<group>";
+		};
+		7D8EADAD212BF7E1005C55D4 /* BirthdayPersonCollection */ = {
 			isa = PBXGroup;
 			children = (
 				7D8382512110722C00BB212D /* BirthdayPersonCollectionView.swift */,
-				7D83824D21106F8000BB212D /* BIrthdayPersonCollectionView.xib */,
-				7D83824F21106FB300BB212D /* BIrthdayPersonListCell.xib */,
-				7D62137F211AE8F300D2029A /* BirthdayPersonListCell.swift */,
-				7D621381211AEAFE00D2029A /* Birthday.swift */,
+				7D83824D21106F8000BB212D /* BirthdayPersonCollectionView.xib */,
 			);
-			path = BirthdayAction;
+			path = BirthdayPersonCollection;
+			sourceTree = "<group>";
+		};
+		7D8EADAE212BF7FF005C55D4 /* BirthdayPersonCollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				7D83824F21106FB300BB212D /* BirthdayPersonListCell.xib */,
+				7D62137F211AE8F300D2029A /* BirthdayPersonListCell.swift */,
+			);
+			path = BirthdayPersonCollectionCell;
+			sourceTree = "<group>";
+		};
+		7D8EADB3212BF91E005C55D4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7D8EADAF212BF867005C55D4 /* Birthday.storyboard */,
+				7D8EADAD212BF7E1005C55D4 /* BirthdayPersonCollection */,
+				7D8EADAE212BF7FF005C55D4 /* BirthdayPersonCollectionCell */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		7DEEDE7F20EE10000071C73F /* Entities */ = {
@@ -737,11 +767,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				014350DB20503FA500512602 /* Notification.xib in Resources */,
-				7D83824E21106F8000BB212D /* BIrthdayPersonCollectionView.xib in Resources */,
+				7D83824E21106F8000BB212D /* BirthdayPersonCollectionView.xib in Resources */,
 				014350C9204FF6BC00512602 /* Authentication.storyboard in Resources */,
 				5509CB11204FCE0A00A87E88 /* LaunchScreen.storyboard in Resources */,
 				01E8C03D204F9154003BF95C /* .gitignore in Resources */,
-				7D83825021106FB300BB212D /* BIrthdayPersonListCell.xib in Resources */,
+				7D83825021106FB300BB212D /* BirthdayPersonListCell.xib in Resources */,
 				7D3EA88420C8DBFA0050F38F /* BirthdayNotificationView.xib in Resources */,
 				5509CB14204FCE0A00A87E88 /* History.storyboard in Resources */,
 				016A5D8E204F90A200F99270 /* Assets.xcassets in Resources */,
@@ -754,6 +784,7 @@
 				7D838249210AD84700BB212D /* BirthdayPhotoCell.xib in Resources */,
 				01E8C03B204F914B003BF95C /* README.md in Resources */,
 				7DFEFAE920C78E2A00825B85 /* HistoryView.xib in Resources */,
+				7D8EADB0212BF867005C55D4 /* Birthday.storyboard in Resources */,
 				5509CB12204FCE0A00A87E88 /* Main.storyboard in Resources */,
 				5509CB3D20500ECE00A87E88 /* ClockInOutView.xib in Resources */,
 				7DA40DF421097FB100BDF6FC /* BIrthdayMainActionButtonView.xib in Resources */,
@@ -949,6 +980,7 @@
 				7D83824B210AD86300BB212D /* BirthdayPhotoCell.swift in Sources */,
 				55A589902050F1D600266380 /* Encryption.swift in Sources */,
 				014350D720503DD600512602 /* Attendance.swift in Sources */,
+				7D8EADB2212BF8F5005C55D4 /* BirthdayViewController.swift in Sources */,
 				7DA40DF6210982D600BDF6FC /* BIrthdayMainActionButtonView.swift in Sources */,
 				5509CB28204FCE4F00A87E88 /* LoginViewController.swift in Sources */,
 				7D5BFCD520C8C5EF000BB0B4 /* ConfettiEmitter.swift in Sources */,

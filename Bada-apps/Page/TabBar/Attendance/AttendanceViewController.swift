@@ -14,6 +14,7 @@ import FirebaseDatabase
 import FirebaseAuth
 import Crashlytics
 
+
 class AttendanceViewController: BaseController, UIApplicationDelegate {
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -97,35 +98,38 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
 
         UserDefaults.standard.removeObject(forKey: "birthdayCache")
 
-        testBirthday()
+        //MARK:- THIS FUNCTION FOR TESTING THE BIRTHDAY
+        //testBirthday()
         
         if let birthdayCache = UserDefaults.standard.object(forKey: "birthdayCache") as? String{
             
             if formatter.string(from: date) != birthdayCache{
                 UserDefaults.standard.set(formattedDateNow, forKey: "birthdayCache")
-                //triggerBirthdayNotification(for: formattedDateNow)
+                triggerBirthdayNotification(for: formattedDateNow)
             }
 
         }else{
             UserDefaults.standard.set(formattedDateNow, forKey: "birthdayCache")
-            //triggerBirthdayNotification(for: formattedDateNow)
+            triggerBirthdayNotification(for: formattedDateNow)
         }
     }
     //MARK:- Delete this after done testing
-    private func testBirthday(){
     
-        let data: [Birthday] = [
+    let data: [Birthday] = [
         Birthday(profileImageURL: "https://firebasestorage.googleapis.com/v0/b/bada-51073.appspot.com/o/profilePicture%2F1LKK5s067MUy1i15famw7I90QSB3.png?alt=media&token=ffa3fb6d-4f94-4345-b79f-407bd1806295"),
         Birthday(profileImageURL: "https://firebasestorage.googleapis.com/v0/b/bada-51073.appspot.com/o/profilePicture%2F2xHwfNfWUidQY08Org2OScI9ixE3.png?alt=media&token=d34bfe85-adf8-4c4e-b46e-696251d970a9"),
         Birthday(profileImageURL: "https://firebasestorage.googleapis.com/v0/b/bada-51073.appspot.com/o/profilePicture%2F2xHwfNfWUidQY08Org2OScI9ixE3.png?alt=media&token=d34bfe85-adf8-4c4e-b46e-696251d970a9"),
-    
         ]
-    
+    private func testBirthday(){
     
         let birthDayView = BirthdayNotificationView(frame: self.view.frame, profilePictureURL: data, onSuccess: nil)
         DispatchQueue.main.async {
             self.view.addSubview(birthDayView)
         }
+        
+        let birthdayButton = BirthdayMainActionButtonView(frame: CGRect(x: 15, y: 15, width: 75, height: 75), for: .giveWishes, totalNotification: 3)
+        birthdayButton.delegate = self
+        self.view.addSubview(birthdayButton)
     }
     
     private func triggerBirthdayNotification(for date: Any){
@@ -548,6 +552,27 @@ extension AttendanceViewController: UIImagePickerControllerDelegate,UINavigation
                 }
             }
         }
+    }
+}
+
+//MARK:- Birthday Main action button delegate
+
+extension AttendanceViewController: BirthdayMainActionButtonViewDelegate{
+    
+    func giveWishes() {
+//        let giveWishes = BirthdayPersonCollectionView(frame: self.view.frame)
+//        giveWishes.birthdayData = self.data
+//        self.view.addSubview(giveWishes)
+        let sb = UIStoryboard(name: "Birthday", bundle: nil).instantiateInitialViewController() as! UINavigationController
+        if let bd = sb.topViewController as? BirthdayViewController{
+            bd.data = data
+            show(sb, sender: nil)
+        }
+        
+    }
+    
+    func viewWishes() {
+
     }
 }
 

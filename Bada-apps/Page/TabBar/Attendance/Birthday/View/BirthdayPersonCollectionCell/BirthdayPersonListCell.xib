@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BirthdayPersonListCell" customModule="Bada_apps" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="BirthdayPersonListCell" customModule="Bada_apps" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="100" height="150"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cm0-Df-rCB">
+                    <rect key="frame" x="-2.5" y="0.0" width="105" height="105"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Cm0-Df-rCB" secondAttribute="height" multiplier="1:1" id="Cfj-yn-SBH"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NkV-Mr-wbe">
+                    <rect key="frame" x="-2.5" y="112.5" width="105" height="37.5"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                    <state key="normal" title="Send Wishes" backgroundImage="TopBackground"/>
+                    <connections>
+                        <action selector="handleButton" destination="-1" eventType="touchUpInside" id="891-lz-IJR"/>
+                        <action selector="handleButton" destination="iN0-l3-epB" eventType="touchUpInside" id="9f3-hM-rPc"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="NkV-Mr-wbe" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.25" id="2Oq-Js-Ima"/>
+                <constraint firstItem="NkV-Mr-wbe" firstAttribute="width" secondItem="Cm0-Df-rCB" secondAttribute="width" id="7SU-KE-tal"/>
+                <constraint firstItem="NkV-Mr-wbe" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="KH4-fW-u8p"/>
+                <constraint firstItem="Cm0-Df-rCB" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.7" id="RFq-ec-1yc"/>
+                <constraint firstItem="Cm0-Df-rCB" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="YsK-JC-zWe"/>
+                <constraint firstItem="Cm0-Df-rCB" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="ZXM-Ja-AYA"/>
+                <constraint firstItem="NkV-Mr-wbe" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="jey-dM-KZo"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="profilePicture" destination="Cm0-Df-rCB" id="Rn5-5A-i0v"/>
+            </connections>
+            <point key="canvasLocation" x="-23" y="-159"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="TopBackground" width="375" height="140"/>
+    </resources>
+</document>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -17,14 +17,14 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="PZA-rx-0QA">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="971-cq-paa">
-                        <size key="itemSize" width="50" height="50"/>
+                        <size key="itemSize" width="0.0" height="0.0"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -33,10 +33,10 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="PZA-rx-0QA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="7xW-L5-N3S"/>
-                <constraint firstItem="PZA-rx-0QA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="WiN-gB-RxH"/>
-                <constraint firstItem="PZA-rx-0QA" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="i38-kh-Ab3"/>
-                <constraint firstItem="PZA-rx-0QA" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="jo7-9b-VUR"/>
+                <constraint firstItem="PZA-rx-0QA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Dki-C4-mK1"/>
+                <constraint firstItem="PZA-rx-0QA" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="X9M-Y8-osK"/>
+                <constraint firstItem="PZA-rx-0QA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="emI-RZ-bsC"/>
+                <constraint firstItem="PZA-rx-0QA" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="mlQ-Cq-lqL"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="33.5" y="53.5"/>

@@ -29,7 +29,7 @@ struct Identifier {
     //View Helper
     public static let notification = "Notification"
     public static let birthdayNotification = "BirthdayNotificationView"
-    public static let birthdayMainAction = "BirthdayMainActionButtonView"
+    public static let birthdayMainAction = "BIrthdayMainActionButtonView"
     public static let notes = "NotesView"
     public static let noteTextView = "NoteTextView"
     
