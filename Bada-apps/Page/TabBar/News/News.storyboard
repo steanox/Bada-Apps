@@ -41,9 +41,8 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UaD-fg-TKb">
-                                <rect key="frame" x="0.0" y="17" width="375" height="778"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UaD-fg-TKb">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Journalist on vacation." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3le-Qu-R6S">
                                         <rect key="frame" x="94" y="335" width="186" height="21"/>
@@ -73,7 +72,11 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Kf2-d4-YSI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="IQ3-Ci-XLm"/>
+                            <constraint firstAttribute="bottom" secondItem="UaD-fg-TKb" secondAttribute="bottom" id="VAs-n1-6xS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Kf2-d4-YSI" secondAttribute="bottom" id="W27-ab-zXj"/>
+                            <constraint firstItem="UaD-fg-TKb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="atS-Lb-hye"/>
+                            <constraint firstItem="UaD-fg-TKb" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="dTm-bZ-pT6"/>
+                            <constraint firstItem="UaD-fg-TKb" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="g27-bt-6HQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Kf2-d4-YSI" secondAttribute="trailing" id="lQk-ba-l5C"/>
                             <constraint firstItem="Kf2-d4-YSI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="x3c-BO-TcC"/>
                         </constraints>
