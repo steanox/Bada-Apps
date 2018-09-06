@@ -40,7 +40,7 @@ class AccountViewController: BaseController {
         accountImageView.layer.masksToBounds = true
         //
         
-        view.skimmer(state: .start,
+        view.shimmer(state: .start,
                      views: nameLabel, accountImageView, accountTableView)
         
         startRequest()
@@ -50,7 +50,7 @@ class AccountViewController: BaseController {
         getUserName()
         getUserPhoto()
         dispatchGroup.notify(queue: .main) {
-            self.view.skimmer(state: .stop,
+            self.view.shimmer(state: .stop,
                               views: self.nameLabel, self.accountImageView, self.accountTableView)
         }
     }

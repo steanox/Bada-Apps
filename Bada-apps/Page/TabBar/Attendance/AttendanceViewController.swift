@@ -37,16 +37,19 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
     var presentInteractor: MiniToLargeViewInteractive!
     var dismissInteractor: MiniToLargeViewInteractive!
     
+    let dispatchGroup: DispatchGroup = DispatchGroup()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        clockInOutView.isHidden = true
-        startActivityIndicator()
+        //MARK:- update shimmer
+//        clockInOutView.isHidden = true
+//        startActivityIndicator()
+        
         askNotificationAuthorization()
         NotificationCenter.default.addObserver(self, selector: #selector(observeStatusAndText), name: Notification.Name.UIApplicationWillEnterForeground, object: nil)
         
-        profilePicture.isUserInteractionEnabled = true
+        profilePicture.isUserInteractionEnabled = false
         profilePicture.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapToChangeProfilePicture)))
         
         historyViewController = HistoryViewController()
@@ -64,6 +67,8 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
                 self.present(authSB, animated: true, completion: nil)
             }
         }
+        
+        view.shimmer(state: .start, views: profilePicture, nameLabel, currentDateLabel, coverageAreaView.beaconImageView, coverageAreaView.beaconLabel, clockInOutView.clockInOutButton)
         
     }
     
@@ -173,7 +178,9 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
 
     
     func statusObserver(){
+        dispatchGroup.enter()
         Attendance.observeStatus(forUID: uid){ (status) in
+            self.dispatchGroup.leave()
             self.stopActivityIndicator()
             switch status {
             case ._notYet:
@@ -226,13 +233,17 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
     override func styleUI() {
         super.styleUI()
         
+        dispatchGroup.enter()
         User.getUser().getName { (name) in
+            self.dispatchGroup.leave()
             guard let name = name else {return}
             self.nameLabel.text = name
         }
         
         currentDateLabel.text = Date().current()
+        
         bdDate?.getCurrent({ (data) in
+            self.currentDateLabel.text = data.getDate()
             DispatchQueue.main.async {
                 self.currentDateLabel.text = data.getDate()
             }
@@ -253,19 +264,28 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
         self.profilePicture.layer.cornerRadius = self.profilePicture.frame.width / 2
         self.profilePicture.clipsToBounds = true
         
+        
+        dispatchGroup.enter()
         setProfilePicture()
         
+        dispatchGroup.notify(queue: .main) {
+            print("LEWAT")
+            self.view.shimmer(state: .stop, views: self.profilePicture, self.nameLabel, self.currentDateLabel, self.coverageAreaView.beaconImageView, self.coverageAreaView.beaconLabel, self.clockInOutView.clockInOutButton)
+        }
     }
     
     private func setProfilePicture(){
-        
         User.getProfilePictureURL {[weak self] (profilePictureURL) in
             
             if profilePictureURL == ""{
                 self?.profilePicture.image = #imageLiteral(resourceName: "ProfilePictDummy")
             }else{
-                self?.profilePicture.loadImageUsingCacheWith(urlString: profilePictureURL,done: nil)
+                self?.profilePicture.loadImageUsingCacheWith(urlString: profilePictureURL, done: {
+                    self?.dispatchGroup.leave()
+                    self?.profilePicture.isUserInteractionEnabled = true
+                })
             }
+            
             
         }
     }
@@ -543,12 +563,25 @@ extension AttendanceViewController: UIImagePickerControllerDelegate,UINavigation
         
         picker.dismiss(animated: true) {
             DispatchQueue.main.async {
-                self.startActivityIndicator()
+                self.view.shimmer(state: .start, views: self.profilePicture)
+                self.profilePicture.isUserInteractionEnabled = false
             }
             User.upload(profilePicture: chosenImage){
                 DispatchQueue.main.async {
-                    self.setProfilePicture()
-                    self.stopActivityIndicator()
+                    User.getProfilePictureURL {[weak self] (profilePictureURL) in
+                        
+                        if profilePictureURL == ""{
+                            self?.profilePicture.image = #imageLiteral(resourceName: "ProfilePictDummy")
+                        }else{
+                            self?.profilePicture.loadImageUsingCacheWith(urlString: profilePictureURL, done: {
+                                guard let profilePict = self?.profilePicture else {return}
+                                self?.view.shimmer(state: .stop, views: profilePict)
+                                profilePict.isUserInteractionEnabled = true
+                            })
+                        }
+                        
+                        
+                    }
                 }
             }
         }

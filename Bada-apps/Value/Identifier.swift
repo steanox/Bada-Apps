@@ -48,7 +48,7 @@ struct Identifier {
     public static let checkInStartTime = 0600
     public static let checkInLimitTime = 0900
     public static let checkOutTime = 1800
-    public static let skimmerTag = 451890
+    public static let shimmerTag = 451890
     
     public static let differenceViewOfKeyboard: CGFloat = 100.0
     

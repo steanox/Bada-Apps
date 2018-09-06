@@ -1,5 +1,5 @@
 //
-//  SkimmerEffect.swift
+//  ShimmerEffect.swift
 //  Bada-apps
 //
 //  Created by Handy Handy on 22/07/18.
@@ -10,7 +10,7 @@ import UIKit
 
 extension UIView {
     
-    func applySkimmerEffect() {
+    func applyShimmerEffect() {
         let darkView = UIView()
         darkView.backgroundColor = UIColor.init(rgb: Color.silver)
         let yPosition = -200
@@ -21,7 +21,7 @@ extension UIView {
         shineView.frame = CGRect(x: 0, y: yPosition, width: 1000, height: 1000)
         
         shineView.addSubview(darkView)
-        shineView.tag = Identifier.skimmerTag
+        shineView.tag = Identifier.shimmerTag
         self.addSubview(shineView)
         
         let gradientLayer = CAGradientLayer()
@@ -43,12 +43,12 @@ extension UIView {
         animation.toValue = darkView.frame.width - 200
         animation.repeatCount = .infinity
         
-        gradientLayer.add(animation, forKey: "SKIMMER EFFECT")
+        gradientLayer.add(animation, forKey: "SHIMMER EFFECT")
     }
     
-    func removeSkimmerEffect() {
+    func removeShimmerEffect() {
         for subview in self.subviews {
-            if subview.tag == Identifier.skimmerTag {
+            if subview.tag == Identifier.shimmerTag {
                 let item = subview.subviews[0]
                 item.layer.removeFromSuperlayer()
                 subview.removeFromSuperview()
@@ -56,13 +56,13 @@ extension UIView {
         }
     }
     
-    func skimmer(state: ShimmerState, views: UIView...) {
+    func shimmer(state: ShimmerState, views: UIView...) {
         for view in views {
             switch state {
             case .start:
-                view.applySkimmerEffect()
+                view.applyShimmerEffect()
             case .stop:
-                view.removeSkimmerEffect()
+                view.removeShimmerEffect()
             }
         }
         

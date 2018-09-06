@@ -55,6 +55,9 @@ class ClockInOutView: UIView {
         
         dateLabel.textColor = UIColor(rgb: Color.dateClockInOut)
         
+        clockInOutButton.layer.cornerRadius = clockInOutButton.frame.width / 2.0
+        clockInOutButton.layer.masksToBounds = true
+        
     }
     
     @IBAction func clockInOutDidTap(_ sender: UIButton) {

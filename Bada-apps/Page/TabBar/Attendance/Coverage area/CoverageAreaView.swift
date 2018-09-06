@@ -34,6 +34,9 @@ class CoverageAreaView: UIView, CLLocationManagerDelegate {
         self.beaconLabel.textColor = UIColor(rgb: Color.beaconTextColor)
         self.beacon.beaconNotDetected()
         
+        self.beaconImageView.layer.cornerRadius = beaconImageView.frame.width / 2.0
+        self.beaconImageView.layer.masksToBounds = true
+        
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled(){
