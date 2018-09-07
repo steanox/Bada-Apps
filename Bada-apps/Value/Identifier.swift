@@ -38,7 +38,7 @@ struct Identifier {
     public static let formatMonthYear = "MMMM yyyy"
     
     public static let firebaseURL = "https://us-central1-bada-51073.cloudfunctions.net/helper/"
-    public static let timeUrl = "https://bada.apps.binus.ac.id/t/time"
+    public static let timeUrl = "https://appledeveloperacademy.apps.binus.ac.id/t/time"
     
     public static let checkInLocalNotification = "Check In Remainder"
     public static let checkOutlocalNotification = "Check Out Remainder"

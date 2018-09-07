@@ -32,8 +32,8 @@ class BaseController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
-        styleUI()
         bdDate = BDDate()
+        styleUI()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

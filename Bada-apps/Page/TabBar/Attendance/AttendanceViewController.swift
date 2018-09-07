@@ -242,7 +242,9 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
         
         currentDateLabel.text = Date().current()
         
+        dispatchGroup.enter()
         bdDate?.getCurrent({ (data) in
+            self.dispatchGroup.leave()
             self.currentDateLabel.text = data.getDate()
             DispatchQueue.main.async {
                 self.currentDateLabel.text = data.getDate()
@@ -269,7 +271,6 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
         setProfilePicture()
         
         dispatchGroup.notify(queue: .main) {
-            print("LEWAT")
             self.view.shimmer(state: .stop, views: self.profilePicture, self.nameLabel, self.currentDateLabel, self.coverageAreaView.beaconImageView, self.coverageAreaView.beaconLabel, self.clockInOutView.clockInOutButton)
         }
     }
@@ -374,7 +375,9 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
     }
     
     func showNotification(title: String, message: String, buttonText: String) {
-        self.view.showNotification(title: title, description: message, buttonText: buttonText, onSuccess: nil)
+        self.view.showNotification(title: title, description: message, buttonText: buttonText) {
+            self.tabBarController?.tabBar.isHidden = false
+        }
     }
     
 }
