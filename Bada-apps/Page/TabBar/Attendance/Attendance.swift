@@ -16,6 +16,15 @@ enum Status{
     case checkOut
 }
 
+enum ClockStatus {
+    case _notYet
+    case _in
+    case _out
+    case _done
+    case _error
+}
+
+
 enum AttendanceType{
     case notEligibleTime
     case checkIn

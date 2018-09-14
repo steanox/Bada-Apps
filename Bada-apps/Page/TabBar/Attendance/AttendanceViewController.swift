@@ -178,9 +178,9 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
 
     
     func statusObserver(){
-        dispatchGroup.enter()
+        //dispatchGroup.enter()
         Attendance.observeStatus(forUID: uid){ (status) in
-            self.dispatchGroup.leave()
+            //self.dispatchGroup.leave()
             self.stopActivityIndicator()
             switch status {
             case ._notYet:
@@ -221,6 +221,8 @@ class AttendanceViewController: BaseController, UIApplicationDelegate {
                 self.clockInOutView.clockInOutTitleLabel.textColor = UIColor.init(rgb: Color.clockInColor)
                 self.clockInOutView.clockInOutTitleLabel.text = "Connection Error"
             }
+        
+        
         }
     }
     
